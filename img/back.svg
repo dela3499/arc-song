@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   width="75"
+   height="75"
+   id="svg12929">
+  <defs
+     id="defs12931" />
+  <metadata
+     id="metadata12934">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(0,-977.36218)"
+     id="layer1">
+    <g
+       transform="matrix(2.0626573,0,0,2.0626574,-3287.3112,929.86732)"
+       id="g12906">
+      <rect
+         width="36.360863"
+         height="36.360863"
+         x="1593.7263"
+         y="23.026054"
+         id="rect32651"
+         style="color:#000000;fill:#4d4d4d;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      <g
+         transform="matrix(0.56538314,0,0,0.56538314,766.8551,0.41685)"
+         id="g32673"
+         style="opacity:0.27160495;fill:#ffffff">
+        <g
+           transform="matrix(0.31407858,-0.29820831,0.31407858,0.32994885,923.30577,550.29157)"
+           id="g32677">
+          <rect
+             width="56.745792"
+             height="13.840437"
+             x="1699.6056"
+             y="84.223633"
+             id="rect32653"
+             style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+          <rect
+             width="56.745792"
+             height="13.840437"
+             x="84.223633"
+             y="-1713.446"
+             transform="matrix(0,1,-1,0,0,0)"
+             id="rect32653-1"
+             style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
