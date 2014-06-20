@@ -1,22 +1,21 @@
+/*https://github.com/katspaugh/wavesurfer.js/blob/master/README.md*/
 body {
     position: absolute;
     top: 0px;
     bottom: 0px;
     left: 0px;
     right: 0px;
-    background-color: green;
-}
-
-#landing-page {
-/*    visibility: hidden;*/
-    height: 100%;
-    width: 100%;
-/*    background-image: radial-gradient(#dfdfdf,#5d5d5d);*/
-    /*background-image: radial-gradient(#dfdfdf,#b9b9b9,#8c8c8c,#6f6f6f,#5d5d5d);*/
     background: url(gradient.svg) center 100%;
     font-family: 'Raleway', sans-serif;
     font-size: 24px;
     text-align: center;
+}
+
+#landing-page {
+    visibility: hidden;
+    height: 100%;
+    width: 100%;
+
 }
 
 #logo {
@@ -112,9 +111,22 @@ body {
 
 .back-button, 
 .help-button { 
+    position:absolute;
     height: 75px; 
     width: 75px;
-    float: left;
-    margin-top: 10px;
-    margin-left: 10px;
+    top: 10px;
+}
+
+.back-button {
+    left:10px;
+}
+
+.help-button { 
+    left: 95px;
+}
+
+.directions {
+    font-size: 20px;
+    font-weight: 800;
+    margin-top: 24px;
 }
