@@ -1,0 +1,5 @@
+What is my current objective?
+ - Upload and play audio. 
+I've found out how to upload files using drag and drop, but I need to find out how to play audio. 
+
+So far, it seems that the best solution is either the <audio> element or the web audio api (and the audio element may actually just use the api.)

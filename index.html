@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="js/howler.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="css/arcsong.css">
+	<link href='http://fonts.googleapis.com/css?family=Raleway:300,400,700' rel='stylesheet' type='text/css'>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body class="clearfix">
+    <div id="landing-page">
+    	<div id="logo"><a href="#">ARC<span>SONG</span></a></div>
+    	<div id="example"><img src="img/ltta.svg" alt="arc chart for Rush's song, Leave that thing alone"></div>
+    	<div id="description">Create arc diagrams for your favorite songs.</div>
+    	<div id="pitch">It's free. There's no sign-in. <a href="http://www.youtube.com/">Watch a clip.</a></div>
+    	<div id="buttons">
+    		<div id="upload-song-button" class="button-1">
+               <div style="display: table;overflow: hidden;height: 90px;margin:0 auto">
+                 <div style="display: table-cell; vertical-align: middle;">
+                   <div>
+                     UPLOAD<br>SONG
+                   </div>
+                 </div>
+               </div>                
+            </div>
+    		<div id="nav">
+				<div id="about-button">
+                   <div style="display: table;overflow: hidden;height: 50px;margin:0 auto">
+                     <div style="display: table-cell; vertical-align: middle;">
+                       <div>
+                         ABOUT
+                       </div>
+                     </div>
+                   </div>                     
+                </div>
+    			<div id="blog-button">
+                   <div style="display: table;overflow: hidden;height: 50px;margin:0 auto">
+                     <div style="display: table-cell; vertical-align: middle;">
+                       <div>
+                         BLOG
+                       </div>
+                     </div>
+                   </div>            
+                </div>
+    		</div>
+    	</div>
+    </div> <!--end of page 1-->
+    
+    <div id="transition-finder">
+        <div id="nav-2">
+            <div class="back-button">
+                <img src="img/back.svg" alt="back button">
+            </div>
+            <div class="help-button">
+               <img src="img/help.svg" alt="back button">            
+            </div>
+        </div>  
+        <div class="main-container">
+            <div class="directions">First, separate the song into sections<br>by finding the big transitions.</div> 
+            <div class="controls">
+                <img class="play" src="img/play.svg">
+                <img class="pause" src="img/pause.svg">
+                <img class="transition" src="img/found-transition.svg">
+                <img class="back-5" src="img/back5.svg">
+                <img class="back-x" src="img/back-x.svg">
+                <img class="done" src="img/done.svg">
+                
+            </div>
+            <div class="player">
+                <div class="player-background">
+                    <div class="progress-bar"></div>
+                </div>
+                
+                <div class="elapsed-time">
+                   <div style="display: table;overflow: hidden;height: 55px;margin:0 auto">
+                     <div style="display: table-cell; vertical-align: middle;">
+                       <div id='elapsed-time-id'>
+                         0:40
+                       </div>
+                     </div>
+                   </div>                     
+                </div>
+                <div class="remaining-time">
+                   <div style="display: table;overflow: hidden;height: 55px;margin:0 auto">
+                     <div style="display: table-cell; vertical-align: middle;">
+                       <div id='remaining-time-id'>
+                         -3:40
+                       </div>
+                     </div>
+                   </div>                 
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+      var sound = new Howl({urls: ['audio/animate.mp3']});  
+      $(".play").click(function() {
+          sound.play();
+          $(this).css('visibility','hidden');
+          $('.pause').css('visibility','visible');
+      });
+      $(".pause").click(function() {
+          sound.pause();
+          $(this).css('visibility','hidden');
+          $('.play').css('visibility','visible');
+      });  
+        
+        function addZero(num) {
+            return (num >= 0 && num < 10) ? "0" + num : num + "";
+        };        
+        
+        
+    setInterval( "updateMyContent();", 50 ); 
+    $(function() { 
+//        var duration = 15;
+        var duration = 363;
+        updateMyContent = function(){ 
+            $(".progress-bar").css('width', sound.pos()*100/duration + '%');
+//            console.log(sound.pos);
+            pos = (sound.pos()).toFixed(0);
+            minE = Math.floor(pos/60);
+            secE = addZero(Math.floor(pos % 60));
+            minR = Math.floor(duration / 60) - minE;
+            secR = addZero(Math.floor((duration - pos) % 60));
+            
+            $('#elapsed-time-id').text(minE + ':' + secE);
+            $('#remaining-time-id').text(minR + ':' + secR);
+            
+//            if ((duration-pos < .001)) {
+//                $(".progress-bar").css('transition-duration', '1s');
+//            } else {
+//                $(".progress-bar").css('transition-duration', '0s');
+//            };
+           } 
+    });       
+    </script>
+    
+    
+    
+    
+    
+</body>
+</html>

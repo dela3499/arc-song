@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="75"
+   height="75"
+   id="svg3665"
+   version="1.1"
+   inkscape:version="0.48.3.1 r9886"
+   sodipodi:docname="play.svg">
+  <defs
+     id="defs3667">
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath10879-9-7-23-5">
+      <rect
+         style="color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+         id="rect10881-6-3-1-3"
+         width="70.710678"
+         height="70.710678"
+         x="2221.3823"
+         y="1102.0195"
+         transform="matrix(0.70710678,-0.70710678,0.70710678,0.70710678,0,0)" />
+    </clipPath>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="17.400882"
+     inkscape:cx="55.627774"
+     inkscape:cy="23.509107"
+     inkscape:document-units="px"
+     inkscape:current-layer="g10934-56-6-6-4"
+     showgrid="false"
+     inkscape:window-width="1600"
+     inkscape:window-height="876"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata3670">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-977.36218)">
+    <g
+       transform="matrix(0.73330411,0,0,0.73330407,-1910.5951,1457.4251)"
+       id="g10934-56-6-6-4">
+      <g
+         style="opacity:0.25;stroke:#ffffff;stroke-opacity:1"
+         transform="matrix(0.42757086,0,0,0.42757088,1876.9042,-705.43524)"
+         id="g32897-4-6-0-2-5-1">
+        <rect
+           style="color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+           id="rect3100-9-8-2-7-1-3-9-2-4"
+           width="50"
+           height="50"
+           x="1820.1099"
+           y="326.59549"
+           transform="matrix(4.7840867,0,0,4.7840867,-7003.6198,-1443.7022)" />
+      </g>
+      <rect
+         style="opacity:0.7;color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+         id="rect10859-3-6-63-4"
+         width="100"
+         height="100"
+         x="2300"
+         y="-841.50909"
+         clip-path="url(#clipPath10879-9-7-23-5)"
+         transform="matrix(-1.0262593,0,0,0.54776355,5096.233,-170.67698)" />
+    </g>
+  </g>
+</svg>

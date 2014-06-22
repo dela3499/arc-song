@@ -1,0 +1,70 @@
+<!-- http://html5demos.com/file-api -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset=utf-8>
+<meta name="viewport" content="width=620">
+<title>HTML5 Demo: File API</title>
+<link rel="stylesheet" href="html5demos.css">
+<!-- <script src="js/h5utils.js"></script> -->
+</head>
+<body>
+<section id="wrapper">
+<style>
+#holder { border: 10px dashed #ccc; width: 300px; height: 300px; margin: 20px auto;}
+#holder.hover { border: 10px dashed #333; }
+</style>
+<article>
+  <div id="holder"></div> 
+</article>
+<script>
+var holder = document.getElementById('holder');
+ 
+holder.ondragover = function () { this.className = 'hover'; return false; };
+holder.ondragend = function () { this.className = ''; return false; };
+holder.ondrop = function (e) {
+  this.className = '';
+  e.preventDefault();
+
+  var file = e.dataTransfer.files[0],
+      reader = new FileReader(),
+      context = new AudioContext(),
+      audioBuffer,
+      source;
+
+setupAudioNodes();
+loadSound();
+
+function setupAudioNodes() {
+  source = context.createBufferSource();
+  source.connect(context.destination);
+}
+
+function loadSound() {
+  
+}
+
+  reader.onload = function (event) {
+    console.log(event.target);
+    con
+    // holder.style.background = 'url(' + event.target.result + ') no-repeat center';
+  };
+  console.log(file);
+  reader.readAsArrayBuffer(file);
+  var context = new AudioContext,
+      // buffer = context.createBuffer(reader.result,true),
+      buffer = context.decodeAudioData(reader.result,function(buffer){
+        ;
+      },function(){console.log("failed")}),
+      source = context.createBufferSource();
+  // console.log(reader);
+  console.log(buffer);
+  source.buffer = buffer;
+  source.connect(context.destination);
+  source.start(0);
+  return false;
+};
+</script>
+</body>
+</html>

@@ -7,10 +7,34 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    version="1.1"
-   width="75"
-   height="75"
-   id="svg12929">
+   width="50"
+   height="50"
+   id="svg12929"
+   inkscape:version="0.48.3.1 r9886"
+   sodipodi:docname="back.svg">
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1600"
+     inkscape:window-height="876"
+     id="namedview33888"
+     showgrid="false"
+     inkscape:zoom="9.4522917"
+     inkscape:cx="24.91046"
+     inkscape:cy="37.5"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg12929" />
   <defs
      id="defs12931" />
   <metadata
@@ -21,46 +45,53 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <g
-     transform="translate(0,-977.36218)"
-     id="layer1">
+     id="g34050"
+     transform="translate(-4.9999998,4.9999999)">
     <g
-       transform="matrix(2.0626573,0,0,2.0626574,-3287.3112,929.86732)"
-       id="g12906">
-      <rect
-         width="36.360863"
-         height="36.360863"
-         x="1593.7263"
-         y="23.026054"
-         id="rect32651"
-         style="color:#000000;fill:#4d4d4d;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+       style="opacity:0.5;stroke:#ffffff;stroke-opacity:1"
+       transform="matrix(0.20902665,0,0,0.2090265,-402.80574,-19.614791)"
+       id="g32882-2-1-8-1-2">
       <g
-         transform="matrix(0.56538314,0,0,0.56538314,766.8551,0.41685)"
-         id="g32673"
-         style="opacity:0.27160495;fill:#ffffff">
-        <g
-           transform="matrix(0.31407858,-0.29820831,0.31407858,0.32994885,923.30577,550.29157)"
-           id="g32677">
-          <rect
-             width="56.745792"
-             height="13.840437"
-             x="1699.6056"
-             y="84.223633"
-             id="rect32653"
-             style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
-          <rect
-             width="56.745792"
-             height="13.840437"
-             x="84.223633"
-             y="-1713.446"
-             transform="matrix(0,1,-1,0,0,0)"
-             id="rect32653-1"
-             style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
-        </g>
+         style="opacity:0.5"
+         transform="translate(247.03108,-48.84068)"
+         id="g32897-4-9-9-6-9">
+        <rect
+           style="color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+           id="rect3100-9-8-2-7-0-0-4-7"
+           width="50"
+           height="50"
+           x="1820.1099"
+           y="326.59549"
+           transform="matrix(4.7840867,0,0,4.7840867,-7003.6198,-1443.7022)" />
+      </g>
+    </g>
+    <g
+       style="opacity:0.27160495;fill:#ffffff"
+       id="g32673"
+       transform="matrix(0.93295336,0,0,0.93295336,-1364.4417,-47.308031)">
+      <g
+         id="g32677"
+         transform="matrix(0.31407858,-0.29820831,0.31407858,0.32994885,923.30577,550.29157)">
+        <rect
+           style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+           id="rect32653"
+           y="84.223633"
+           x="1699.6056"
+           height="13.840437"
+           width="56.745792" />
+        <rect
+           style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+           id="rect32653-1"
+           transform="matrix(0,1,-1,0,0,0)"
+           y="-1713.446"
+           x="84.223633"
+           height="13.840437"
+           width="56.745792" />
       </g>
     </g>
   </g>

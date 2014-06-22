@@ -1,0 +1,32 @@
+What is my objective today? 
+ - Complete the second page of my site. 
+What constitutes completion?  
+ - all the elements should be present and functioning as desired. 
+What elements are on the page? 
+ - back button - show homepage
+ - help button - show modal explanation
+ - undo/reverse button
+  - this button should "go back or undo"
+  - there are two primary use cases: 
+    1. Missed transition - in this case, I want to go back a bit to before the transition I failed to mark.
+    2. Incorrect transition - in this case, I want to remove the last transition I marked. There are two cases where this might happen - accidentally hitting the transition button, or marking a transition with some slight error. In the first case, you'd like to simply remove the transition, and you don't really care if playback stops and rewinds. In the second case, you'd like to go back to before the transition you marked and try again. 
+  - so, there are two actions that I'd like the same button to perform. 
+    1. go back 5-10 seconds
+    2. erase the last transition, and restart playback prior to transition by 5-10 seconds.
+  - the problem is to accomodate these two functions within the same button. 
+  How can this be done? 
+   - one way is to have a buffered 3-click response - that is, memory of a click will only persist for three seconds
+    - on the first and second clicks, the playback jumps back 5 seconds (or to 5s before last transition, if transition is within 5s of cursor)
+    - on the third click, the cursor moves to five seconds before the last transition (and erases that transition)
+  - Use cases: 
+    1. Missed transition
+       - click once - playback jumps back 5 seconds. 
+       - click again - playback jumps back another 5 seconds
+    2. Mismarked transition
+       - click once - playback jumps back - since transition was marked within 5 seconds of cursor location, playback erases transition and jump to 5 seconds before the mark
+    * the icon on the button might be allowed to change with playback to indicate its action - i.e. show "back 5 seconds" unless there's a transition nearby, or the button's been pressed twice already.
+ - play/pause button
+ - play at 1/2 speed button
+ - transition button - mark a transition
+ - waveform - many functions
+  - what is the role of the waveform? 
