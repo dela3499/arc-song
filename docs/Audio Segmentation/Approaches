@@ -1,0 +1,11 @@
+http://nbviewer.ipython.org/urls/bitbucket.org/pucktronix/pyoracle/raw/d046b2bcf473503fa356094cfe4cff774d1aaefc/270D.ipynb
+
+http://gregsurges.com/about
+https://bitbucket.org/pucktronix/pyoracle/overview
+
+This approach uses software that apparently implements many of the audio segmentation algorithms I've read about. It even seems to show the algorithm  for matching strings.
+
+https://github.com/bmcfee/librosa/  - another,simpler option perhaps
+
+http://felix-halim.net/pg/suffix-tree/index.php - JS suffix trees
+ - I assume I'll need this to generate the appropriate matches and such.
