@@ -237,7 +237,7 @@ body {
 
 #transition-finder .player .elapsed-time,
 #transition-finder .player .remaining-time {
-    font-size: 20px;
+    font-size: 17px;
     font-weight: 800;
     color: #caced1;
     position: absolute;
@@ -253,4 +253,3 @@ body {
 #transition-finder .player .remaining-time {
     right: 0px;
 }
-

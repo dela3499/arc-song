@@ -77,7 +77,7 @@
                    <div style="display: table;overflow: hidden;height: 55px;margin:0 auto">
                      <div style="display: table-cell; vertical-align: middle;">
                        <div id='elapsed-time-id'>
-                         0:40
+                         0:00
                        </div>
                      </div>
                    </div>                     
@@ -86,7 +86,7 @@
                    <div style="display: table;overflow: hidden;height: 55px;margin:0 auto">
                      <div style="display: table-cell; vertical-align: middle;">
                        <div id='remaining-time-id'>
-                         -3:40
+                         -0.00
                        </div>
                      </div>
                    </div>                 
@@ -95,46 +95,102 @@
         </div>
     </div>
     <script>
-      var sound = new Howl({urls: ['audio/animate.mp3']});  
-      $(".play").click(function() {
-          sound.play();
-          $(this).css('visibility','hidden');
-          $('.pause').css('visibility','visible');
-      });
-      $(".pause").click(function() {
-          sound.pause();
-          $(this).css('visibility','hidden');
-          $('.play').css('visibility','visible');
-      });  
+        $("#transition-finder .back-button").click(function(){
+            $("#transition-finder").css("visibility","hidden");
+            $("#landing-page").css("opacity","0");
+            $("#landing-page").css("visibility","visible").animate({
+                opacity:1},500);
+        });
+        $("#upload-song-button").click(function(){
+            $("#landing-page").css("visibility","hidden");
+            $("#transition-finder").css("opacity","0");
+            $("#transition-finder").css("visibility","visible");
+            $("#transition-finder").css("visibility","visible").animate({
+                opacity:1},500);
+        });        
         
+        var prog = $(".progress-bar");
+        var duration = 15;
+        var sound = new Howl({
+            urls: ['audio/animate2.mp3'],
+            onload: function() {
+                prog.css({"width":"0%"})},
+            onend: function() {
+                prog.animate({width:"0%"},500);
+                $('.pause').css('visibility','hidden');
+                $('.play').css('visibility','visible');                
+            },
+            onpause: function() {
+                prog.stop();
+            },
+            onplay: function() {
+                console.log("on-play.pos:"+sound.pos());
+                prog.css("width",getProgress(sound,duration) + "%");
+                prog.animate({
+                    width:"100%"
+                },{
+                    duration: 1000*(duration - sound.pos()),
+                    easing: "linear",
+                    step: updateMyContent})},
+        });  
+        
+        function getProgress(x,dur) {
+            return x.pos()*100/dur;
+        };
+        $(".play").click(function() {
+            sound.play();
+            $(this).css('visibility','hidden');
+            $('.pause').css('visibility','visible');
+        });
+        $(".pause").click(function() {
+            sound.pause();
+            $(this).css('visibility','hidden');
+            $('.play').css('visibility','visible');
+//            prog.stop();
+        });  
+        $(".back-5").click(function() {   
+//            prog.stop();
+            console.log("pre-back-5. pos:"+sound.pos());
+            if (sound.pos() > 5) {
+                sound.pos(sound.pos() - 5);
+            } else { 
+                sound.pos(0);
+            };
+            console.log("post-back-5. pos:"+sound.pos());
+            sound.pause();
+            sound.play();
+            
+//            updateMyContent();
+//            sound.pause();
+//            prog.stop().css("width",getProgress(sound,duration))
+//                .animate({
+//                    width:"100%"
+//                    },{
+//                    duration: 1000*(duration - sound.pos()),
+//                    easing: "linear",
+//                    step: updateMyContent
+//                    }
+//                );
+        });
+        
+        $(".transition").click(function() {
+            $(".player-background").append("<div></div>")
+            $(".player-background div:last").css({"transition-duration":"0.0s","opacity":"0","background-color":"#d3d3d3","height":"100%","width":"2px","position":"absolute","z-index":"111","top":"0","left": getProgress(sound,duration) + "%"}).animate({"opacity":"1"});
+        });
+                
         function addZero(num) {
             return (num >= 0 && num < 10) ? "0" + num : num + "";
         };        
         
-        
-    setInterval( "updateMyContent();", 50 ); 
-    $(function() { 
-//        var duration = 15;
-        var duration = 363;
-        updateMyContent = function(){ 
-            $(".progress-bar").css('width', sound.pos()*100/duration + '%');
-//            console.log(sound.pos);
+        function updateMyContent() { 
             pos = (sound.pos()).toFixed(0);
             minE = Math.floor(pos/60);
             secE = addZero(Math.floor(pos % 60));
             minR = Math.floor(duration / 60) - minE;
             secR = addZero(Math.floor((duration - pos) % 60));
-            
             $('#elapsed-time-id').text(minE + ':' + secE);
-            $('#remaining-time-id').text(minR + ':' + secR);
-            
-//            if ((duration-pos < .001)) {
-//                $(".progress-bar").css('transition-duration', '1s');
-//            } else {
-//                $(".progress-bar").css('transition-duration', '0s');
-//            };
-           } 
-    });       
+            $('#remaining-time-id').text("-" + minR + ':' + secR);
+           }; 
     </script>
     
     
