@@ -1,255 +1,160 @@
-/*https://github.com/katspaugh/wavesurfer.js/blob/master/README.md*/
 body {
-    position: absolute;
-    top: 0px;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    background: url(../img/gradient.svg) center 100%;
-    font-family: 'Raleway', sans-serif;
-    font-size: 24px;
-    text-align: center;
-}
-
-#landing-page {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  background: url(../img/gradient.svg) center 100%;
+  font-family: 'Raleway', sans-serif;
+  font-size: 24px;
+  text-align: center; }
+  body #landing-page {
     visibility: hidden;
     height: 100%;
-    width: 100%;
-
-}
-
-#logo {
-	text-align: center;
-	font-size: 65px;
-    padding-top: 50px;
-    padding-bottom: 20px;
-}
-
-#logo a {
-    color: black;
-    text-decoration: none;
-}
-
-#logo span {
-    font-weight: 800;
-}
-
-#example {
-    width: 440px;
-    margin: 0 auto;
-}
-
-#description {
-    margin: 20px 0px;
-}
-
-#pitch {
-    font-weight: 800;
-    font-size: 20px;
-    margin: 20px 0;
-}
-
-#pitch a {
-    color: black;
-}
-
-#buttons {
-    color: white;
-}
-
-#upload-song-button {
-    font-weight: 300;
-    width: 180px;
-    height: 90px;
-    background: black;
-    margin: 0px auto;
-    cursor: pointer;
-    opacity: .9;
-}
-
-#upload-song-button:hover {
-    opacity: 1;
-}
-
-#nav {
-    width: 180px;
-    margin: 10px auto;
-}
-
-#blog-button,
-#about-button {
-    font-weight: 300;
-    width: 85px;
-    background: black;
-    opacity: .5;
-    font-size: 20px;
-    cursor: pointer;
-}
-
-#blog-button:hover,
-#about-button:hover{
-    opacity: 1;
-}
-
-#about-button {
-    float: left;
-}
-#blog-button {
-    float: right;
-}
-
-/* PAGE 2 This is the page where transitions are identified*/
-
-#transition-finder {
-    /*visibility: hidden;*/
+    width: 100%; }
+    body #landing-page #logo {
+      text-align: center;
+      font-size: 65px;
+      padding-top: 50px;
+      padding-bottom: 20px; }
+      body #landing-page #logo a {
+        color: black;
+        text-decoration: none; }
+      body #landing-page #logo span {
+        font-weight: 800; }
+    body #landing-page #example {
+      width: 440px;
+      margin: 0 auto; }
+    body #landing-page #description {
+      margin: 20px 0px; }
+    body #landing-page #pitch {
+      font-weight: 800;
+      font-size: 20px;
+      margin: 20px 0; }
+      body #landing-page #pitch a {
+        color: black;
+        text-decoration: none;
+        border-bottom: 2px solid black; }
+        body #landing-page #pitch a:hover {
+          border-bottom: 2px dashed black; }
+    body #landing-page #buttons {
+      color: white; }
+    body #landing-page #upload-song-button {
+      font-weight: 300;
+      width: 180px;
+      height: 90px;
+      background: black;
+      margin: 0px auto;
+      cursor: pointer;
+      opacity: 0.9; }
+      body #landing-page #upload-song-button:hover {
+        opacity: 1; }
+    body #landing-page #nav {
+      width: 180px;
+      margin: 10px auto; }
+    body #landing-page #blog-button, body #landing-page #about-button {
+      font-weight: 300;
+      width: 85px;
+      background: black;
+      opacity: 0.5;
+      font-size: 20px;
+      cursor: pointer; }
+      body #landing-page #blog-button:hover, body #landing-page #about-button:hover {
+        opacity: 1; }
+    body #landing-page #about-button {
+      float: left; }
+    body #landing-page #blog-button {
+      float: right; }
+  body #transition-finder {
+    visibility: hidden;
     position: absolute;
-    top:0;
+    top: 0;
     bottom: 0;
-    left:0;
-    right:0;
-}
+    left: 0;
+    right: 0; }
+    body #transition-finder .back-button, body #transition-finder .help-button {
+      position: absolute;
+      height: 50px;
+      width: 50px;
+      top: 10px;
+      opacity: 0.6; }
+      body #transition-finder .back-button:hover, body #transition-finder .help-button:hover {
+        opacity: 0.8; }
+    body #transition-finder .back-button {
+      left: 10px; }
+    body #transition-finder .help-button {
+      left: 70px; }
+    body #transition-finder .main-container {
+      position: absolute;
+      height: 300px;
+      width: 100%;
+      top: 30vh; }
+    body #transition-finder .directions {
+      width: 370px;
+      font-size: 20px;
+      font-weight: 800;
+      padding: 10px;
+      border-bottom: 1.5px black solid;
+      margin: 0 auto; }
+    body #transition-finder .controls {
+      position: relative;
+      width: 360px;
+      height: 75px;
+      margin: 13px auto; }
+      body #transition-finder .controls .play, body #transition-finder .controls .pause {
+        position: absolute;
+        left: 0px; }
+        body #transition-finder .controls .play:hover, body #transition-finder .controls .pause:hover {
+          opacity: 0.8; }
+      body #transition-finder .controls .pause {
+        visibility: hidden; }
+      body #transition-finder .controls .back-5, body #transition-finder .controls .back-x {
+        position: absolute;
+        right: 0px; }
+        body #transition-finder .controls .back-5:hover, body #transition-finder .controls .back-x:hover {
+          opacity: 0.8; }
+      body #transition-finder .controls .back-x {
+        visibility: hidden; }
+      body #transition-finder .controls .transition {
+        margin: 0 auto; }
+        body #transition-finder .controls .transition:hover {
+          opacity: 0.8; }
+      body #transition-finder .controls .done {
+        position: absolute;
+        left: 112.5px;
+        top: 165px;
+        opacity: 0.5; }
+        body #transition-finder .controls .done:hover {
+          opacity: 1; }
+    body #transition-finder .player {
+      position: relative;
+      margin: 0 auto;
+      height: 60px;
+      width: 62.5%; }
+      body #transition-finder .player .player-background {
+        position: absolute;
+        top: 15px;
+        left: 60px;
+        right: 60px;
+        height: 30px;
+        background: #ddd; }
+      body #transition-finder .player .progress-bar {
+        width: 20%;
+        height: 100%;
+        background: #496274; }
+        body #transition-finder .player .progress-bar:hover {
+          opacity: 0.9; }
+      body #transition-finder .player .elapsed-time, body #transition-finder .player .remaining-time {
+        font-size: 17px;
+        font-weight: 800;
+        color: #caced1;
+        position: absolute;
+        height: 100%;
+        width: 60px;
+        background: #7e878e; }
+      body #transition-finder .player .elapsed-time {
+        left: 0px; }
+      body #transition-finder .player .remaining-time {
+        right: 0px; }
 
-.back-button, 
-.help-button { 
-    position:absolute;
-    height: 50px; 
-    width: 50px;
-    top: 10px;
-    opacity: .6;
-}
-
-.back-button {
-    left:10px;
-}
-
-.help-button { 
-    left: 70px;
-}
-
-.back-button:hover, 
-.help-button:hover { 
-    opacity: .9;
-}
-
-#transition-finder .main-container {
-    position: absolute;
-    height: 300px;
-/*    background: grey;*/
-    width: 100%;
-    top: 30vh;
-}
-    
-
-.directions {
-    width: 370px;
-    font-size: 20px;
-    font-weight: 800;
-    padding: 10px;
-    border-bottom: 1.5px black solid;
-    margin: 0 auto;
-}
-
-#transition-finder .controls {
-    position: relative;
-    width: 360px;
-    height: 75px;
-    margin: 13px auto;
-}
-
-#transition-finder .controls .play,
-#transition-finder .controls .pause
-{ 
-    position: absolute;
-    left: 0px;
-}
-
-#transition-finder .controls .pause {
-    visibility: hidden;
-}
-
-#transition-finder .controls .play:hover,
-#transition-finder .controls .pause:hover
-{ 
-    opacity: .8;
-}
-
-#transition-finder .controls .back-5,
-#transition-finder .controls .back-x
-{ 
-    position: absolute;
-    right: 0px;
-}
-
-#transition-finder .controls .back-x {
-    visibility: hidden;
-}
-
-#transition-finder .controls .back-5:hover,
-#transition-finder .controls .back-x:hover
-{ 
-    opacity: .8;
-}
-
-#transition-finder .controls .transition {
-   margin: 0 auto;
-}
-
-#transition-finder .controls .transition:hover {
-   opacity: .8;
-}
-
-#transition-finder .controls .done {
-    position: absolute;
-    left: 112.5px;
-    top: 165px;
-    opacity: .5;
-}
-
-#transition-finder .controls .done:hover {
-    opacity: 1;
-}
-
-#transition-finder .player {
-    position: relative;
-    margin: 0 auto;
-    height: 60px;
-    width: 62.5%;
-}
-
-#transition-finder .player .player-background {
-    position: absolute;
-    top: 15px;
-    left: 60px;
-    right: 60px;
-    height: 30px; 
-    background: #ddd;
-}
-
-#transition-finder .player .progress-bar {
-    width: 20%;
-    height: 100%;
-    background: #496274;
-}
-
-#transition-finder .player .progress-bar:hover {
-    opacity: .9;
-}
-
-#transition-finder .player .elapsed-time,
-#transition-finder .player .remaining-time {
-    font-size: 17px;
-    font-weight: 800;
-    color: #caced1;
-    position: absolute;
-    height: 100%;
-    width: 60px;
-    background: #7e878e;
-}
-
-#transition-finder .player .elapsed-time {
-    left:0px
-}
-
-#transition-finder .player .remaining-time {
-    right: 0px;
-}
+/*# sourceMappingURL=arcsong.css.map */

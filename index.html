@@ -46,8 +46,7 @@
                 </div>
     		</div>
     	</div>
-    </div> <!--end of page 1-->
-    
+    </div>
     <div id="transition-finder">
         <div id="nav-2">
             <div class="back-button">
@@ -94,6 +93,9 @@
             </div>
         </div>
     </div>
+    <div id="group-sections">
+        <div class="directions">Now, drag similar-sounding parts into groups.</div>
+    </div>
     <script>
         $("#transition-finder .back-button").click(function(){
             $("#transition-finder").css("visibility","hidden");
@@ -108,8 +110,13 @@
             $("#transition-finder").css("visibility","visible").animate({
                 opacity:1},500);
         });        
+        $("#transition-finder .done").click(function() {
+            $("#transition-finder").css("visibility","hidden");
+            $("group-sections").css("visibility","visible");
+        });
         
         var prog = $(".progress-bar");
+        var transitions = [];
         var duration = 15;
         var sound = new Howl({
             urls: ['audio/animate2.mp3'],
@@ -124,7 +131,6 @@
                 prog.stop();
             },
             onplay: function() {
-                console.log("on-play.pos:"+sound.pos());
                 prog.css("width",getProgress(sound,duration) + "%");
                 prog.animate({
                     width:"100%"
@@ -150,32 +156,19 @@
         });  
         $(".back-5").click(function() {   
 //            prog.stop();
-            console.log("pre-back-5. pos:"+sound.pos());
             if (sound.pos() > 5) {
                 sound.pos(sound.pos() - 5);
             } else { 
                 sound.pos(0);
             };
-            console.log("post-back-5. pos:"+sound.pos());
             sound.pause();
             sound.play();
-            
-//            updateMyContent();
-//            sound.pause();
-//            prog.stop().css("width",getProgress(sound,duration))
-//                .animate({
-//                    width:"100%"
-//                    },{
-//                    duration: 1000*(duration - sound.pos()),
-//                    easing: "linear",
-//                    step: updateMyContent
-//                    }
-//                );
         });
         
         $(".transition").click(function() {
             $(".player-background").append("<div></div>")
             $(".player-background div:last").css({"transition-duration":"0.0s","opacity":"0","background-color":"#d3d3d3","height":"100%","width":"2px","position":"absolute","z-index":"111","top":"0","left": getProgress(sound,duration) + "%"}).animate({"opacity":"1"});
+            transitions.push(sound.pos());
         });
                 
         function addZero(num) {
@@ -191,11 +184,6 @@
             $('#elapsed-time-id').text(minE + ':' + secE);
             $('#remaining-time-id').text("-" + minR + ':' + secR);
            }; 
-    </script>
-    
-    
-    
-    
-    
+    </script>    
 </body>
 </html>

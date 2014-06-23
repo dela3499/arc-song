@@ -1,0 +1,252 @@
+body {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background: url(../img/gradient.svg) center 100%;
+    font-family: 'Raleway', sans-serif;
+    font-size: 24px;
+    text-align: center;
+    #landing-page {
+    visibility: hidden;
+    height: 100%;
+    width: 100%;
+    #logo {
+        text-align: center;
+        font-size: 65px;
+        padding-top: 50px;
+        padding-bottom: 20px;
+        
+        a {
+            color: black;
+            text-decoration: none;
+
+        }
+        
+        span {
+            font-weight: 800;
+        }
+    }
+    #example {
+        width: 440px;
+        margin: 0 auto;
+    }
+    #description {
+        margin: 20px 0px;
+    }
+    #pitch {
+        font-weight: 800;
+        font-size: 20px;
+        margin: 20px 0;
+        a {
+            color: black;
+            text-decoration: none;
+            border-bottom: 2px solid black;
+            &:hover {
+                border-bottom: 2px dashed black;
+            }        
+        }        
+    }
+    #buttons {
+        color: white;
+    }
+    #upload-song-button {
+        font-weight: 300;
+        width: 180px;
+        height: 90px;
+        background: black;
+        margin: 0px auto;
+        cursor: pointer;
+        opacity: .9;
+        &:hover {opacity: 1;}
+    }
+    #nav {
+        width: 180px;
+        margin: 10px auto;
+    }
+    #blog-button,
+    #about-button {
+        font-weight: 300;
+        width: 85px;
+        background: black;
+        opacity: .5;
+        font-size: 20px;
+        cursor: pointer;
+        &:hover {opacity: 1;}
+    }
+    #about-button {
+        float: left;
+    }
+    #blog-button {
+        float: right;
+    }    
+}
+    #transition-finder {
+    visibility: hidden;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left:0;
+    right:0;
+    .back-button, 
+    .help-button { 
+        position:absolute;
+        height: 50px; 
+        width: 50px;
+        top: 10px;
+        opacity: .6;
+        &:hover {
+            opacity: .8;
+            }
+    }
+    .back-button {
+        left:10px;
+    }
+    .help-button { 
+        left: 70px;
+    }
+    .main-container {
+        position: absolute;
+        height: 300px;
+        width: 100%;
+        top: 30vh;
+    }
+    .directions {
+        width: 370px;
+        font-size: 20px;
+        font-weight: 800;
+        padding: 10px;
+        border-bottom: 1.5px black solid;
+        margin: 0 auto;
+    }
+    .controls {
+        position: relative;
+        width: 360px;
+        height: 75px;
+        margin: 13px auto;
+//        &:hover {opacity:.5;}
+        .play,
+        .pause { 
+            position: absolute;
+            left: 0px;
+            &:hover {
+            opacity: .8;
+            }
+        }
+
+        .pause {
+            visibility: hidden;
+        }
+        
+        .back-5,
+        .back-x
+        { 
+            position: absolute;
+            right: 0px;
+            &:hover {opacity:.8}
+        }
+
+        .back-x {
+            visibility: hidden;
+        }
+
+        .transition {
+            margin: 0 auto;
+            &:hover {opacity: 0.8}
+        }
+
+        .done {
+            position: absolute;
+            left: 112.5px;
+            top: 165px;
+            opacity: .5;
+            &:hover {opacity: 1}
+        }
+    }
+    .player {
+        position: relative;
+        margin: 0 auto;
+        height: 60px;
+        width: 62.5%;
+        
+        .player-background {
+            position: absolute;
+            top: 15px;
+            left: 60px;
+            right: 60px;
+            height: 30px; 
+            background: #ddd;
+        }
+
+        .progress-bar {
+            width: 20%;
+            height: 100%;
+            background: #496274;
+            &:hover {opacity: 0.9}
+        }
+
+        .elapsed-time,
+        .remaining-time {
+            font-size: 17px;
+            font-weight: 800;
+            color: #caced1;
+            position: absolute;
+            height: 100%;
+            width: 60px;
+            background: #7e878e;
+        }
+
+        .elapsed-time {
+            left:0px
+        }
+
+        .remaining-time {
+            right: 0px;
+        }
+    }
+}
+    #group-sections {
+//        visibility: hidden;
+        
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

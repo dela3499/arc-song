@@ -1,0 +1,17 @@
+{
+    "path": {
+        "sass/arcsong.scss": {
+            "sass.enabled": true,
+            "sass.options": {
+                "output": "arcsong.css",
+                "includePaths": [],
+                "imagePath": null,
+                "sourceComments": "map",
+                "outputStyle": "nested"
+            }
+        },
+        "sass/bootstrap/*.scss": {
+            "sass.enabled": false
+        }
+    }
+}
