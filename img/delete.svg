@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="60"
+   height="60"
+   id="svg4113"
+   version="1.1"
+   inkscape:version="0.48.3.1 r9886"
+   sodipodi:docname="delete.svg">
+  <defs
+     id="defs4115">
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath10879-9-7-23-9-7">
+      <rect
+         style="color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+         id="rect10881-6-3-1-0-0"
+         width="70.710678"
+         height="70.710678"
+         x="2221.3823"
+         y="1102.0195"
+         transform="matrix(0.70710678,-0.70710678,0.70710678,0.70710678,0,0)" />
+    </clipPath>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2.1027344"
+     inkscape:cx="135.57173"
+     inkscape:cy="25.256702"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1600"
+     inkscape:window-height="876"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata4118">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-992.36218)">
+    <g
+       transform="matrix(0.58664329,0,0,0.58664326,-1480.5391,1375.197)"
+       id="g10934-56-6-6-9-5-0">
+      <g
+         id="g38870-9"
+         transform="translate(-81.714032,2.0719135)">
+        <g
+           id="g32897-4-6-0-2-5-5-3-1"
+           transform="matrix(0.42757086,0,0,0.42757088,1876.9042,-705.43524)"
+           style="opacity:0.25;stroke:#ffffff;stroke-opacity:1">
+          <rect
+             transform="matrix(4.7840867,0,0,4.7840867,-7003.6198,-1443.7022)"
+             y="326.59549"
+             x="1820.1099"
+             height="50"
+             width="50"
+             id="rect3100-9-8-2-7-1-3-9-2-6-8-3"
+             style="color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+        </g>
+        <g
+           transform="matrix(0.10373861,-0.10387497,0.10360245,0.10373861,2579.4926,-382.6038)"
+           style="opacity:0.5;fill:#ffffff"
+           id="g38866-8">
+          <rect
+             style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+             id="rect38846-3"
+             width="55.550308"
+             height="330.03415"
+             x="495.05124"
+             y="138.63409"
+             transform="matrix(1.3619007,0,0,1.3636908,722.97209,-1106.727)" />
+          <rect
+             style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+             id="rect38846-8-4"
+             width="75.753448"
+             height="449.47372"
+             x="-730.5174"
+             y="-1659.7466"
+             transform="matrix(0,1,-1,0,0,0)" />
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

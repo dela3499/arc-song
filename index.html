@@ -48,12 +48,12 @@
     	</div>
     </div>
     <div id="transition-finder">
-        <div id="nav-2">
+        <div class="nav">
             <div class="back-button">
                 <img src="img/back.svg" alt="back button">
             </div>
             <div class="help-button">
-               <img src="img/help.svg" alt="back button">            
+               <img src="img/help.svg" alt="help button">            
             </div>
         </div>  
         <div class="main-container">
@@ -94,20 +94,132 @@
         </div>
     </div>
     <div id="group-sections">
+        <div class="nav">
+            <div class="back-button">
+                <img src="img/back.svg" alt="back button">
+            </div>
+            <div class="help-button">
+               <img src="img/help.svg" alt="help button">            
+            </div>
+        </div>  
         <div class="directions">Now, drag similar-sounding parts into groups.</div>
+        <div class="editor">
+            <div class="original">
+                <div class="song">
+                    <div class="background"></div>
+                    <div class="sections">
+                        <section><div></div></section>
+                        <section><div></div></section>
+                        <section><div></div></section>
+                    </div>
+                </div>
+            </div>
+            <div class="group">
+                <div class="song">
+                    <div class="controls">
+                        <img class="play" src="img/play_60px.svg">
+                        <img class="delete" src="img/delete.svg">
+                    </div>
+                    <div class="background"></div>
+                    <div class="sections">
+                        <section><div></div></section>
+                        <section><div style="visibility: hidden"></div></section>
+                        <section><div style="visibility: hidden"></div></section>
+                    </div>
+                </div>
+            </div>
+            <div class="group">
+                <div class="song">
+                    <div class="controls">
+                        <img class="play" src="img/play_60px.svg">
+                        <img class="delete" src="img/delete.svg">
+                    </div>                    
+                    <div class="background"></div>
+                    <div class="sections">
+                        <section><div style="visibility: hidden"></div></section>
+                        <section><div></div></section>
+                        <section><div style="visibility: hidden"></div></section>
+                    </div>
+                </div>
+            </div>
+            <div class="group">
+                <div class="song">
+                    <div class="controls">
+                        <img class="play" src="img/play_60px.svg">
+                        <img class="delete" src="img/delete.svg">
+                    </div>
+                    <div class="background"></div>
+                    <div class="sections">
+                        <section><div style="visibility: hidden"></div></section>
+                        <section><div style="visibility: hidden"></div></section>
+                        <section><div></div></section>
+                    </div>
+                </div>
+            </div>            
+            <div class="group">
+                <div class="song">
+                    <div class="controls">
+                        <img class="play" src="img/play_60px.svg">
+                        <img class="delete" src="img/delete.svg">
+                    </div>
+                    <div class="background"></div>
+                    <div class="sections">
+                        <section><div></div></section>
+                        <section><div style="visibility: hidden"></div></section>
+                        <section><div style="visibility: hidden"></div></section>
+                    </div>
+                </div>
+            </div>
+            <div class="group">
+                <div class="song">
+                    <div class="controls">
+                        <img class="play" src="img/play_60px.svg">
+                        <img class="delete" src="img/delete.svg">
+                    </div>
+                    <div class="background"></div>
+                    <div class="sections">
+                        <section><div style="visibility: hidden"></div></section>
+                        <section><div></div></section>
+                        <section><div style="visibility: hidden"></div></section>
+                    </div>
+                </div>
+            </div>
+            <div class="group">
+                <div class="song">
+                    <div class="controls">
+                        <img class="play" src="img/play_60px.svg">
+                        <img class="delete" src="img/delete.svg">
+                    </div>
+                    <div class="background"></div>
+                    <div class="sections">
+                        <section><div style="visibility: hidden"></div></section>
+                        <section><div style="visibility: hidden"></div></section>
+                        <section><div></div></section>
+                    </div>
+                </div>
+            </div>    
+            <div class="group">
+                <div class="song">
+                        <img class="next" src="img/next.svg">
+                </div>
+            </div>                
+        </div>
     </div>
     <script>
+        var state = 3;
         $("#transition-finder .back-button").click(function(){
+            state = 1;
             $("#transition-finder").css("visibility","hidden");
             $("#landing-page").css("opacity","0");
             $("#landing-page").css("visibility","visible").animate({
                 opacity:1},500);
         });
         $("#upload-song-button").click(function(){
+            state = 2;
             $("#landing-page").css("visibility","hidden");
             $("#transition-finder").css("opacity","0");
             $("#transition-finder").css("visibility","visible");
-            $("#transition-finder").css("visibility","visible").animate({
+            $("#transition-finder").animate({
                 opacity:1},500);
         });        
         $("#transition-finder .done").click(function() {
@@ -116,29 +228,42 @@
         });
         
         var prog = $(".progress-bar");
+//        prog3 =  $("#group-sections .progress");
         var transitions = [];
         var duration = 15;
         var sound = new Howl({
             urls: ['audio/animate2.mp3'],
             onload: function() {
-                prog.css({"width":"0%"})},
+                if (state == 2) {prog.css({"width":"0%"})};},
             onend: function() {
-                prog.animate({width:"0%"},500);
-                $('.pause').css('visibility','hidden');
-                $('.play').css('visibility','visible');                
-            },
+                if (state == 2) {
+                    prog.animate({width:"0%"},500);
+                    $('#transition-finder .pause').css('visibility','hidden');
+                    $('#transition-finder .play').css('visibility','visible');
+                };
+                if (state == 3) {
+                    $("#group-sections .progress").animate({width:"0%"},500);
+                    sound.stop();
+                    sound.play();
+                };  
+                },
             onpause: function() {
                 prog.stop();
             },
             onplay: function() {
-                prog.css("width",getProgress(sound,duration) + "%");
-                prog.animate({
-                    width:"100%"
-                },{
-                    duration: 1000*(duration - sound.pos()),
-                    easing: "linear",
-                    step: updateMyContent})},
-        });  
+                progressBar2();
+                progressBar3();
+                }
+            });  
+        
+        function progressBar2() {
+            prog.css("width",getProgress(sound,duration) + "%");
+            prog.animate({
+                width:"100%"
+            },{
+                duration: 1000*(duration - sound.pos()),
+                easing: "linear",
+                step: updateMyContent})};            
         
         function getProgress(x,dur) {
             return x.pos()*100/dur;
@@ -184,6 +309,30 @@
             $('#elapsed-time-id').text(minE + ':' + secE);
             $('#remaining-time-id').text("-" + minR + ':' + secR);
            }; 
+        
+//      PAGE 2 - Grouping
+        $("#group-sections .group").hover(
+            function(){
+                $(this).find(".controls").css('opacity',0);
+                $(this).find(".controls").css("visibility","visible");
+                $(this).find(".controls").animate({"opacity":1},500);
+            }, function(){ $(this).find(".controls").css("visibility","hidden")});
+                        
+        $("#group-sections section div").hover(
+          function(){
+            $(this).append('<div class="progress"></div>');
+            sound.play();
+        }, function(){
+            sound.stop();
+            $(this).find(".progress").remove();
+        });
+        
+        function progressBar3() {
+            $("#group-sections .progress").animate({
+                width:"100%"
+            },{
+                duration: 1000*(duration - sound.pos()),
+                easing: "linear"})};      
     </script>    
 </body>
 </html>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   width="60"
+   height="60"
+   id="svg4113">
+  <defs
+     id="defs4115">
+    <clipPath
+       id="clipPath10879-9-7-23-9-7">
+      <rect
+         width="70.710678"
+         height="70.710678"
+         x="2221.3823"
+         y="1102.0195"
+         transform="matrix(0.70710678,-0.70710678,0.70710678,0.70710678,0,0)"
+         id="rect10881-6-3-1-0-0"
+         style="color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+    </clipPath>
+  </defs>
+  <metadata
+     id="metadata4118">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(0,-992.36218)"
+     id="layer1">
+    <g
+       transform="matrix(0.58664329,0,0,0.58664326,-1528.4761,1376.4125)"
+       id="g10934-56-6-6-9-3">
+      <g
+         transform="matrix(0.42757086,0,0,0.42757088,1876.9042,-705.43524)"
+         id="g32897-4-6-0-2-5-5-1"
+         style="opacity:0.25;stroke:#ffffff;stroke-opacity:1">
+        <rect
+           width="50"
+           height="50"
+           x="1820.1099"
+           y="326.59549"
+           transform="matrix(4.7840867,0,0,4.7840867,-7003.6198,-1443.7022)"
+           id="rect3100-9-8-2-7-1-3-9-2-6-0"
+           style="color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      </g>
+      <rect
+         width="100"
+         height="100"
+         x="2300"
+         y="-841.50909"
+         transform="matrix(-1.0262593,0,0,0.54776355,5096.233,-170.67698)"
+         clip-path="url(#clipPath10879-9-7-23-9-7)"
+         id="rect10859-3-6-63-0-1"
+         style="opacity:0.5;color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+    </g>
+  </g>
+</svg>

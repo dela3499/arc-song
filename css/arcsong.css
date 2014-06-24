@@ -93,8 +93,9 @@ body {
       width: 370px;
       font-size: 20px;
       font-weight: 800;
-      padding: 10px;
-      border-bottom: 1.5px black solid;
+      padding-top: 10px;
+      padding-bottom: 3px;
+      border-bottom: 2px black solid;
       margin: 0 auto; }
     body #transition-finder .controls {
       position: relative;
@@ -156,5 +157,93 @@ body {
         left: 0px; }
       body #transition-finder .player .remaining-time {
         right: 0px; }
+  body #group-sections {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0; }
+    body #group-sections .back-button, body #group-sections .help-button {
+      position: absolute;
+      height: 50px;
+      width: 50px;
+      top: 10px;
+      opacity: 0.6; }
+      body #group-sections .back-button:hover, body #group-sections .help-button:hover {
+        opacity: 0.8; }
+    body #group-sections .back-button {
+      left: 10px; }
+    body #group-sections .help-button {
+      left: 70px; }
+    body #group-sections .directions {
+      width: 450px;
+      font-size: 20px;
+      font-weight: 800;
+      padding-bottom: 3px;
+      border-bottom: 2px black solid;
+      margin: 0 auto;
+      margin-top: 80px; }
+    body #group-sections .editor {
+      margin-top: 7px; }
+      body #group-sections .editor .original, body #group-sections .editor .group {
+        height: 60px;
+        margin-bottom: 14px; }
+        body #group-sections .editor .original .song, body #group-sections .editor .group .song {
+          position: relative;
+          width: 70%;
+          height: 100%;
+          margin: 0 auto; }
+          body #group-sections .editor .original .song .controls, body #group-sections .editor .group .song .controls {
+            visibility: hidden;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0; }
+            body #group-sections .editor .original .song .controls .play, body #group-sections .editor .group .song .controls .play {
+              position: absolute;
+              left: -69.1px; }
+            body #group-sections .editor .original .song .controls .delete, body #group-sections .editor .group .song .controls .delete {
+              position: absolute;
+              right: -69.1px; }
+          body #group-sections .editor .original .song .next, body #group-sections .editor .group .song .next {
+            position: absolute;
+            right: 0; }
+          body #group-sections .editor .original .song .background, body #group-sections .editor .group .song .background {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #26455c;
+            opacity: 0.25; }
+          body #group-sections .editor .original .song .sections, body #group-sections .editor .group .song .sections {
+            position: absolute;
+            top: 7px;
+            bottom: 7px;
+            left: 7px;
+            right: 7px; }
+            body #group-sections .editor .original .song .sections section, body #group-sections .editor .group .song .sections section {
+              position: relative;
+              float: left;
+              height: 100%;
+              width: 33.33%; }
+              body #group-sections .editor .original .song .sections section div, body #group-sections .editor .group .song .sections section div {
+                position: absolute;
+                background: #455c6f;
+                left: 1px;
+                right: 0;
+                height: 100%;
+                opacity: 1; }
+              body #group-sections .editor .original .song .sections section .progress, body #group-sections .editor .group .song .sections section .progress {
+                left: 0;
+                width: 0%;
+                background: white; }
+      body #group-sections .editor .original {
+        margin-bottom: 7px; }
+        body #group-sections .editor .original .song .sections section div {
+          background: #002545; }
+        body #group-sections .editor .original .song .background {
+          background: none; }
 
 /*# sourceMappingURL=arcsong.css.map */
