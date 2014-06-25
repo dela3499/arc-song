@@ -108,8 +108,8 @@
                 <div class="song">
                     <div class="background"></div>
                     <div class="sections">
-                        <section><div></div></section>
-                        <section><div></div></section>
+                        <section draggable="true"><div></div></section>
+                        <section draggable="true"><div></div></section>
                         <section><div></div></section>
                     </div>
                 </div>
@@ -333,6 +333,15 @@
             },{
                 duration: 1000*(duration - sound.pos()),
                 easing: "linear"})};      
+        
+        $(".editor section").attr({
+            draggable: "true",
+            ondragstart: "sectionDrag(event)"
+        });
+        
+        function sectionDrag(ev) {
+
+        };
     </script>    
 </body>
 </html>

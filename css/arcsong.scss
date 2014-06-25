@@ -277,7 +277,8 @@ body {
                         position: absolute;
                         @include sides-all(0);
                         background: #26455c;
-                        opacity: .25;
+//                        opacity: .25;
+                        opacity: .05;
                     }
                     .sections {
                         position: absolute;
@@ -290,7 +291,7 @@ body {
                             div {
                                 position: absolute;
                                 background: #455c6f;
-                                left: 1px;
+                                left: 2px;
                                 right: 0;
                                 height: 100%;
                                 opacity: 1;

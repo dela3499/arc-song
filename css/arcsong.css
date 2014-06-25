@@ -216,7 +216,7 @@ body {
             left: 0;
             right: 0;
             background: #26455c;
-            opacity: 0.25; }
+            opacity: 0.05; }
           body #group-sections .editor .original .song .sections, body #group-sections .editor .group .song .sections {
             position: absolute;
             top: 7px;
@@ -231,7 +231,7 @@ body {
               body #group-sections .editor .original .song .sections section div, body #group-sections .editor .group .song .sections section div {
                 position: absolute;
                 background: #455c6f;
-                left: 1px;
+                left: 2px;
                 right: 0;
                 height: 100%;
                 opacity: 1; }
