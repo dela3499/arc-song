@@ -193,11 +193,12 @@
         </div>
     </div>
     <script>
-        //
-        // Main app interactions
-        //
         
-        var state = 1;
+        //----------------------
+        // Main app interactions
+        //----------------------
+        
+        var state = 0;
         init();
         
         // Create custom events corresponding to user actions      
@@ -210,7 +211,6 @@
         $('.main').on('next.page', function() {
             changeState(1);
         });    
-        
         $('.main').on('back.page', function() {
             changeState(-1);
         });
@@ -245,28 +245,26 @@
             changeState(0);
         };
         
-        
-        
-        //
-        // Landing Page
-        //
+        //--------------
+        // Landing page
+        //--------------
         
         $('#landing-page').on('click','[data-behavior~=next]', function() {
             $(".main").trigger('next.page');
         });        
         
-        
-        //
+        //-------------------------
         // Transition finding page
-        //
+        //-------------------------
         
         var transitions = [];
         var duration = 15; // hardcoded song and duration - hack for now
-        var prog = $(".progress-bar")[0];
+        var prog = $(".progress-bar");
         var sound = new Howl({
             urls: ['audio/animate2.mp3'], // hack: hardcoded song
             onend: function() {
                 $('#transition-finder').removeClass('playing');
+                prog.animate({width:"0%"},500);
 //                if (state == 3) {
 //                    $("#group-sections .progress").animate({width:"0%"},500);
 //                    sound.stop();
@@ -274,55 +272,27 @@
 //                };  
                 },
             onpause: function() {
-                var w = window.getComputedStyle(prog).getPropertyValue('width');
                 $('#transition-finder').removeClass('playing');
-                prog.style.width = w;
-//                prog.stop();
+                prog.stop();
             },
             onplay: function() {
-                prog.style.width = "100%";
                 $('#transition-finder').addClass('playing');
-//                progressBar2();
+                animateProgress(prog);
 //                progressBar3();
                 }
             });
-        
-        
+                
         // trigger custom events
         $("#transition-finder").on('click','[data-behavior~=next]', function () {
             changeState(1);
         });
-        
-        
-        
-        
-  
-        
-        function progressBar2() {
-            prog.css("width",getProgress(sound,duration) + "%");
-            prog.animate({
-                width:"100%"
-            },{
-                duration: 1000*(duration - sound.pos()),
-                easing: "linear",
-                step: updateMyContent})};            
-        
-        function getProgress(x,dur) {
-            return x.pos()*100/dur;
-        };
         $(".play").click(function() {
             sound.play();
-//            $(this).css('visibility','hidden');
-//            $('.pause').css('visibility','visible');
         });
         $(".pause").click(function() {
             sound.pause();
-//            $(this).css('visibility','hidden');
-//            $('.play').css('visibility','visible');
-//            prog.stop();
         });  
         $(".back-5").click(function() {   
-//            prog.stop();
             if (sound.pos() > 5) {
                 sound.pos(sound.pos() - 5);
             } else { 
@@ -330,19 +300,29 @@
             };
             sound.pause();
             sound.play();
+        });     
+        $(".transition").click(function() {
+            transitions.push(sound.pos());            
+            $(".player-background").append("<div class='transition-marker'></div>")
+            $(".player-background div:last").css({"left": getProgress(sound,duration) + "%"}).animate({"opacity":"1"});
         });
         
-        $(".transition").click(function() {
-            $(".player-background").append("<div></div>")
-            $(".player-background div:last").css({"transition-duration":"0.0s","opacity":"0","background-color":"#d3d3d3","height":"100%","width":"2px","position":"absolute","z-index":"111","top":"0","left": getProgress(sound,duration) + "%"}).animate({"opacity":"1"});
-            transitions.push(sound.pos());
-        });
-                
+        // Define functions
+        function animateProgress(e) {
+            e.css("width",getProgress(sound,duration) + "%");
+            e.animate({
+                width:"100%"
+            },{
+                duration: 1000*(duration - sound.pos()),
+                easing: "linear",
+                step: updateMyContent})};            
+        function getProgress(x,dur) {
+            return x.pos()*100/dur;
+        };
         function addZero(num) {
             return (num >= 0 && num < 10) ? "0" + num : num + "";
         };        
-        
-        function updateMyContent() { 
+        function updateTimers() { 
             pos = (sound.pos()).toFixed(0);
             minE = Math.floor(pos/60);
             secE = addZero(Math.floor(pos % 60));
@@ -352,7 +332,10 @@
             $('#remaining-time-id').text("-" + minR + ':' + secR);
            }; 
         
-//      PAGE 2 - Grouping
+        //---------------
+        // Grouping page
+        //---------------
+        
         $("#group-sections .group").hover(
             function(){
                 $(this).find(".controls").css('opacity',0);
@@ -368,19 +351,16 @@
             sound.stop();
             $(this).find(".progress").remove();
         });
-        
         function progressBar3() {
             $("#group-sections .progress").animate({
                 width:"100%"
             },{
                 duration: 1000*(duration - sound.pos()),
                 easing: "linear"})};      
-        
         $(".editor section").attr({
             draggable: "true",
             ondragstart: "sectionDrag(event)"
         });
-        
         function sectionDrag(ev) {
 
         };

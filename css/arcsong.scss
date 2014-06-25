@@ -190,15 +190,23 @@ body {
                 right: 60px;
                 height: 30px; 
                 background: #ddd;
-            }
-            .progress-bar {
-                width: 0%;
-                height: 100%;
-                background: #496274;
-                transition-duration: 1s;
-                transition-timing-function: ease-in-out;
-                &:hover {opacity: 0.9}
-            }
+                .progress-bar {
+                    width: 0%;
+                    height: 100%;
+                    background: #496274;
+                    &:hover {opacity: 0.9}
+                }
+                .transition-marker {
+                    opacity: 0;
+                    background: #d3d3d3;
+                    height: 100%;
+                    width: 2px;
+                    position: absolute;
+                    z-index: 1;
+                    top: 0;
+                    left:0;
+                }
+            }         
             .elapsed-time,
             .remaining-time {
                 font-size: 17px;
@@ -225,13 +233,13 @@ body {
                     display: block;
                 }                
             }
-            .player {
-                .progress-bar {
-                    transition-timing-function: linear;
-                    transition-duration: 13s;
-                    width: 100%;
-                }
-            }
+//            .player {
+////                .progress-bar {
+////                    transition-timing-function: linear;
+////                    transition-duration: 13s;
+////                    width: 100%;
+////                }
+//            }
 
         }
     }

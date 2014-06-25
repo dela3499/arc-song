@@ -141,14 +141,21 @@ body {
         right: 60px;
         height: 30px;
         background: #ddd; }
-      body #transition-finder .player .progress-bar {
-        width: 0%;
-        height: 100%;
-        background: #496274;
-        transition-duration: 1s;
-        transition-timing-function: ease-in-out; }
-        body #transition-finder .player .progress-bar:hover {
-          opacity: 0.9; }
+        body #transition-finder .player .player-background .progress-bar {
+          width: 0%;
+          height: 100%;
+          background: #496274; }
+          body #transition-finder .player .player-background .progress-bar:hover {
+            opacity: 0.9; }
+        body #transition-finder .player .player-background .transition-marker {
+          opacity: 0;
+          background: #d3d3d3;
+          height: 100%;
+          width: 2px;
+          position: absolute;
+          z-index: 1;
+          top: 0;
+          left: 0; }
       body #transition-finder .player .elapsed-time, body #transition-finder .player .remaining-time {
         font-size: 17px;
         font-weight: 800;
@@ -165,10 +172,6 @@ body {
       display: none; }
     body #transition-finder.playing .controls .pause {
       display: block; }
-    body #transition-finder.playing .player .progress-bar {
-      transition-timing-function: linear;
-      transition-duration: 13s;
-      width: 100%; }
   body #group-sections {
     position: absolute;
     top: 0;
