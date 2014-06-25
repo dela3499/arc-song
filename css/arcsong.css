@@ -7,7 +7,7 @@ body {
   bottom: 0px;
   left: 0px;
   right: 0px;
-  background: url(../img/gradient.svg) center 100%;
+  background-image: url('../img/png/18.png');
   font-family: 'Raleway', sans-serif;
   font-size: 24px;
   text-align: center; }
@@ -26,60 +26,34 @@ body {
     left: 70px; }
   body #landing-page {
     height: 100%;
-    width: 100%; }
-    body #landing-page #logo {
-      text-align: center;
-      font-size: 65px;
-      padding-top: 50px;
-      padding-bottom: 20px; }
-      body #landing-page #logo a {
-        color: black;
-        text-decoration: none; }
-      body #landing-page #logo span {
-        font-weight: 800; }
-    body #landing-page #example {
-      width: 440px;
-      margin: 0 auto; }
+    width: 100%;
+    font-family: 'Josefin Sans', sans-serif; }
     body #landing-page #description {
-      margin: 20px 0px; }
-    body #landing-page #pitch {
-      font-weight: 800;
-      font-size: 20px;
-      margin: 20px 0; }
-      body #landing-page #pitch a {
-        color: black;
-        text-decoration: none;
-        border-bottom: 2px solid black; }
-        body #landing-page #pitch a:hover {
-          border-bottom: 2px dashed black; }
-    body #landing-page #buttons {
-      color: white; }
-    body #landing-page #upload-song-button {
-      font-weight: 300;
-      width: 180px;
-      height: 90px;
-      background: black;
-      margin: 0px auto;
-      cursor: pointer;
-      opacity: 0.9; }
-      body #landing-page #upload-song-button:hover {
-        opacity: 1; }
+      padding-top: 120px;
+      padding-bottom: 20px;
+      font-size: 29px; }
+    body #landing-page .caption {
+      font-size: 13px;
+      padding-bottom: 10px; }
     body #landing-page #nav {
       width: 180px;
       margin: 10px auto; }
-    body #landing-page #blog-button, body #landing-page #about-button {
-      font-weight: 300;
-      width: 85px;
-      background: black;
-      opacity: 0.5;
-      font-size: 20px;
-      cursor: pointer; }
-      body #landing-page #blog-button:hover, body #landing-page #about-button:hover {
-        opacity: 1; }
-    body #landing-page #about-button {
-      float: left; }
-    body #landing-page #blog-button {
-      float: right; }
+      body #landing-page #nav .action {
+        font-size: 20px;
+        width: 100%;
+        height: 40px;
+        background: rgba(81, 117, 132, 0.2);
+        cursor: pointer;
+        margin: 0 auto; }
+        body #landing-page #nav .action:hover {
+          background: rgba(81, 117, 132, 0.3); }
+      body #landing-page #nav #gallery-button, body #landing-page #nav #about-button {
+        height: 40px;
+        width: 100%;
+        font-size: 20px;
+        cursor: pointer; }
+        body #landing-page #nav #gallery-button:hover, body #landing-page #nav #about-button:hover {
+          background: rgba(81, 117, 132, 0.1); }
   body #transition-finder {
     position: absolute;
     top: 0;

@@ -23,7 +23,7 @@ body {
     bottom: 0px;
     left: 0px;
     right: 0px;
-    background: url(../img/gradient.svg) center 100%;
+    background-image: url('../img/png/18.png');
     font-family: 'Raleway', sans-serif;
     font-size: 24px;
     text-align: center;
@@ -50,75 +50,38 @@ body {
     #landing-page {
         height: 100%;
         width: 100%;
-        #logo {
-            text-align: center;
-            font-size: 65px;
-            padding-top: 50px;
-            padding-bottom: 20px;
-
-            a {
-                color: black;
-                text-decoration: none;
-
-            }
-
-            span {
-                font-weight: 800;
-            }
-        }
-        #example {
-            width: 440px;
-            margin: 0 auto;
-        }
+        font-family: 'Josefin Sans', sans-serif;
         #description {
-            margin: 20px 0px;
+            padding-top: 120px;
+            padding-bottom: 20px;
+            font-size: 29px;
         }
-        #pitch {
-            font-weight: 800;
-            font-size: 20px;
-            margin: 20px 0;
-            a {
-                color: black;
-                text-decoration: none;
-                border-bottom: 2px solid black;
-                &:hover {
-                    border-bottom: 2px dashed black;
-                }        
-            }        
-        }
-        #buttons {
-            color: white;
-        }
-        #upload-song-button {
-            font-weight: 300;
-            width: 180px;
-            height: 90px;
-            background: black;
-            margin: 0px auto;
-            cursor: pointer;
-            opacity: .9;
-            &:hover {opacity: 1;}
+        .caption {
+            font-size: 13px;
+            padding-bottom: 10px;
+//            opacity: 0;
         }
         #nav {
             width: 180px;
             margin: 10px auto;
+            .action {
+                font-size: 20px;
+                width: 100%;
+                height: 40px;
+                background: rgba(81,117,132,0.2);
+                cursor: pointer;
+                margin: 0 auto;
+                &:hover {background:  rgba(81,117,132,0.3);}
+            }   
+            #gallery-button,
+            #about-button {
+                height: 40px;
+                width: 100%;
+                font-size: 20px;
+                cursor: pointer;
+                &:hover {background:  rgba(81,117,132,0.1);}
+            }            
         }
-        #blog-button,
-        #about-button {
-            font-weight: 300;
-            width: 85px;
-            background: black;
-            opacity: .5;
-            font-size: 20px;
-            cursor: pointer;
-            &:hover {opacity: 1;}
-        }
-        #about-button {
-            float: left;
-        }
-        #blog-button {
-            float: right;
-        }    
 }
     #transition-finder {
         position: absolute;
