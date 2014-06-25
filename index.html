@@ -9,14 +9,18 @@
 	<link href='http://fonts.googleapis.com/css?family=Raleway:300,400,700' rel='stylesheet' type='text/css'>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
-<body class="clearfix">
+<body class="clearfix main">
+    <div class="nav">
+        <img class="back-button" src="img/back.svg" alt="back button" data-behavior='back'>
+        <img class="help-button" src="img/help.svg" alt="help button" data-behavior='help'>
+    </div>  
     <div id="landing-page">
     	<div id="logo"><a href="#">ARC<span>SONG</span></a></div>
     	<div id="example"><img src="img/ltta.svg" alt="arc chart for Rush's song, Leave that thing alone"></div>
     	<div id="description">Create arc diagrams for your favorite songs.</div>
     	<div id="pitch">It's free. There's no sign-in. <a href="http://www.youtube.com/">Watch a clip.</a></div>
     	<div id="buttons">
-    		<div id="upload-song-button" class="button-1">
+    		<div id="upload-song-button" class="button" data-behavior='next'>
                <div style="display: table;overflow: hidden;height: 90px;margin:0 auto">
                  <div style="display: table-cell; vertical-align: middle;">
                    <div>
@@ -48,14 +52,6 @@
     	</div>
     </div>
     <div id="transition-finder">
-        <div class="nav">
-            <div class="back-button">
-                <img src="img/back.svg" alt="back button">
-            </div>
-            <div class="help-button">
-               <img src="img/help.svg" alt="help button">            
-            </div>
-        </div>  
         <div class="main-container">
             <div class="directions">First, separate the song into sections<br>by finding the big transitions.</div> 
             <div class="controls">
@@ -64,14 +60,13 @@
                 <img class="transition" src="img/found-transition.svg">
                 <img class="back-5" src="img/back5.svg">
                 <img class="back-x" src="img/back-x.svg">
-                <img class="done" src="img/done.svg">
+                <img class="done" data-behavior="next" src="img/done.svg">
                 
             </div>
             <div class="player">
                 <div class="player-background">
                     <div class="progress-bar"></div>
-                </div>
-                
+                </div> 
                 <div class="elapsed-time">
                    <div style="display: table;overflow: hidden;height: 55px;margin:0 auto">
                      <div style="display: table-cell; vertical-align: middle;">
@@ -94,14 +89,6 @@
         </div>
     </div>
     <div id="group-sections">
-        <div class="nav">
-            <div class="back-button">
-                <img src="img/back.svg" alt="back button">
-            </div>
-            <div class="help-button">
-               <img src="img/help.svg" alt="help button">            
-            </div>
-        </div>  
         <div class="directions">Now, drag similar-sounding parts into groups.</div>
         <div class="editor">
             <div class="original">
@@ -206,55 +193,110 @@
         </div>
     </div>
     <script>
-        var state = 3;
-        $("#transition-finder .back-button").click(function(){
-            state = 1;
-            $("#transition-finder").css("visibility","hidden");
-            $("#landing-page").css("opacity","0");
-            $("#landing-page").css("visibility","visible").animate({
-                opacity:1},500);
-        });
-        $("#upload-song-button").click(function(){
-            state = 2;
-            $("#landing-page").css("visibility","hidden");
-            $("#transition-finder").css("opacity","0");
-            $("#transition-finder").css("visibility","visible");
-            $("#transition-finder").animate({
-                opacity:1},500);
-        });        
-        $("#transition-finder .done").click(function() {
-            $("#transition-finder").css("visibility","hidden");
-            $("group-sections").css("visibility","visible");
+        //
+        // Main app interactions
+        //
+        
+        var state = 1;
+        init();
+        
+        // Create custom events corresponding to user actions      
+        $('.nav').on('click','[data-behavior~=back]', function() {
+            console.log("back-button clicked");
+            $(".main").trigger('back.page');
         });
         
-        var prog = $(".progress-bar");
-//        prog3 =  $("#group-sections .progress");
+        // Act on custom events
+        $('.main').on('next.page', function() {
+            changeState(1);
+        });    
+        
+        $('.main').on('back.page', function() {
+            changeState(-1);
+        });
+        
+        // Function definitions
+        function changeState(x) {
+            console.log("stateChange: " + state + " --> " + (state + x)); 
+            state += x;
+            
+            var pages = [
+                'landing-page',
+                'transition-finder',
+                'group-sections'];
+            
+            for (var i = 0; i < pages.length; i++) {
+                if (state != i) {
+                    $('#' + pages[i]).addClass('inactive');
+                } else {
+                    $('#' + pages[i]).removeClass('inactive');
+                }
+            }
+            
+            // remove navigation on homepage
+            if (state == 0) {
+                $('.nav').addClass('inactive');
+            } else {
+                $('.nav').removeClass('inactive');
+            }
+            
+        }
+        function init() {
+            changeState(0);
+        };
+        
+        
+        
+        //
+        // Landing Page
+        //
+        
+        $('#landing-page').on('click','[data-behavior~=next]', function() {
+            $(".main").trigger('next.page');
+        });        
+        
+        
+        //
+        // Transition finding page
+        //
+        
         var transitions = [];
-        var duration = 15;
+        var duration = 15; // hardcoded song and duration - hack for now
+        var prog = $(".progress-bar")[0];
         var sound = new Howl({
-            urls: ['audio/animate2.mp3'],
-            onload: function() {
-                if (state == 2) {prog.css({"width":"0%"})};},
+            urls: ['audio/animate2.mp3'], // hack: hardcoded song
             onend: function() {
-                if (state == 2) {
-                    prog.animate({width:"0%"},500);
-                    $('#transition-finder .pause').css('visibility','hidden');
-                    $('#transition-finder .play').css('visibility','visible');
-                };
-                if (state == 3) {
-                    $("#group-sections .progress").animate({width:"0%"},500);
-                    sound.stop();
-                    sound.play();
-                };  
+                $('#transition-finder').removeClass('playing');
+//                if (state == 3) {
+//                    $("#group-sections .progress").animate({width:"0%"},500);
+//                    sound.stop();
+//                    sound.play();
+//                };  
                 },
             onpause: function() {
-                prog.stop();
+                var w = window.getComputedStyle(prog).getPropertyValue('width');
+                $('#transition-finder').removeClass('playing');
+                prog.style.width = w;
+//                prog.stop();
             },
             onplay: function() {
-                progressBar2();
-                progressBar3();
+                prog.style.width = "100%";
+                $('#transition-finder').addClass('playing');
+//                progressBar2();
+//                progressBar3();
                 }
-            });  
+            });
+        
+        
+        // trigger custom events
+        $("#transition-finder").on('click','[data-behavior~=next]', function () {
+            changeState(1);
+        });
+        
+        
+        
+        
+  
         
         function progressBar2() {
             prog.css("width",getProgress(sound,duration) + "%");
@@ -270,13 +312,13 @@
         };
         $(".play").click(function() {
             sound.play();
-            $(this).css('visibility','hidden');
-            $('.pause').css('visibility','visible');
+//            $(this).css('visibility','hidden');
+//            $('.pause').css('visibility','visible');
         });
         $(".pause").click(function() {
             sound.pause();
-            $(this).css('visibility','hidden');
-            $('.play').css('visibility','visible');
+//            $(this).css('visibility','hidden');
+//            $('.play').css('visibility','visible');
 //            prog.stop();
         });  
         $(".back-5").click(function() {   

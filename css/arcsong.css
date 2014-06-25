@@ -1,3 +1,6 @@
+.inactive {
+  display: none; }
+
 body {
   position: absolute;
   top: 0px;
@@ -8,8 +11,20 @@ body {
   font-family: 'Raleway', sans-serif;
   font-size: 24px;
   text-align: center; }
+  body .nav .back-button, body .nav .help-button {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    top: 10px;
+    opacity: 0.6;
+    z-index: 1; }
+    body .nav .back-button:hover, body .nav .help-button:hover {
+      opacity: 0.9; }
+  body .nav .back-button {
+    left: 10px; }
+  body .nav .help-button {
+    left: 70px; }
   body #landing-page {
-    visibility: hidden;
     height: 100%;
     width: 100%; }
     body #landing-page #logo {
@@ -66,24 +81,11 @@ body {
     body #landing-page #blog-button {
       float: right; }
   body #transition-finder {
-    visibility: hidden;
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0; }
-    body #transition-finder .back-button, body #transition-finder .help-button {
-      position: absolute;
-      height: 50px;
-      width: 50px;
-      top: 10px;
-      opacity: 0.6; }
-      body #transition-finder .back-button:hover, body #transition-finder .help-button:hover {
-        opacity: 0.8; }
-    body #transition-finder .back-button {
-      left: 10px; }
-    body #transition-finder .help-button {
-      left: 70px; }
     body #transition-finder .main-container {
       position: absolute;
       height: 300px;
@@ -108,7 +110,7 @@ body {
         body #transition-finder .controls .play:hover, body #transition-finder .controls .pause:hover {
           opacity: 0.8; }
       body #transition-finder .controls .pause {
-        visibility: hidden; }
+        display: none; }
       body #transition-finder .controls .back-5, body #transition-finder .controls .back-x {
         position: absolute;
         right: 0px; }
@@ -140,9 +142,11 @@ body {
         height: 30px;
         background: #ddd; }
       body #transition-finder .player .progress-bar {
-        width: 20%;
+        width: 0%;
         height: 100%;
-        background: #496274; }
+        background: #496274;
+        transition-duration: 1s;
+        transition-timing-function: ease-in-out; }
         body #transition-finder .player .progress-bar:hover {
           opacity: 0.9; }
       body #transition-finder .player .elapsed-time, body #transition-finder .player .remaining-time {
@@ -157,6 +161,14 @@ body {
         left: 0px; }
       body #transition-finder .player .remaining-time {
         right: 0px; }
+    body #transition-finder.playing .controls .play {
+      display: none; }
+    body #transition-finder.playing .controls .pause {
+      display: block; }
+    body #transition-finder.playing .player .progress-bar {
+      transition-timing-function: linear;
+      transition-duration: 13s;
+      width: 100%; }
   body #group-sections {
     position: absolute;
     top: 0;
