@@ -24,9 +24,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.0592702"
-     inkscape:cx="160.73033"
-     inkscape:cy="-165.84062"
+     inkscape:zoom="4.2370808"
+     inkscape:cx="142.82973"
+     inkscape:cy="19.346058"
      inkscape:document-units="px"
      inkscape:current-layer="g30395-1-2-4"
      showgrid="false"
@@ -56,7 +56,7 @@
        id="g30395-1-2-4"
        transform="matrix(0.99343706,0,0,1,-2037.1482,2837.3976)">
       <rect
-         style="opacity:0.8;color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+         style="opacity:1;color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
          id="rect3100-9-8-9-6-2-7-1"
          width="181.18913"
          height="75"
@@ -64,7 +64,7 @@
          y="-1860.0354" />
       <text
          xml:space="preserve"
-         style="font-size:40.13190842px;font-style:normal;font-weight:normal;line-height:110.00000238%;letter-spacing:0px;word-spacing:0px;fill:#c3cbde;fill-opacity:1;stroke:none;font-family:Sans"
+         style="font-size:40.13190842000000202px;font-style:normal;font-weight:normal;line-height:110.00000238000001218%;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;opacity:1"
          x="2134.9382"
          y="-1833.0569"
          id="text32098"
@@ -74,11 +74,11 @@
            id="tspan32100"
            x="2137.8904"
            y="-1833.0569"
-           style="font-size:23.07584763px;text-align:center;line-height:110.00000238%;text-anchor:middle;fill:#c3cbde;fill-opacity:1;font-family:raleway;-inkscape-font-specification:raleway">I FOUND A </tspan><tspan
+           style="font-size:23.07584762999999839px;text-align:center;line-height:110.00000238000001218%;text-anchor:middle;fill:#ffffff;fill-opacity:1;font-family:raleway;-inkscape-font-specification:raleway">I FOUND A </tspan><tspan
            sodipodi:role="line"
            x="2134.9382"
            y="-1807.6735"
-           style="font-size:23.07584763px;text-align:center;line-height:110.00000238%;text-anchor:middle;fill:#c3cbde;fill-opacity:1;font-family:raleway;-inkscape-font-specification:raleway"
+           style="font-size:23.07584762999999839px;text-align:center;line-height:110.00000238000001218%;text-anchor:middle;fill:#ffffff;fill-opacity:1;font-family:raleway;-inkscape-font-specification:raleway"
            id="tspan32102">TRANSITION!</tspan></text>
     </g>
   </g>

@@ -38,10 +38,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="3.0991929"
-     inkscape:cx="-12.015311"
+     inkscape:cx="-69.126954"
      inkscape:cy="26.655146"
      inkscape:document-units="px"
-     inkscape:current-layer="g10919-8-0-8-5"
+     inkscape:current-layer="g32882-2-1-8-1-0"
      showgrid="false"
      inkscape:window-width="1600"
      inkscape:window-height="876"
@@ -81,26 +81,20 @@
          id="g10919-8-0-8-5"
          transform="matrix(0,-1.0000001,0.99999995,0,3105.782,1594.8298)">
         <g
-           style="opacity:0.5;stroke:#ffffff;stroke-opacity:1"
+           style="opacity:1;stroke:#ffffff;stroke-opacity:1;fill:#000000"
            transform="matrix(0.42757086,0,0,0.42757088,1464.9875,-836.50966)"
            id="g32882-2-1-8-1-0">
-          <g
-             style="opacity:0.5"
-             transform="translate(247.03108,-48.84068)"
-             id="g32897-4-9-9-6-8">
-            <rect
-               style="color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
-               id="rect3100-9-8-2-7-0-0-4-3"
-               width="50"
-               height="50"
-               x="1820.1099"
-               y="326.59549"
-               transform="matrix(4.7840867,0,0,4.7840867,-7003.6198,-1443.7022)" />
-          </g>
+          <rect
+             y="69.918266"
+             x="1950.9747"
+             height="239.20433"
+             width="239.20433"
+             id="rect3100-9-8-2-7-0-0-4-3"
+             style="opacity:1;color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
         </g>
         <text
            xml:space="preserve"
-           style="font-size:155.46073914px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;opacity:0.5;fill:#ffffff;fill-opacity:1;stroke:none;font-family:raleway;-inkscape-font-specification:raleway"
+           style="font-size:155.46073913999998695px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;font-family:raleway;-inkscape-font-specification:raleway"
            x="2316.3376"
            y="-712.56909"
            id="text31998"

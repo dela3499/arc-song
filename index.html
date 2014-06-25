@@ -55,12 +55,12 @@
         <div class="main-container">
             <div class="directions">First, separate the song into sections<br>by finding the big transitions.</div> 
             <div class="controls">
-                <img class="play" src="img/play.svg">
-                <img class="pause" src="img/pause.svg">
-                <img class="transition" src="img/found-transition.svg">
-                <img class="back-5" src="img/back5.svg">
-                <img class="back-x" src="img/back-x.svg">
-                <img class="done" data-behavior="next" src="img/done.svg">
+                <img class="play button" src="img/play.svg">
+                <img class="pause button" src="img/pause.svg">
+                <img class="transition button" src="img/found-transition.svg">
+                <img class="back-5 button" src="img/back5.svg">
+                <img class="back-x button" src="img/back-x.svg">
+                <img class="done button" data-behavior="next" src="img/done.svg">
                 
             </div>
             <div class="player">
@@ -198,7 +198,7 @@
         // Main app interactions
         //----------------------
         
-        var state = 0;
+        var state = 2;
         init();
         
         // Create custom events corresponding to user actions      
@@ -228,8 +228,10 @@
             for (var i = 0; i < pages.length; i++) {
                 if (state != i) {
                     $('#' + pages[i]).addClass('inactive');
+//                    $('#' + pages[i]).animate({opacity:0},500};
                 } else {
                     $('#' + pages[i]).removeClass('inactive');
+//                    $('#' + pages[i]).animate({opacity:100},500};
                 }
             }
             
@@ -315,7 +317,7 @@
             },{
                 duration: 1000*(duration - sound.pos()),
                 easing: "linear",
-                step: updateMyContent})};            
+                step: updateTimers})};            
         function getProgress(x,dur) {
             return x.pos()*100/dur;
         };
@@ -335,6 +337,26 @@
         //---------------
         // Grouping page
         //---------------
+        
+        var newSections  = []
+        
+        transitions = [1,2,3,4,5,5.5,6,9];
+        var newTransitions = [0.0].concat(transitions.concat([duration]));
+        
+        $('.original .song .sections').children().remove();
+        for (var i = 0; i < newTransitions.length -1; i++) {
+            newSections.push([i,newTransitions[i],newTransitions[i+1]]);
+        }
+        for (var i = 0; i < newSections.length; i++) {
+            $('.original .song .sections').append('<section><div></div></section>');
+            $(".original .song .sections section:last").css("width", (newSections[i][2]-newSections[i][1])*100/duration + "%");
+        }
+                                                            
+                                                            
+        
+        
+        
+//        $('.original')
         
         $("#group-sections .group").hover(
             function(){
@@ -357,13 +379,16 @@
             },{
                 duration: 1000*(duration - sound.pos()),
                 easing: "linear"})};      
-        $(".editor section").attr({
+        $(".editor section div").attr({
             draggable: "true",
             ondragstart: "sectionDrag(event)"
         });
         function sectionDrag(ev) {
-
+            
+            
+            
         };
+        
     </script>    
 </body>
 </html>

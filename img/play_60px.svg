@@ -7,10 +7,34 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    version="1.1"
    width="60"
    height="60"
-   id="svg4113">
+   id="svg4113"
+   inkscape:version="0.48.3.1 r9886"
+   sodipodi:docname="play_60px.svg">
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="640"
+     inkscape:window-height="480"
+     id="namedview5528"
+     showgrid="false"
+     inkscape:zoom="3.9333333"
+     inkscape:cx="30"
+     inkscape:cy="30"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg4113" />
   <defs
      id="defs4115">
     <clipPath
@@ -33,38 +57,30 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <g
-     transform="translate(0,-992.36218)"
-     id="layer1">
-    <g
-       transform="matrix(0.58664329,0,0,0.58664326,-1528.4761,1376.4125)"
-       id="g10934-56-6-6-9-3">
-      <g
-         transform="matrix(0.42757086,0,0,0.42757088,1876.9042,-705.43524)"
-         id="g32897-4-6-0-2-5-5-1"
-         style="opacity:0.25;stroke:#ffffff;stroke-opacity:1">
-        <rect
-           width="50"
-           height="50"
-           x="1820.1099"
-           y="326.59549"
-           transform="matrix(4.7840867,0,0,4.7840867,-7003.6198,-1443.7022)"
-           id="rect3100-9-8-2-7-1-3-9-2-6-0"
-           style="color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
-      </g>
-      <rect
-         width="100"
-         height="100"
-         x="2300"
-         y="-841.50909"
-         transform="matrix(-1.0262593,0,0,0.54776355,5096.233,-170.67698)"
-         clip-path="url(#clipPath10879-9-7-23-9-7)"
-         id="rect10859-3-6-63-0-1"
-         style="opacity:0.5;color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
-    </g>
+     transform="matrix(0.25083158,0,0,0.25083157,-427.40285,-29.788509)"
+     id="g32897-4-6-0-2-5-5-1"
+     style="opacity:1;stroke:#ffffff;stroke-opacity:1">
+    <rect
+       width="50"
+       height="50"
+       x="1820.1099"
+       y="326.59549"
+       transform="matrix(4.7840867,0,0,4.7840867,-7003.6198,-1443.7022)"
+       id="rect3100-9-8-2-7-1-3-9-2-6-0"
+       style="color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
   </g>
+  <rect
+     width="100"
+     height="100"
+     x="2300"
+     y="-841.50909"
+     transform="matrix(-0.60204813,0,0,0.32134179,1461.1948,283.92382)"
+     clip-path="url(#clipPath10879-9-7-23-9-7)"
+     id="rect10859-3-6-63-0-1"
+     style="opacity:1;color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
 </svg>

@@ -37,9 +37,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="17.400882"
-     inkscape:cx="55.627774"
-     inkscape:cy="23.509107"
+     inkscape:zoom="12.304282"
+     inkscape:cx="48.41582"
+     inkscape:cy="26.849041"
      inkscape:document-units="px"
      inkscape:current-layer="g10934-56-6-6-4"
      showgrid="false"
@@ -69,7 +69,7 @@
        transform="matrix(0.73330411,0,0,0.73330407,-1910.5951,1457.4251)"
        id="g10934-56-6-6-4">
       <g
-         style="opacity:0.25;stroke:#ffffff;stroke-opacity:1"
+         style="opacity:1;stroke:#ffffff;stroke-opacity:1"
          transform="matrix(0.42757086,0,0,0.42757088,1876.9042,-705.43524)"
          id="g32897-4-6-0-2-5-1">
         <rect
@@ -82,7 +82,7 @@
            transform="matrix(4.7840867,0,0,4.7840867,-7003.6198,-1443.7022)" />
       </g>
       <rect
-         style="opacity:0.7;color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+         style="opacity:1;color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
          id="rect10859-3-6-63-4"
          width="100"
          height="100"

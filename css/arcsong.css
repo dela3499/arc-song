@@ -1,6 +1,11 @@
 .inactive {
   display: none; }
 
+.button {
+  opacity: 0.5; }
+  .button:hover {
+    opacity: 0.7; }
+
 body {
   position: absolute;
   top: 0px;
@@ -16,10 +21,10 @@ body {
     height: 50px;
     width: 50px;
     top: 10px;
-    opacity: 0.6;
+    opacity: 0.1;
     z-index: 1; }
     body .nav .back-button:hover, body .nav .help-button:hover {
-      opacity: 0.9; }
+      opacity: 0.2; }
   body .nav .back-button {
     left: 10px; }
   body .nav .help-button {
@@ -81,28 +86,22 @@ body {
       body #transition-finder .controls .play, body #transition-finder .controls .pause {
         position: absolute;
         left: 0px; }
-        body #transition-finder .controls .play:hover, body #transition-finder .controls .pause:hover {
-          opacity: 0.8; }
       body #transition-finder .controls .pause {
         display: none; }
       body #transition-finder .controls .back-5, body #transition-finder .controls .back-x {
         position: absolute;
         right: 0px; }
-        body #transition-finder .controls .back-5:hover, body #transition-finder .controls .back-x:hover {
-          opacity: 0.8; }
       body #transition-finder .controls .back-x {
         visibility: hidden; }
       body #transition-finder .controls .transition {
-        margin: 0 auto; }
+        margin: 0 auto;
+        opacity: 0.7; }
         body #transition-finder .controls .transition:hover {
-          opacity: 0.8; }
+          opacity: 0.9; }
       body #transition-finder .controls .done {
         position: absolute;
         left: 112.5px;
-        top: 165px;
-        opacity: 0.5; }
-        body #transition-finder .controls .done:hover {
-          opacity: 1; }
+        top: 165px; }
     body #transition-finder .player {
       position: relative;
       margin: 0 auto;
@@ -131,13 +130,15 @@ body {
           top: 0;
           left: 0; }
       body #transition-finder .player .elapsed-time, body #transition-finder .player .remaining-time {
-        font-size: 17px;
+        font-size: 16px;
         font-weight: 800;
         color: #caced1;
+        color: white;
         position: absolute;
         height: 100%;
         width: 60px;
-        background: #7e878e; }
+        background: #7e878e;
+        opacity: 0.6; }
       body #transition-finder .player .elapsed-time {
         left: 0px; }
       body #transition-finder .player .remaining-time {

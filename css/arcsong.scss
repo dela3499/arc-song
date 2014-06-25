@@ -17,6 +17,11 @@
     display: none;
 }
 
+.button {
+    opacity: .5;
+    &:hover {opacity: .7;}
+}
+
 body {
     position: absolute;
     top: 0px;
@@ -34,10 +39,10 @@ body {
             height: 50px; 
             width: 50px;
             top: 10px;
-            opacity: .6;
+            opacity: .1;
             z-index: 1;
             &:hover {
-                opacity: .9;
+                opacity: .2;
                 }
         }
         .back-button {
@@ -114,7 +119,7 @@ body {
                 position: absolute;
                 left: 0px;
                 &:hover {
-                opacity: .8;
+//                opacity: .8;
                 }
             }
             .pause {
@@ -124,21 +129,19 @@ body {
             .back-x { 
                 position: absolute;
                 right: 0px;
-                &:hover {opacity:.8}
             }
             .back-x {
                 visibility: hidden;
             }
             .transition {
                 margin: 0 auto;
-                &:hover {opacity: 0.8}
+                opacity: .7;
+                &:hover {opacity: .9;}
             }
             .done {
                 position: absolute;
                 left: 112.5px;
                 top: 165px;
-                opacity: .5;
-                &:hover {opacity: 1}
             }
         }
         .player {
@@ -172,13 +175,15 @@ body {
             }         
             .elapsed-time,
             .remaining-time {
-                font-size: 17px;
+                font-size: 16px;
                 font-weight: 800;
                 color: #caced1;
+                color: white;
                 position: absolute;
                 height: 100%;
                 width: 60px;
                 background: #7e878e;
+                opacity: .6;
             }
             .elapsed-time {
                 left:0px

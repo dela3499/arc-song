@@ -56,7 +56,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -66,7 +66,7 @@
      id="layer1"
      transform="translate(0,-992.36218)">
     <rect
-       style="opacity:0.3;color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       style="opacity:1;color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
        id="rect3100-9-8-9-2-8-7-5-9"
        width="60"
        height="60"
@@ -74,7 +74,7 @@
        y="992.36218" />
     <text
        xml:space="preserve"
-       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#c3cbde;fill-opacity:1;stroke:none;font-family:Sans"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;opacity:1"
        x="7.0280857"
        y="1028.3972"
        id="text4291"
@@ -83,6 +83,6 @@
          id="tspan4293"
          x="7.0280857"
          y="1028.3972"
-         style="font-size:17px;fill:#c3cbde;fill-opacity:1;font-family:raleway;-inkscape-font-specification:raleway">NEXT</tspan></text>
+         style="font-size:17px;fill:#ffffff;fill-opacity:1;font-family:raleway;-inkscape-font-specification:raleway">NEXT</tspan></text>
   </g>
 </svg>

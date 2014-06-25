@@ -29,12 +29,12 @@
      id="namedview33888"
      showgrid="false"
      inkscape:zoom="9.4522917"
-     inkscape:cx="24.91046"
+     inkscape:cx="6.1848424"
      inkscape:cy="37.5"
      inkscape:window-x="0"
      inkscape:window-y="24"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg12929" />
+     inkscape:current-layer="g34050" />
   <defs
      id="defs12931" />
   <metadata
@@ -53,12 +53,12 @@
      id="g34050"
      transform="translate(-4.9999998,4.9999999)">
     <g
-       style="opacity:0.5;stroke:#ffffff;stroke-opacity:1"
-       transform="matrix(0.20902665,0,0,0.2090265,-402.80574,-19.614791)"
+       style="fill:#000000;stroke:#ffffff;stroke-opacity:1"
+       transform="matrix(0.20902665,0,0,0.2090265,-406.50855,-27.549375)"
        id="g32882-2-1-8-1-2">
       <g
-         style="opacity:0.5"
-         transform="translate(247.03108,-48.84068)"
+         style="fill:#000000"
+         transform="translate(264.74562,-10.880977)"
          id="g32897-4-9-9-6-9">
         <rect
            style="color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
@@ -71,12 +71,13 @@
       </g>
     </g>
     <g
-       style="opacity:0.27160495;fill:#ffffff"
+       style="fill:#ffffff"
        id="g32673"
-       transform="matrix(0.93295336,0,0,0.93295336,-1364.4417,-47.308031)">
+       transform="matrix(0.93295336,0,0,0.93295336,-1364.4417,-47.30803)">
       <g
          id="g32677"
-         transform="matrix(0.31407858,-0.29820831,0.31407858,0.32994885,923.30577,550.29157)">
+         transform="matrix(0.31407858,-0.29820831,0.31407858,0.32994885,923.30577,550.29157)"
+         style="fill:#ffffff">
         <rect
            style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
            id="rect32653"
