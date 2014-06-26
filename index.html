@@ -338,6 +338,13 @@
         // Grouping page
         //---------------
         
+        var sound2 = new Howl({
+                urls: ['audio/animate2.mp3'], // hack: hardcoded song
+                loop: true
+            });
+        
+        sound2.sprite({'clip': [7000,1000]});
+        
         var newSections  = []
         
         transitions = [1,2,3,4,5,5.5,6,9];
@@ -349,15 +356,16 @@
         }
         for (var i = 0; i < newSections.length; i++) {
             $('.original .song .sections').append('<section><div></div></section>');
-            $(".original .song .sections section:last").css("width", (newSections[i][2]-newSections[i][1])*100/duration + "%");
+            var start = newSections[i][1],
+                end   = newSections[i][2];
+            var dur   = end - start;
+            $(".original .song .sections section:last").css("width", dur*100 / duration + "%").attr('data-section',i);
+            var currentSprites = sound2.sprite();
+            currentSprites[i] = [start * 1000, 1000 * dur];
+            sound2.sprite(currentSprites);
         }
-                                                            
-                                                            
-        
-        
-        
-//        $('.original')
-        
+    
+        $("#group-sections groups section div").addClass('inactive');
         $("#group-sections .group").hover(
             function(){
                 $(this).find(".controls").css('opacity',0);
@@ -368,25 +376,33 @@
         $("#group-sections section div").hover(
           function(){
             $(this).append('<div class="progress"></div>');
-            sound.play();
+              var index = $(this).closest('section').attr("data-section")
+              console.log(index);
+//              console.log(sound2.sprite(index));
+              sound2.play(index);
+              
         }, function(){
-            sound.stop();
+            sound2.stop();
             $(this).find(".progress").remove();
         });
         function progressBar3() {
             $("#group-sections .progress").animate({
                 width:"100%"
             },{
-                duration: 1000*(duration - sound.pos()),
+                duration: 1000*(duration - sound2.pos()),
                 easing: "linear"})};      
         $(".editor section div").attr({
             draggable: "true",
-            ondragstart: "sectionDrag(event)"
+            ondragstart: "sectionDrag()"
         });
-        function sectionDrag(ev) {
-            
-            
-            
+        
+        // need to add events in js, rather than html.
+//        function sectionDrag(ev) {
+//            console.log(ev.target.id);
+//        };
+        function sectionDrag() {
+            $(this).addClass('inactive');
+            //            console.log($(this));
         };
         
     </script>    

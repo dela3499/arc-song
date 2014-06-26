@@ -1,0 +1,83 @@
+What is my objective? 
+ - Provide an human interface to generate the following data structure: 
+
+
+
+
+
+
+Song - audio file, duration
+Transitions - timestamp
+Sections - {id,start,end}
+Groups - [section,section,...]
+
+There are two data structures of interest. Both encode the same information, but in different ways: 
+
+1. section - {id,start,end,group}
+2. groups - [[section,section,...],[],[],...]
+
+Which of these best addresses my problem? 
+What is my problem? 
+What will this data be used for? 
+ - This data will be used for the next action: separate sections into musical phrases. What data is required for this? What will the interface do? 
+ - interface will: 
+   iterate through each section in each group, and allow the user to partition it into musical phrases. 
+What operation is most important here? 
+ - iteration through each section of each group. 
+From this perspective, the second data structure is far superior. 
+
+But, these data structures can easily be created from one another, and the first data structure is better for the interface which collects the information. 
+In that interface, the most important action is not iteration, but setting the group value for a given section. Therefore, the course of action is to produce the first data structure, and convert it to the second when the user is done. 
+
+So, how do I produce this data structure? 
+ - There are many simple ways to do this, but it's easiest to organize things spacially. 
+
+The means by which the user selects a section's group is to drag it there. 
+How can the item be dragged? 
+
+The course of events should be as follows: 
+1. Drag a section. 
+2. Event fired which states group and section
+3. Drag to new group
+4. data from origin provided to new group
+5. Change section's group to new group
+6. visualize change. 
+
+How are these steps to be implemented? 
+1. It's easy enough to drag a section, and to hide it after being dragged. This takes place within a function associated with the appropriate element's onDrag attribute. Hide an element using the 'dragged' class
+
+2. How are the group and section to be found and encoded? 
+ The origin's DOM information is encoded in the event that's triggered at the start of the drag. I think that the element should contain its group information, perhaps as a data-group attribute.
+
+ The section information might also be encoded as a data attribute. 
+ For now, I'll take this, perhaps naive or misguided, approach. 
+
+ So, all section and group data will be stored in the DOM. 
+ There are two main options: 
+ store as separate attributes or as a pair of coordinates.
+ For now, I think I'll stick with separate attributes, since I can easily imagine how to assign them. 
+
+3. Items can simply be made 'draggable'.
+4. Upon hover, or dragEnter, the new destination group should show the potential location for the dragged section. 
+
+5. Upon being dropped, the internal data structure should be updated, and the 6.style information should be updated as well. 
+
+
+In addition to dragging, the sections need to be able to play the appropriate sections of the song under analysis. I'm guess this requires sprites, but I don't know yet. It may require some other manipulation of the song. 
+
+
+
+
+
+
+
+
+
+ Alternatively, I might avoid storing such information in the DOM, and instead opt for a JS model which contains the appropriate data. 
+
+ How would you interact with this model, and how would the user's actions reach it? 
+
+What are the alternative methods to code up the drag and drop behavior? 
+
+For the purposes of learning and of making a quick decision, I'll implement the drag and drop feature using only the native browser methods. This isn't much of a limitation, and if it proves troublesome, I'll know what features to look for in others' libraries. 
+
