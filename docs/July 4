@@ -1,0 +1,55 @@
+Site Design Tools: 
+
+ - SiteMap Designer - 
+In order to increase the speed with which I design pages, it might be good to graphically design a graph where nodes are pages and edges are links. This could in turn generate controllers and buttons and states and such - perhaps with some default formatting. 
+
+The process would look like this: 
+1. Add pages (nodes). 
+2. Connect them up as you'd like.
+3. Use the graph to generate buttons/links/controllers and such. 
+
+This is basically a graphical design tool for the site's structure. 
+
+--
+
+Are there other ways to simplify the design of the app? 
+What should be my first step in refactoring my code to use angular.js?
+What would most improve the code?
+ - creating small, independent units
+ - creating tests
+
+What are the major questions? 
+What is the structure of the app? 
+What actions need to be performed? 
+1. Explain app
+2. Get song
+3. Separate songs into parts
+4. Group similar parts
+5. Separate parts into phrases
+6. Group similar phrases
+7. Create symbol string/list for repetition-analysis
+8. Create suffix tree/factor oracle for symbol string
+9. Generate spec for arcs using above, and algorithm from arc diagram paper
+10. Use arc spec to generate svg arc diagram, either manually, or with D3
+11. Display and customize svg
+12. Convert svg to jpeg for download
+13. Download arc diagram
+
+If these are the major objectives/interactions/requirements, then how should I structure the app? 
+Some of these are background tasks which don't require user input. 
+
+What are the major pages? 
+What will the user see? 
+1. Explain app
+2. Get song
+3. Separate songs into parts
+4. Group similar parts
+5. Separate parts into phrases
+6. Group similar phrases
+(bg) 7. Create symbol string/list for repetition-analysis
+(bg) 8. Create suffix tree/factor oracle for symbol string
+(bg) 9. Generate spec for arcs using above, and algorithm from arc diagram paper
+(bg) 10. Use arc spec to generate svg arc diagram, either manually, or with D3
+11. Display and customize svg
+(bg) 12. Convert svg to jpeg for download
+13. Download arc diagram
