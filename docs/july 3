@@ -1,0 +1,45 @@
+Thoughts on Angular: 
+
+It seems that javascript is often made to interact with html through attribute directives. This practice expands the html and may make it difficult to read and change. 
+
+Here are a few questions: 
+1. What is the ideal way to structute document behavior? 
+2. What abstractions should be used to construct an app, and how can these be built? 
+
+--
+Angular features: 
+1. data binding/events
+2. structure - 
+modules,controllers,directives(e,a), repeat, show/hide, services
+
+---
+Primary thoughts: 
+1. Use data binding
+2. Create new element directives
+3. create new controllers
+
+What is the structure of the app? 
+What modules should there be? 
+What are the main data objects? 
+What are the main interactions? 
+
+design: 
+pages/objectives/data types: 
+
+1 - Explain
+2 - Upload
+3 - Identify transitions (in song)
+4 - Group sections into parts
+5 - Identify transitions (in sections)
+6 - Group phrases
+7 - Display arc diagrams
+
+interactions:
+
+1 - play music
+2 - select / drag and drop files
+3 - player
+
+
+
+How can I create a music player? 
