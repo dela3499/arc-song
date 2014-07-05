@@ -24,7 +24,6 @@ app.directive('groupSections',function(){
     };
 });
 
-
 app.controller('MainController', function(){
     this.state = 0;
     this.update = function (x) {
@@ -38,7 +37,6 @@ app.controller('TransitionFinderController', function() {
 });
 app.controller('SongController', function() {
     this.duration = 15;
-    this.progressC = 0;
     this.state = 'off'; // playing, paused, off
     var sound = new Howl({urls: ['audio/animate2.mp3']});
     this.t = function() {return sound.pos()};
@@ -59,8 +57,14 @@ app.controller('SongController', function() {
         var pos = sound.pos();
         sound.pos(pos - Math.min(pos,5));
     };
-    var interval = window.setInterval(function(){this.progress()},200); // need to correct scope so 'this' refers to controller, rather than window.
 });
+//app.controller('PlayerController', function() {
+//    this.progress = 0;
+//    this.t = 0;
+//    var obj = this;
+//    window.setInterval();
+//    
+//});
    
 //// Define functions
 //function animateProgress(e) {
