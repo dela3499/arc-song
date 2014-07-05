@@ -90,8 +90,6 @@ body {
       body #transition-finder .controls .play, body #transition-finder .controls .pause {
         position: absolute;
         left: 0px; }
-      body #transition-finder .controls .pause {
-        display: none; }
       body #transition-finder .controls .back-5, body #transition-finder .controls .back-x {
         position: absolute;
         right: 0px; }
@@ -125,7 +123,7 @@ body {
           body #transition-finder .player .player-background .progress-bar:hover {
             opacity: 0.9; }
         body #transition-finder .player .player-background .transition-marker {
-          opacity: 0;
+          opacity: 1;
           background: #d3d3d3;
           height: 100%;
           width: 1px;

@@ -127,9 +127,6 @@ body {
 //                opacity: .8;
                 }
             }
-            .pause {
-                display: none;
-            }
             .back-5,
             .back-x { 
                 position: absolute;
@@ -168,7 +165,7 @@ body {
                     &:hover {opacity: 0.9}
                 }
                 .transition-marker {
-                    opacity: 0;
+                    opacity: 1;
                     background: #d3d3d3;
                     height: 100%;
                     width: 1px;
