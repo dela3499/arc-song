@@ -2,6 +2,29 @@
 
 var app = angular.module('arcsong',[]);
 
+app.directive('landingPage',function(){
+    return {
+        restrict: 'A',
+        replace: true,
+        templateUrl: 'landing-page.html'
+    };
+});
+app.directive('transitionFinder',function(){
+    return {
+        restrict: 'A',
+        replace: true,
+        templateUrl: 'transition-finder.html'
+    };
+});
+app.directive('groupSections',function(){
+    return {
+        restrict: 'A',
+        replace: true,
+        templateUrl: 'group-sections.html'
+    };
+});
+
+
 app.controller('MainController', function(){
     this.state = 0;
     this.update = function (x) {
@@ -11,12 +34,11 @@ app.controller('MainController', function(){
 app.controller('TransitionFinderController', function() {
     this.transitions = [];    
     this.addTransition = function(t) {
-        console.log("added transition");
         this.transitions.push(t)};
 });
-
 app.controller('SongController', function() {
     this.duration = 15;
+    this.progressC = 0;
     this.state = 'off'; // playing, paused, off
     var sound = new Howl({urls: ['audio/animate2.mp3']});
     this.t = function() {return sound.pos()};
@@ -37,6 +59,7 @@ app.controller('SongController', function() {
         var pos = sound.pos();
         sound.pos(pos - Math.min(pos,5));
     };
+    var interval = window.setInterval(function(){this.progress()},200); // need to correct scope so 'this' refers to controller, rather than window.
 });
    
 //// Define functions
