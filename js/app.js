@@ -1,113 +1,123 @@
-// TODO: refactor states using UI-router
+var app = angular.module('arcsong', []);
 
-var app = angular.module('arcsong',[]);
-
-app.directive('landingPage',function(){
+app.directive('landingPage', function () {
     return {
         restrict: 'A',
         replace: true,
         templateUrl: 'landing-page.html'
     };
 });
-app.directive('transitionFinder',function(){
+app.directive('transitionFinder', function () {
     return {
         restrict: 'A',
         replace: true,
         templateUrl: 'transition-finder.html'
     };
 });
-app.directive('groupSections',function(){
+app.directive('groupSections', function () {
     return {
         restrict: 'A',
         replace: true,
         templateUrl: 'group-sections.html'
     };
 });
-app.controller('MainController', function(){
+app.controller('MainController', function () {
     this.state = 1;
     this.update = function (x) {
-        this.state += x
+        this.state += x;
     };
 });
-app.controller('TransitionFinderController', function($song,$interval) {
-    var p = $('.progress-bar');
-    this.tElapsed = 0;
-    this.tRemaining = 0;
-    this.transitions = [];    
-    this.state = $song.state;
-    this.addTransition = function() {
-        this.transitions.push(this.progress());
+app.controller('TransitionFinderController', function ($song, $interval) {
+    var vm = this,
+        p = $('.progress-bar');
+        
+    vm.tElapsed = 0;
+    vm.tRemaining = 0;
+    vm.transitions = [];
+    vm.state = $song.state;
+    vm.addTransition = function () {
+        vm.transitions.push(vm.progress());
     };
-    this.progress = function(){return $song.progress()};
-    this.play = function() {
-        var tRemaining = this.tRemaining;
+    vm.progress = function () {return $song.progress(); };
+    vm.play = function () {
         $song.play();
-        this.state = $song.state;
-        p.animate({
-            width:"100%"
-        },{
-            duration: tRemaining * 1000,
-            easing: "linear",
-        });
+        vm.state = $song.state;
+        animateProgressBar();
     };
-    this.pause = function() {
+    vm.pause = function () {
         $song.pause();
         p.stop();
-        this.state = $song.state;
-    }
-    this.stop = function() {
-        $song.stop();
-        p.css({width:'0%'});
-        p.stop();
+        vm.state = $song.state;
     };
-    this.back = function(x) {
-        $song.back(x);  
+    vm.back = function (x) {
+        $song.back(x);
         p.stop();
-        p.css({width:$song.progress()*100+'%'});
-        var tRemaining = this.tRemaining;
+        animateProgressBar();
+    };
+
+    var animateProgressBar = function () {
+        p.css({width: $song.progress() * 100 + '%'});
         p.animate({
-            width:"100%"
-        },{
-            duration: tRemaining * 1000,
+            width: "100%"
+        }, {
+            duration: ($song.duration - $song.t()) * 1000,
             easing: "linear",
-        });
-        
+            complete: function () {
+                p.animate({width:'0%'},1000);
+            }
+        });        
     };
-    var obj = this;
-    $interval(function(){
-        obj.tElapsed = $song.t();
-        obj.tRemaining = $song.duration - $song.t();
-    }, 100);
+    
+// TODO: use this function to make sure progress bar is on track with song     
+//    var pbc = function() {
+//        var dw = pbg.css('width').replace(/[^-\d\.]/g, ''),
+//            pbw = p.css('width').replace(/[^-\d\.]/g, ''),
+//            sp = $song.progress(),
+//            e = ((pbw / dw) - sp)*100;
+//        return e;
+//    };
+    
+    $interval(function () {
+        vm.tElapsed = $song.t();
+        vm.tRemaining = $song.duration - $song.t();
+        vm.state = $song.state;
+    }, 500);
 });
-app.service('$song',function(){
-    this.duration = 15;
-    this.state = 'off'; // playing, paused, off
-    var sound = new Howl({urls: ['audio/animate2.mp3']});
-    this.t = function() {return sound.pos()};
-    this.progress = function() {return this.t()/this.duration};
-    this.play = function() {
+app.service('$song', function () {
+    var vm = this;
+    vm.duration = 15;
+    vm.state = 'off'; // playing, paused, off
+    var sound = new Howl({
+        urls: ['audio/animate2.mp3'],
+        onend: function () {
+            vm.state = 'off';
+        }
+    });
+    vm.t = function () {return sound.pos(); };
+    vm.progress = function () {return vm.t() / vm.duration; };
+    vm.play = function () {
         sound.play();
-        this.state = 'playing';
-    }
-    this.pause = function() {
+        vm.state = 'playing';
+    };
+    vm.pause = function () {
         sound.pause();
-        this.state = 'paused';
-    }
-    this.stop = function() {
+        vm.state = 'paused';
+    };
+    vm.stop = function () {
         sound.stop();
-        this.state = 'off';
-    }
-    this.back = function(x) {
+        vm.state = 'off';
+    };
+    vm.back = function (x) {
         var pos = sound.pos();
-        sound.pos(pos - Math.min(pos,x));
+        sound.pos(pos - Math.min(pos, x));
     };
 });
-app.filter('formatTimer', function() {
-  return function(input) {
-        function z(n) {return (n<10? '0' : '') + n;}
-        var seconds = Math.floor(input % 60);
-        var minutes = Math.floor(input / 60);
-        return (minutes+':'+z(seconds));
+app.filter('formatTimer', function () {
+    return function (input) {
+        function z(n) {return (n < 10 ? '0' : '') + n; }
+        var seconds = Math.floor(input % 60),
+            minutes = Math.floor(input / 60);
+        return (minutes + ':' + z(seconds));
     };
 });
 
