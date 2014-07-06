@@ -23,28 +23,63 @@ app.directive('groupSections',function(){
         templateUrl: 'group-sections.html'
     };
 });
-
 app.controller('MainController', function(){
     this.state = 1;
     this.update = function (x) {
         this.state += x
     };
 });
-app.controller('TransitionFinderController', function($Song) {
+app.controller('TransitionFinderController', function($song,$interval) {
+    var p = $('.progress-bar');
+    this.tElapsed = 0;
+    this.tRemaining = 0;
     this.transitions = [];    
+    this.state = $song.state;
     this.addTransition = function() {
         this.transitions.push(this.progress());
-        console.log(this.transitions);
     };
-    this.state = $Song.state;
-    this.t = function(){return $Song.t()};
-    this.progress = function(){return $Song.progress()};
-    this.play = $Song.play;
-    this.pause = $Song.pause;
-    this.stop = $Song.stop;
-    this.back = $Song.back;    
+    this.progress = function(){return $song.progress()};
+    this.play = function() {
+        var tRemaining = this.tRemaining;
+        $song.play();
+        this.state = $song.state;
+        p.animate({
+            width:"100%"
+        },{
+            duration: tRemaining * 1000,
+            easing: "linear",
+        });
+    };
+    this.pause = function() {
+        $song.pause();
+        p.stop();
+        this.state = $song.state;
+    }
+    this.stop = function() {
+        $song.stop();
+        p.css({width:'0%'});
+        p.stop();
+    };
+    this.back = function(x) {
+        $song.back(x);  
+        p.stop();
+        p.css({width:$song.progress()*100+'%'});
+        var tRemaining = this.tRemaining;
+        p.animate({
+            width:"100%"
+        },{
+            duration: tRemaining * 1000,
+            easing: "linear",
+        });
+        
+    };
+    var obj = this;
+    $interval(function(){
+        obj.tElapsed = $song.t();
+        obj.tRemaining = $song.duration - $song.t();
+    }, 100);
 });
-app.service('$Song',function(){
+app.service('$song',function(){
     this.duration = 15;
     this.state = 'off'; // playing, paused, off
     var sound = new Howl({urls: ['audio/animate2.mp3']});
@@ -67,35 +102,15 @@ app.service('$Song',function(){
         sound.pos(pos - Math.min(pos,x));
     };
 });
-   
-//// Define functions
-//function animateProgress(e) {
-//    e.css("width",getProgress(sound,duration) + "%");
-//    e.animate({
-//        width:"100%"
-//    },{
-//        duration: 1000*(duration - sound.pos()),
-//        easing: "linear",
-//        step: updateTimers})};            
+app.filter('formatTimer', function() {
+  return function(input) {
+        function z(n) {return (n<10? '0' : '') + n;}
+        var seconds = Math.floor(input % 60);
+        var minutes = Math.floor(input / 60);
+        return (minutes+':'+z(seconds));
+    };
+});
 
-
-//function addZero(num) {
-//    return (num >= 0 && num < 10) ? "0" + num : num + "";
-//};        
-//function updateTimers() { 
-//    pos = (sound.pos()).toFixed(0);
-//    minE = Math.floor(pos/60);
-//    secE = addZero(Math.floor(pos % 60));
-//    minR = Math.floor(duration / 60) - minE;
-//    secR = addZero(Math.floor((duration - pos) % 60));
-//    $('#elapsed-time-id').text(minE + ':' + secE);
-//    $('#remaining-time-id').text("-" + minR + ':' + secR);
-//   }; 
-//
-////---------------
-//// Grouping page
-////---------------
-//
 //var sound2 = new Howl({
 //        urls: ['audio/animate2.mp3'], // hack: hardcoded song
 //        loop: true

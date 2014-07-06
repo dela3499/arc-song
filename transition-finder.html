@@ -18,7 +18,7 @@
                <div style="display: table;overflow: hidden;height: 55px;margin:0 auto">
                  <div style="display: table-cell; vertical-align: middle;">
                    <div id='elapsed-time-id'>
-                     0:00
+                     {{tf.tElapsed | formatTimer}}
                    </div>
                  </div>
                </div>                     
@@ -27,7 +27,7 @@
                <div style="display: table;overflow: hidden;height: 55px;margin:0 auto">
                  <div style="display: table-cell; vertical-align: middle;">
                    <div id='remaining-time-id'>
-                     -0.00
+                     -{{tf.tRemaining | formatTimer}}
                    </div>
                  </div>
                </div>                 
