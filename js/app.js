@@ -53,18 +53,19 @@ app.controller('SongController', function() {
         sound.stop();
         this.state = 'off';
     }
-    this.back = function() {
+    this.back = function(x) {
         var pos = sound.pos();
-        sound.pos(pos - Math.min(pos,5));
+        sound.pos(pos - Math.min(pos,x));
     };
 });
-//app.controller('PlayerController', function() {
-//    this.progress = 0;
-//    this.t = 0;
-//    var obj = this;
-//    window.setInterval();
-//    
-//});
+app.controller('PlayerController', function() {
+    this.progress = 0;
+    this.t = 0;
+    var obj = this;
+    window.setInterval(function(){
+        obj.t = 1;
+    },100);
+});
    
 //// Define functions
 //function animateProgress(e) {

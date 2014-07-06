@@ -5,7 +5,7 @@
             <img class="play button" src="img/play.svg" ng-click='song.play()' ng-hide='song.state=="playing"'>
             <img class="pause button" src="img/pause.svg" ng-click='song.pause()' ng-show='song.state=="playing"'>
             <img class="transition button" src="img/found-transition.svg" ng-click='tFinder.addTransition(song.progress())'>
-            <img class="back-5 button" src="img/back5.svg" ng-click='song.back()'>
+            <img class="back-5 button" src="img/back5.svg" ng-click='song.back(5)'>
             <img class="back-x button" src="img/back-x.svg">
             <img ng-click='main.update(1)' class="done button" data-behavior="next" src="img/done.svg">
         </div>
