@@ -25,17 +25,26 @@ app.directive('groupSections',function(){
 });
 
 app.controller('MainController', function(){
-    this.state = 0;
+    this.state = 1;
     this.update = function (x) {
         this.state += x
     };
 });
-app.controller('TransitionFinderController', function() {
+app.controller('TransitionFinderController', function($Song) {
     this.transitions = [];    
-    this.addTransition = function(t) {
-        this.transitions.push(t)};
+    this.addTransition = function() {
+        this.transitions.push(this.progress());
+        console.log(this.transitions);
+    };
+    this.state = $Song.state;
+    this.t = function(){return $Song.t()};
+    this.progress = function(){return $Song.progress()};
+    this.play = $Song.play;
+    this.pause = $Song.pause;
+    this.stop = $Song.stop;
+    this.back = $Song.back;    
 });
-app.controller('SongController', function() {
+app.service('$Song',function(){
     this.duration = 15;
     this.state = 'off'; // playing, paused, off
     var sound = new Howl({urls: ['audio/animate2.mp3']});
@@ -57,14 +66,6 @@ app.controller('SongController', function() {
         var pos = sound.pos();
         sound.pos(pos - Math.min(pos,x));
     };
-});
-app.controller('PlayerController', function() {
-    this.progress = 0;
-    this.t = 0;
-    var obj = this;
-    window.setInterval(function(){
-        obj.t = 1;
-    },100);
 });
    
 //// Define functions
