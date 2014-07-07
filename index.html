@@ -16,9 +16,10 @@
         <img ng-click="main.update(-1)" class="back-button" src="img/back.svg" alt="back button" data-behavior='back'>
         <img class="help-button" src="img/help.svg" alt="help button" data-behavior='help'>
     </div>
-    <div landing-page></div>
-    <div transition-finder></div>
-    <div group-sections></div>
+<!--    <div landing-page></div>-->
+    <div ng-include="'landing-page.html'"></div>
+    <div ng-include="'transition-finder.html'"></div>
+    <div ng-include="'group-sections.html'"></div>
     <script src="js/app.js"></script>
 </body>
 </html>

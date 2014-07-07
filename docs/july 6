@@ -1,0 +1,16 @@
+What is my current objective? 
+ - Complete grouping page
+When is the page complete? 
+ - The following data structures are produced: 
+ sections: 
+ [{
+ start: time, 
+ end: time, 
+ group: group_num
+ },...]
+
+groups = 
+[[{
+	start: time, 
+	end: time
+}],[],...]

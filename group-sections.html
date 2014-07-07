@@ -1,4 +1,4 @@
-<div id="group-sections" ng-show="main.state==2">
+<div id="group-sections" ng-show="main.state==2" ng-controller='GroupSectionsController as gs'>
     <div class="directions">
         Now, drag similar-sounding parts into groups.
     </div>
@@ -7,9 +7,7 @@
             <div class="song">
                 <div class="background"></div>
                 <div class="sections">
-                    <section draggable="true"><div></div></section>
-                    <section draggable="true"><div></div></section>
-                    <section><div></div></section>
+                    <section ng-repeat='s in gs.sections' ng-style="{'width': s.duration * 100 + '%'}"><div></div></section>
                 </div>
             </div>
         </div>

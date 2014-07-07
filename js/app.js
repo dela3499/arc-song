@@ -1,42 +1,29 @@
-var app = angular.module('arcsong', []);
+// TODO: consider sharing state and data with $scope object, rather than using services.
+// TODO: convert app directory structure to feature-based design, and use grunt to manage assets like stylesheets and javascript.
+// TODO: find alternative to constant, ad-hoc mirroring of service-level properties in controllers.
+// TODO: design arc chart music player
+// TODO: consider placing JS view logic in separate controllers, or something organized. (perhaps create some naming convention)
 
-app.directive('landingPage', function () {
-    return {
-        restrict: 'A',
-        replace: true,
-        templateUrl: 'landing-page.html'
-    };
-});
-app.directive('transitionFinder', function () {
-    return {
-        restrict: 'A',
-        replace: true,
-        templateUrl: 'transition-finder.html'
-    };
-});
-app.directive('groupSections', function () {
-    return {
-        restrict: 'A',
-        replace: true,
-        templateUrl: 'group-sections.html'
-    };
-});
+var app = angular.module('arcsong', []);
 app.controller('MainController', function () {
-    this.state = 1;
-    this.update = function (x) {
-        this.state += x;
-    };
+    this.state = 0;
 });
-app.controller('TransitionFinderController', function ($song, $interval) {
+app.controller('LandingPageController', function () {
+    $(document).ready(function () {
+        $('#landing-page').css({opacity:0});
+        $('#landing-page').animate({opacity:1},2000);
+    });  
+});
+app.controller('TransitionFinderController', function ($song, $interval,$structure) {
     var vm = this,
         p = $('.progress-bar');
-        
+    vm.transitions = $structure.getTransitions();
     vm.tElapsed = 0;
     vm.tRemaining = 0;
-    vm.transitions = [];
     vm.state = $song.state;
     vm.addTransition = function () {
-        vm.transitions.push(vm.progress());
+        $structure.addTransition($song.progress());
+        vm.transitions = $structure.getTransitions();
     };
     vm.progress = function () {return $song.progress(); };
     vm.play = function () {
@@ -50,11 +37,12 @@ app.controller('TransitionFinderController', function ($song, $interval) {
         vm.state = $song.state;
     };
     vm.back = function (x) {
+        var lastTransition = $song.transitions[$song.transitions.length - 1];
+        console.log(lastTransition);
         $song.back(x);
         p.stop();
         animateProgressBar();
     };
-
     var animateProgressBar = function () {
         p.css({width: $song.progress() * 100 + '%'});
         p.animate({
@@ -82,6 +70,12 @@ app.controller('TransitionFinderController', function ($song, $interval) {
         vm.tRemaining = $song.duration - $song.t();
         vm.state = $song.state;
     }, 500);
+});
+app.controller('GroupSectionsController', function ($structure) {
+    var vm = this;
+    vm.sections = $structure.getSections();
+    console.log(vm.sections);
+    //TODO: set width of sections based on duration
 });
 app.service('$song', function () {
     var vm = this;
@@ -112,6 +106,36 @@ app.service('$song', function () {
         sound.pos(pos - Math.min(pos, x));
     };
 });
+app.service('$structure', function () {
+    var vm = this,
+        transitions = [.1,.2,.25,.7,.76,.78,.82,.9,.98];
+    vm.getTransitions = function () {
+        return transitions;
+    };
+    vm.getSections = function () {
+        var sections = [],
+            markers = [0.0].concat(transitions.concat([1]));
+        for (var i = 0; i < markers.length - 1; i++) {
+            sections.push({
+                start: markers[i],
+                end: markers[i+1],
+                duration: markers[i+1] -  markers[i]
+            });
+        };
+        return sections;
+             
+             
+// There are t.length + 1 sections             
+        //need to convert transitions into sections with start,end,duration,and group properties
+    };
+    vm.addTransition = function (p) {
+        transitions.push(p);
+    };
+    vm.removeTransition = function (i) {
+        transitions.splice(i,1);
+    };
+    
+});
 app.filter('formatTimer', function () {
     return function (input) {
         function z(n) {return (n < 10 ? '0' : '') + n; }
@@ -120,6 +144,8 @@ app.filter('formatTimer', function () {
         return (minutes + ':' + z(seconds));
     };
 });
+
+
 
 //var sound2 = new Howl({
 //        urls: ['audio/animate2.mp3'], // hack: hardcoded song

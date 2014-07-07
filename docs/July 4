@@ -53,3 +53,11 @@ What will the user see?
 11. Display and customize svg
 (bg) 12. Convert svg to jpeg for download
 13. Download arc diagram
+
+--
+So, what are my major decisions? 
+1. Pages
+2. Controllers
+3. Modules
+4. Directives
+
