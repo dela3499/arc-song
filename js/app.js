@@ -3,10 +3,17 @@
 // TODO: find alternative to constant, ad-hoc mirroring of service-level properties in controllers.
 // TODO: design arc chart music player
 // TODO: consider placing JS view logic in separate controllers, or something organized. (perhaps create some naming convention)
+// TODO: identify common components among views, and separate into partials (just copy and paste, to start, and then, once things are working - try to refactor into partials.)
+// Consider garlic.js and parsley.js for persisting and checking data on the browser
+// Get File Upload working: http://www.html5rocks.com/en/tutorials/file/dndfiles/
+// TODO: get player to allow cursor to alter feedback
 
 var app = angular.module('arcsong', []);
 app.controller('MainController', function () {
     this.state = 0;
+    this.update = function (x) {
+        this.state += x;
+    };    
 });
 app.controller('LandingPageController', function () {
     $(document).ready(function () {
@@ -37,8 +44,8 @@ app.controller('TransitionFinderController', function ($song, $interval,$structu
         vm.state = $song.state;
     };
     vm.back = function (x) {
-        var lastTransition = $song.transitions[$song.transitions.length - 1];
-        console.log(lastTransition);
+//        var lastTransition = $structure.transitions[$structure.transitions.length - 1];
+//        console.log(lastTransition);
         $song.back(x);
         p.stop();
         animateProgressBar();
@@ -74,8 +81,6 @@ app.controller('TransitionFinderController', function ($song, $interval,$structu
 app.controller('GroupSectionsController', function ($structure) {
     var vm = this;
     vm.sections = $structure.getSections();
-    console.log(vm.sections);
-    //TODO: set width of sections based on duration
 });
 app.service('$song', function () {
     var vm = this;
@@ -134,7 +139,12 @@ app.service('$structure', function () {
     vm.removeTransition = function (i) {
         transitions.splice(i,1);
     };
-    
+    vm.getSymbolList = function () {
+        var sList = [];
+        for (var i = 0; i < vm.phrases.length; i++) {
+            sList.push(phrases[i].phraseID);
+        };
+    };  
 });
 app.filter('formatTimer', function () {
     return function (input) {
@@ -144,7 +154,6 @@ app.filter('formatTimer', function () {
         return (minutes + ':' + z(seconds));
     };
 });
-
 
 
 //var sound2 = new Howl({
