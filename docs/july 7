@@ -1,26 +1,3 @@
-Some thoughts: 
-
-Solve deep explanatory, pragmatic, and aesthetic problems. 
-Don't care what others think. 
-Acknowledge the worst cases. 
-Mandatory to fail regularly. 
-Do exciting things. 
-Let go of ego. 
-Don't protect what you have (you don't have anything to protect.)
-Be creative. 
-Think from first principles. 
-Be fast and decisive. 
-Be the best person you can be. 
-
---
-What are the three most important questions to answer? 
-1. What next?
-That's always the most important question, it seems to me. 
-
-What are my options, and what do I want to accomplish? 
- - See above mission statement. 
-Options: work with others sharing your mission. In academia, or industry. 
-
 ---
 Design of arc chart music player. 
 1. Highlight arc that contain current played moment
@@ -106,3 +83,50 @@ justin windle
 http://www.liaworks.com/category/theprojects/
 
 !!! http://abandonedart.org/?p=993 (spirograph, really cool)
+
+http://codepen.io/anon/pen/jFiqo
+
+overall architecture: 
+there are two architectural concerns: 
+1. File structure / separating code by feature and page. Right now, I've got just a few files. I've separated html into partials for each page. but I might want to turn things into smaller chunks. I haven't subdivided my js at all, and it might be good to do that. the same goes for css. I'll need to refactor it and separate things out by feature. 
+2. The second architectural concern is that I'm growing to dislike a certain pattern of information flow: 
+ - Define some functionality in a controller
+ - That functionality or state information (like the transitions or sections) is required elsewhere. (most basically, the transitions are created on one page, and are needed to generate the sections of the next page)
+ - The data is stored in a service, rather than a controller, so multiple controllers have access
+ - To use the data in a view, I have to access it through a controller
+ - But, I have to manually make sure that the appropriate parameter is kept updated, since I'm accessing my data indirectly. 
+ - My solution thus far has been to change service data using a controller, then directly afterward sync the controller data to the service data
+ - This scale poorly right now. I have to note each occasion where the service data might change, and change the controller data accordingly. 
+ ---
+ suppose you put all shared methods and data on $rootScope. What would be the consequences? Would this approach scale? Would it be testable? Why is it generally discouraged? 
+
+ I'm basically contemplating global variables. 
+ I'd normally just create some object to pass to different functions. 
+ The problem is as follows: 
+ 	user action modifies data
+ 	multiple parts of the application need this data
+ 	a good solution makes it easy to set, get this data, and keep it up-to-date
+
+What are the possible options? 
+ - one option is to make my song object global, to put it on rootscope. 
+   doing so would keep everything up-to-date, and accessed from a single location
+
+The specific problem I'm running into is this: 
+1. Sections is dependent upon transitions, and should be updated every time transitions changes
+2. Sections is evalatuation only when the section controller is initialized, but not when the transition value changes thereafter. 
+
+So, for this specific problem, it probably isn't necessary to change anything big, but only to make sure that this property dependency and others like it are managed. 
+
+What are some ways to do this? 
+ - the simplest way is to institute a refresh of 'sections' when there's a state change
+How can this be arranged? 
+ = the state variable is a property of the main controller, and isn't visible to the sections controller
+
+
+--- New ideas for today
+Generative art
+Mandelbulb
+Processing.js
+Grunt
+Canvas
+Firebase

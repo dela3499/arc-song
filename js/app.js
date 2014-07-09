@@ -7,10 +7,12 @@
 // Consider garlic.js and parsley.js for persisting and checking data on the browser
 // Get File Upload working: http://www.html5rocks.com/en/tutorials/file/dndfiles/
 // TODO: get player to allow cursor to alter feedback
+// TODO: change color of transition markers depending on whether they are against the white background or the blue background of the progress bar
+// TODO: on each state change - only the directions should come into view (centered). Everything else should be faded in slowly. 
 
 var app = angular.module('arcsong', []);
 app.controller('MainController', function () {
-    this.state = 0;
+    this.state = 2;
     this.update = function (x) {
         this.state += x;
     };    
@@ -80,7 +82,9 @@ app.controller('TransitionFinderController', function ($song, $interval,$structu
 });
 app.controller('GroupSectionsController', function ($structure) {
     var vm = this;
+    vm.groups = [0,1,2,3,4,5,6];
     vm.sections = $structure.getSections();
+    
 });
 app.service('$song', function () {
     var vm = this;
@@ -120,11 +124,17 @@ app.service('$structure', function () {
     vm.getSections = function () {
         var sections = [],
             markers = [0.0].concat(transitions.concat([1]));
+        
+    getRandomInt = function (min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+        
         for (var i = 0; i < markers.length - 1; i++) {
             sections.push({
                 start: markers[i],
                 end: markers[i+1],
-                duration: markers[i+1] -  markers[i]
+                duration: markers[i+1] -  markers[i],
+                group: getRandomInt(1,3)
             });
         };
         return sections;

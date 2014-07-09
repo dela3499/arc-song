@@ -5,31 +5,26 @@
     left: $left;
     right: $right;
 }
-
 @mixin sides-all($x) {
     top: $x;
     bottom: $x;
     left: $x;
     right: $x;
 }
-
 .inactive {
     display: none;
 }
-
 .button {
     opacity: .5;
     &:hover {opacity: .7;}
 }
-
 .draggedFrom {
     opacity: 0;
     background: white;
 }
-
 body {
     position: absolute;
-    top: 0px;
+    top: 1px;
     bottom: 0px;
     left: 0px;
     right: 0px;
@@ -69,7 +64,6 @@ body {
         .caption {
             font-size: 13px;
             padding-bottom: 10px;
-//            opacity: 0;
         }
         #nav {
             width: 180px;
@@ -91,15 +85,7 @@ body {
                 cursor: pointer;
                 &:hover {background:  rgba(81,117,132,0.1);}
             }            
-        }
-        canvas {
-          display: block;	
-          left: 50%;
-          margin: -200px 0 0 -200px;
-          position: absolute;
-          top: 50%;
-          z-index: 100;
-        }        
+        }    
 }
     #transition-finder {
         position: absolute;
@@ -196,7 +182,7 @@ body {
                 opacity: .6;
             }
             .elapsed-time {
-                left:0px
+                left:0px;
             }
             .remaining-time {
                 right: 0px;
@@ -211,14 +197,6 @@ body {
                     display: block;
                 }                
             }
-//            .player {
-////                .progress-bar {
-////                    transition-timing-function: linear;
-////                    transition-duration: 13s;
-////                    width: 100%;
-////                }
-//            }
-
         }
     }
     #group-sections {
@@ -289,12 +267,9 @@ body {
                     .sections {
                         position: absolute;
                         @include sides-all($border-size);
-                        section {
-                            position: relative;
-                            float: left;
-                            height: 100%;
-                            width: 33.33%;
-                                                            
+                        .section {
+                            position: absolute;
+                            height: 100%;                   
                             div {
                                 position: absolute;
                                 background: #455c6f;
@@ -309,7 +284,6 @@ body {
                                 width: 0%;
                                 background: white;
                             }
-//
                         }
                     }
                 }
@@ -317,7 +291,7 @@ body {
             .original {
                 margin-bottom: $border-size;
                 .song {
-                    .sections section div {
+                    .sections .section div {
                         background: #002545;
                     }
                     .background {
