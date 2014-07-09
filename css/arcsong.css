@@ -184,8 +184,12 @@ body {
       margin-top: 7px; }
       body #group-sections .editor .original,
       body #group-sections .editor .group {
-        height: 60px;
+        height: 50px;
         margin-bottom: 14px; }
+        body #group-sections .editor .original.over .song .background,
+        body #group-sections .editor .group.over .song .background {
+          opacity: .5;
+          transition: opacity .2s ease; }
         body #group-sections .editor .original .song,
         body #group-sections .editor .group .song {
           position: relative;
@@ -220,7 +224,8 @@ body {
             left: 0;
             right: 0;
             background: #26455c;
-            opacity: .05; }
+            opacity: .05;
+            transition: opacity .2s ease; }
           body #group-sections .editor .original .song .sections,
           body #group-sections .editor .group .song .sections {
             position: absolute;
@@ -240,6 +245,9 @@ body {
                 right: 0;
                 height: 100%;
                 opacity: 1; }
+                body #group-sections .editor .original .song .sections .section div.drag,
+                body #group-sections .editor .group .song .sections .section div.drag {
+                  opacity: .9; }
               body #group-sections .editor .original .song .sections .section .progress,
               body #group-sections .editor .group .song .sections .section .progress {
                 left: 0;

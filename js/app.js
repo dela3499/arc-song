@@ -80,11 +80,95 @@ app.controller('TransitionFinderController', function ($song, $interval,$structu
         vm.state = $song.state;
     }, 500);
 });
-app.controller('GroupSectionsController', function ($structure) {
+app.controller('GroupSectionsController', function ($structure,$interval) {
     var vm = this;
     vm.groups = [0,1,2,3,4,5,6];
     vm.sections = $structure.getSections();
+    $interval(function () {vm.sections = $structure.getSections();},50); // hack (just updating this value constantly, rather than when it changes)
     
+});
+app.directive('draggable', function() {
+    return function(scope, element) {
+        // this gives us the native JS object
+        var el = element[0];
+
+        el.draggable = true;
+
+        el.addEventListener(
+            'dragstart',
+            function(e) {
+                e.dataTransfer.effectAllowed = 'move';
+                e.dataTransfer.setData('Text', this.dataset.section);
+                this.classList.add('drag');
+            console.log(["DragStart","Section: " + e.dataTransfer.getData("Text")]);
+                return false;
+            },
+            false
+        );
+
+        el.addEventListener(
+            'dragend',
+            function(e) {
+                this.classList.remove('drag');
+                return false;
+            },
+            false
+        );
+    }
+});
+app.directive('droppable', function($structure) {
+    return {
+        scope: {},
+        link: function(scope, element) {
+            // again we need the native object
+            var el = element[0];
+            el.addEventListener(
+                'dragover',
+                function(e) {
+                    e.dataTransfer.dropEffect = 'move';
+                    // allows us to drop
+                    if (e.preventDefault) e.preventDefault();
+                    this.classList.add('over');
+                    return false;
+                },
+                false
+            );   
+            el.addEventListener(
+                'dragenter',
+                function(e) {
+                    this.classList.add('over');
+                    return false;
+                },
+                false
+            );
+
+            el.addEventListener(
+                'dragleave',
+                function(e) {
+                    this.classList.remove('over');
+                    return false;
+                },
+                false
+            );
+            el.addEventListener(
+                'drop',
+                function(e) {
+                    // Stops some browsers from redirecting.
+                    if (e.stopPropagation) e.stopPropagation();
+
+                    this.classList.remove('over');
+
+//                    var item = document.getElementById(e.dataTransfer.getData('Text'));
+//                    this.appendChild(item);
+                    var section = e.dataTransfer.getData('Text'),
+                        group = this.dataset.group;
+                    $structure.changeGroup(section,group);
+                    return false;
+                },
+                false
+            );            
+        }
+    }
 });
 app.service('$song', function () {
     var vm = this;
@@ -118,19 +202,17 @@ app.service('$song', function () {
 app.service('$structure', function () {
     var vm = this,
         transitions = [.1,.2,.25,.7,.76,.78,.82,.9,.98];
-    vm.getTransitions = function () {
-        return transitions;
-    };
-    vm.getSections = function () {
+    initSections = function () {
         var sections = [],
             markers = [0.0].concat(transitions.concat([1]));
         
-    getRandomInt = function (min, max) {
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
+        getRandomInt = function (min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
         
         for (var i = 0; i < markers.length - 1; i++) {
             sections.push({
+                id: i,
                 start: markers[i],
                 end: markers[i+1],
                 duration: markers[i+1] -  markers[i],
@@ -138,10 +220,10 @@ app.service('$structure', function () {
             });
         };
         return sections;
-             
-             
-// There are t.length + 1 sections             
-        //need to convert transitions into sections with start,end,duration,and group properties
+    };
+    vm.sections = initSections();
+    vm.getTransitions = function () {
+        return transitions;
     };
     vm.addTransition = function (p) {
         transitions.push(p);
@@ -149,12 +231,19 @@ app.service('$structure', function () {
     vm.removeTransition = function (i) {
         transitions.splice(i,1);
     };
+    vm.getSections = function () {
+        return vm.sections;
+    };
+    vm.changeGroup = function (section,group) {
+        vm.sections[section].group = group;
+    };
     vm.getSymbolList = function () {
         var sList = [];
         for (var i = 0; i < vm.phrases.length; i++) {
             sList.push(phrases[i].phraseID);
         };
     };  
+    
 });
 app.filter('formatTimer', function () {
     return function (input) {

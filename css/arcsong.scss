@@ -201,7 +201,7 @@ body {
     }
     #group-sections {
         $border-size: 7px;
-        $row-height: 60px;
+        $row-height: 50px;
         position: absolute;
         top:0;
         bottom: 0;
@@ -235,6 +235,14 @@ body {
             .group {
                 height: $row-height;
                 margin-bottom: 2 * $border-size;
+                &.over {
+                    .song {
+                        .background {
+                            opacity: .5;
+                            transition: opacity .2s ease;
+                        }
+                    }
+                }
                 .song {
                     position: relative;
                     width: 70%;
@@ -261,8 +269,8 @@ body {
                         position: absolute;
                         @include sides-all(0);
                         background: #26455c;
-//                        opacity: .25;
                         opacity: .05;
+                        transition: opacity .2s ease;
                     }
                     .sections {
                         position: absolute;
@@ -277,6 +285,9 @@ body {
                                 right: 0;
                                 height: 100%;
                                 opacity: 1;
+                                &.drag {
+                                    opacity: .9;
+                                }
                             }
                             .progress {
 //                                @include sides-all(0);
