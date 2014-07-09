@@ -1,0 +1,37 @@
+<div id="landing-page" ng-show="main.state==0" ng-controller='LandingPageController as lp'>
+        <div id="description">Visualize your music.</div>
+    	<img src="img/ltta.svg" alt="arc chart for Rush's song, Leave that thing alone">
+        <div class='caption'>LEAVE THAT THING ALONE<br>by RUSH</div>
+    	<div id="buttons">
+    		<div id="nav">
+                <div class='action' ng-click="main.update(1)">
+                   <div style="display: table;overflow: hidden;height: 47px;margin:0 auto">
+                     <div style="display: table-cell; vertical-align: middle;">
+                       <div>
+                         GET STARTED
+                       </div>
+                     </div>
+                   </div>                
+                </div>                
+                <div id="gallery-button">
+                   <div style="display: table;overflow: hidden;height: 47px;margin:0 auto">
+                     <div style="display: table-cell; vertical-align: middle;">
+                       <div>
+                         GALLERY
+                       </div>
+                     </div>
+                   </div>            
+                </div>            
+				<div id="about-button">
+                   <div style="display: table;overflow: hidden;height: 47px;margin:0 auto">
+                     <div style="display: table-cell; vertical-align: middle;">
+                       <div>
+                         ABOUT
+                       </div>
+                     </div>
+                   </div>                     
+                </div>
+    		</div>
+    	</div>
+    <canvas width='600' height='600' id='swirl1_surface'></canvas>
+    </div>

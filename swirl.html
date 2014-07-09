@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <script src='js/swirl.min.js'></script>
+    </head>
+
+<canvas width='600' height='600' id='swirl1_surface'></canvas>
+<script type='text/javascript'>
+	(function() {
+		// CanvasSwirl 0.8 by Andrew Stibbard: http://xhva.net  http://jsswirl.com
+		var start = function() {
+			swirl1 = new CanvasSwirl(
+				document.getElementById('swirl1_surface'),
+			{
+				"count": 100,
+				"radiusOuterMin": "30%",
+				"radiusOuterMax": "30%",
+				"thicknessMin": 500,
+				"thicknessMax": 500,
+				"fadeTime": 1,
+				"rotationVelMin": -0.02,
+				"rotationVelMax": 0.02,
+				"originXOffsetMin": 30,
+				"originXOffsetMax": 60,
+				"originYOffsetMin": 30,
+				"originYOffsetMax": 60,
+				"distanceVelMin": 0.005,
+				"distanceVelMax": 0.015,
+				"saturationMin": 20,
+				"saturationMax": 30,
+				"lightnessMin": 75,
+				"lightnessMax": 80,
+				"hueMin": 5,
+				"hueMax": 15,
+				"opacityMin": 0.25,
+				"opacityMax": 0.25,
+				"shape": "lines",
+				"radiusInnerMax": "0%",
+				"radiusInnerMin": "0%",
+				"originX": "center",
+				"originY": "center",
+				"hueIncrement": 1,
+				"opacityScaleAtCenter": 1,
+				"opacityScaleAtEdge": 1,
+				"opacityScaleIsRelative": true,
+				"lightnessScaleAtCenter": 1,
+				"lightnessScaleAtEdge": 1,
+				"lightnessScaleIsRelative": true,
+				"saturationScaleAtCenter": 1,
+				"saturationScaleAtEdge": 1,
+				"saturationScaleIsRelative": true,
+				"distanceJitterMin": 0,
+				"distanceJitterMax": 0,
+				"rotationJitterMin": 0,
+				"rotationJitterMax": 0
+			}
+			);
+		};
+		if (window.addEventListener) window.addEventListener('load', start, false);
+		else if (window.attachEvent) window.attachEvent('onload', start);
+	})();
+</script>
+</html>

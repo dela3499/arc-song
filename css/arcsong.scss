@@ -5,31 +5,26 @@
     left: $left;
     right: $right;
 }
-
 @mixin sides-all($x) {
     top: $x;
     bottom: $x;
     left: $x;
     right: $x;
 }
-
 .inactive {
     display: none;
 }
-
 .button {
     opacity: .5;
     &:hover {opacity: .7;}
 }
-
 .draggedFrom {
     opacity: 0;
     background: white;
 }
-
 body {
     position: absolute;
-    top: 0px;
+    top: 1px;
     bottom: 0px;
     left: 0px;
     right: 0px;
@@ -69,7 +64,6 @@ body {
         .caption {
             font-size: 13px;
             padding-bottom: 10px;
-//            opacity: 0;
         }
         #nav {
             width: 180px;
@@ -91,7 +85,7 @@ body {
                 cursor: pointer;
                 &:hover {background:  rgba(81,117,132,0.1);}
             }            
-        }
+        }    
 }
     #transition-finder {
         position: absolute;
@@ -126,9 +120,6 @@ body {
                 &:hover {
 //                opacity: .8;
                 }
-            }
-            .pause {
-                display: none;
             }
             .back-5,
             .back-x { 
@@ -168,10 +159,10 @@ body {
                     &:hover {opacity: 0.9}
                 }
                 .transition-marker {
-                    opacity: 0;
+                    opacity: 1;
                     background: #d3d3d3;
                     height: 100%;
-                    width: 2px;
+                    width: 1px;
                     position: absolute;
                     z-index: 1;
                     top: 0;
@@ -191,7 +182,7 @@ body {
                 opacity: .6;
             }
             .elapsed-time {
-                left:0px
+                left:0px;
             }
             .remaining-time {
                 right: 0px;
@@ -206,19 +197,11 @@ body {
                     display: block;
                 }                
             }
-//            .player {
-////                .progress-bar {
-////                    transition-timing-function: linear;
-////                    transition-duration: 13s;
-////                    width: 100%;
-////                }
-//            }
-
         }
     }
     #group-sections {
         $border-size: 7px;
-        $row-height: 60px;
+        $row-height: 50px;
         position: absolute;
         top:0;
         bottom: 0;
@@ -252,6 +235,14 @@ body {
             .group {
                 height: $row-height;
                 margin-bottom: 2 * $border-size;
+                &.over {
+                    .song {
+                        .background {
+                            opacity: .5;
+                            transition: opacity .2s ease;
+                        }
+                    }
+                }
                 .song {
                     position: relative;
                     width: 70%;
@@ -278,18 +269,15 @@ body {
                         position: absolute;
                         @include sides-all(0);
                         background: #26455c;
-//                        opacity: .25;
                         opacity: .05;
+                        transition: opacity .2s ease;
                     }
                     .sections {
                         position: absolute;
                         @include sides-all($border-size);
-                        section {
-                            position: relative;
-                            float: left;
-                            height: 100%;
-                            width: 33.33%;
-                                                            
+                        .section {
+                            position: absolute;
+                            height: 100%;                   
                             div {
                                 position: absolute;
                                 background: #455c6f;
@@ -297,6 +285,9 @@ body {
                                 right: 0;
                                 height: 100%;
                                 opacity: 1;
+                                &.drag {
+                                    opacity: .9;
+                                }
                             }
                             .progress {
 //                                @include sides-all(0);
@@ -304,7 +295,6 @@ body {
                                 width: 0%;
                                 background: white;
                             }
-//
                         }
                     }
                 }
@@ -312,7 +302,7 @@ body {
             .original {
                 margin-bottom: $border-size;
                 .song {
-                    .sections section div {
+                    .sections .section div {
                         background: #002545;
                     }
                     .background {

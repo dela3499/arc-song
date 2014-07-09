@@ -1,0 +1,132 @@
+---
+Design of arc chart music player. 
+1. Highlight arc that contain current played moment
+2. Allowed user to change playback position with cursor
+3. Provide several different playback modes, based on different views. 
+4. Offer non-linear views of song, based on parts. allow redesign of song.
+
+--
+Growth directions: 
+----
+If you decided to spend the rest of your life developing this application, what directions would you want to explore?
+ - I'd cast the objective of the project as more than the creation of charts, and expand it to the broad understanding and analysis of music, often through visual means. 
+
+There are a few basic things: 
+ - more analysis methods 
+ - automated analysis
+ - better visualizations (3D, multicolored, animated, abstract)
+ - more music
+ - cross-track analysis (genre or artist)
+ - business uses (creating beautiful, music-based engravings, sculptures, and paintings)
+
+What are the next three steps? 
+1. Complete basic one-track/instrument analysis workflow tool. 
+2. Create a few static charts for songs
+3. Use these graphics to produce prints or engravings
+
+What are the more futuristic ideas you've got?
+1. Automate analysis of raw audio. (rather than just midi)
+2. Incorporate midi analysis
+3. Join forces with other artists to create sculptures and things
+4. Use this idea to guide other art projects
+5. Create a new music-player based on arc chart visualization
+
+--- TESTS
+E2E
+
+Symbol String and uses
+---
+What is the symbol string for? 
+ - having separated the song into phrases, each phrase is given a symbol
+What happen to the ss after it's generated? 
+ - it's used to find the repeated substrings. it's easy enough to find repetitions of a phrase, but more challenging to find repetitions of multiple phrases. this is what the suffix tree is for. 
+ - ultimately, I want to generate arcs. The arcs will depend on matches. Each match will take the following form: 
+ match = {
+ X: index of start of first matching substring
+ Y: index of start of second matching substring
+ L: length of match}
+
+ The question is how to create the data structure, matches. 
+ The first step is to find all repeated substrings, then to filter them based on the criteria specified in the acr diagram paper. 
+
+--- how will the arc chart be generated? 
+First, I'll separate the song into musical phrases, each with a phraseID. Then I'll create the symbol string by creating a list, or a string, from the phraseID values. Then I'll create a suffix tree for the string which will note all repeated substrings (or is it only the longest?). From there, I'll evaluate the substrings and create a list of those matches which satisfy the chart criteria. With those matches, I can then specify each arc.
+
+How will arcs be specified from matches? 
+ - Given a match, with X1, Y1, and L-->
+ arc = {
+ 	center: X1.tn       (tn is normalized time. 1=end of song)
+ }
+
+ It seems to me there will be lots of intermediate data structures. 
+Here they are. 
+1. sectionTransitions
+2. sections
+3. phraseTransitions
+4. phrases
+5. symbol string (using phraseID from phrases)
+6. ? something with suffix tree
+
+Converting SVG into downloadable raster file like jpeg. ---
+1. Draw svg on canvas using canvg
+2. Convert canvas drawing into data url
+3. Display an img tag with the data url as the source
+4. Use file api to allow user to download raster file
+
+The responsive svg will be drawn as normal (I'll have to see if it works on mobile, if I care). Then, if the user requests a raster format, all the above steps will be taken. 
+
+
+potential jobs: http://www.creativeapplications.net/javascript-2/super-recursion-toy-javascript/
+
+matt pearson
+justin windle
+http://www.liaworks.com/category/theprojects/
+
+!!! http://abandonedart.org/?p=993 (spirograph, really cool)
+
+http://codepen.io/anon/pen/jFiqo
+
+overall architecture: 
+there are two architectural concerns: 
+1. File structure / separating code by feature and page. Right now, I've got just a few files. I've separated html into partials for each page. but I might want to turn things into smaller chunks. I haven't subdivided my js at all, and it might be good to do that. the same goes for css. I'll need to refactor it and separate things out by feature. 
+2. The second architectural concern is that I'm growing to dislike a certain pattern of information flow: 
+ - Define some functionality in a controller
+ - That functionality or state information (like the transitions or sections) is required elsewhere. (most basically, the transitions are created on one page, and are needed to generate the sections of the next page)
+ - The data is stored in a service, rather than a controller, so multiple controllers have access
+ - To use the data in a view, I have to access it through a controller
+ - But, I have to manually make sure that the appropriate parameter is kept updated, since I'm accessing my data indirectly. 
+ - My solution thus far has been to change service data using a controller, then directly afterward sync the controller data to the service data
+ - This scale poorly right now. I have to note each occasion where the service data might change, and change the controller data accordingly. 
+ ---
+ suppose you put all shared methods and data on $rootScope. What would be the consequences? Would this approach scale? Would it be testable? Why is it generally discouraged? 
+
+ I'm basically contemplating global variables. 
+ I'd normally just create some object to pass to different functions. 
+ The problem is as follows: 
+ 	user action modifies data
+ 	multiple parts of the application need this data
+ 	a good solution makes it easy to set, get this data, and keep it up-to-date
+
+What are the possible options? 
+ - one option is to make my song object global, to put it on rootscope. 
+   doing so would keep everything up-to-date, and accessed from a single location
+
+The specific problem I'm running into is this: 
+1. Sections is dependent upon transitions, and should be updated every time transitions changes
+2. Sections is evalatuation only when the section controller is initialized, but not when the transition value changes thereafter. 
+
+So, for this specific problem, it probably isn't necessary to change anything big, but only to make sure that this property dependency and others like it are managed. 
+
+What are some ways to do this? 
+ - the simplest way is to institute a refresh of 'sections' when there's a state change
+How can this be arranged? 
+ = the state variable is a property of the main controller, and isn't visible to the sections controller
+
+
+--- New ideas for today
+Generative art
+Mandelbulb
+Processing.js
+Grunt
+Canvas
+Firebase
