@@ -1,15 +1,3 @@
-// TODO: consider sharing state and data with $scope object, rather than using services.
-// TODO: convert app directory structure to feature-based design, and use grunt to manage assets like stylesheets and javascript.
-// TODO: find alternative to constant, ad-hoc mirroring of service-level properties in controllers.
-// TODO: design arc chart music player
-// TODO: consider placing JS view logic in separate controllers, or something organized. (perhaps create some naming convention)
-// TODO: identify common components among views, and separate into partials (just copy and paste, to start, and then, once things are working - try to refactor into partials.)
-// Consider garlic.js and parsley.js for persisting and checking data on the browser
-// Get File Upload working: http://www.html5rocks.com/en/tutorials/file/dndfiles/
-// TODO: get player to allow cursor to alter feedback
-// TODO: change color of transition markers depending on whether they are against the white background or the blue background of the progress bar
-// TODO: on each state change - only the directions should come into view (centered). Everything else should be faded in slowly. 
-// Get music to fade in slowly on hover
 var app = angular.module('arcsong', []);
 app.controller('MainController', function ($structure) {
     this.state = 2;
