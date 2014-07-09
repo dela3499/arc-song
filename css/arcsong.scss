@@ -51,6 +51,16 @@ body {
         .help-button { 
             left: 70px;
         }
+        .continue-button {
+            position: absolute;
+            height: 50px;
+            width: 150px;
+            bottom: 10%;
+            right: 15%;
+            z-index: 1;
+            opacity: .4;
+            &:hover {opacity: .5;}
+        }
     }
     #landing-page {
         height: 100%;
@@ -133,11 +143,6 @@ body {
                 margin: 0 auto;
                 opacity: .7;
                 &:hover {opacity: .9;}
-            }
-            .done {
-                position: absolute;
-                left: 112.5px;
-                top: 165px;
             }
         }
         .player {
@@ -285,8 +290,8 @@ body {
                                 right: 0;
                                 height: 100%;
                                 opacity: 1;
+                                &:hover {background: hsl(208,21%, 70%);}
                                 &.drag {
-//                                    opacity: .9;
                                     border: 1px white solid;
                                 }
                             }

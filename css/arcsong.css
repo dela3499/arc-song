@@ -35,6 +35,16 @@ body {
     left: 10px; }
   body .nav .help-button {
     left: 70px; }
+  body .nav .continue-button {
+    position: absolute;
+    height: 50px;
+    width: 150px;
+    bottom: 10%;
+    right: 15%;
+    z-index: 1;
+    opacity: .4; }
+    body .nav .continue-button:hover {
+      opacity: .5; }
   body #landing-page {
     height: 100%;
     width: 100%;
@@ -245,6 +255,9 @@ body {
                 right: 0;
                 height: 100%;
                 opacity: 1; }
+                body #group-sections .editor .original .song .sections .section div:hover,
+                body #group-sections .editor .group .song .sections .section div:hover {
+                  background: #a2b4c3; }
                 body #group-sections .editor .original .song .sections .section div.drag,
                 body #group-sections .editor .group .song .sections .section div.drag {
                   border: 1px white solid; }

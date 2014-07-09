@@ -12,8 +12,9 @@
 </head>
 <body class="clearfix main" ng-app="arcsong" ng-controller="MainController as main">
     <div class="nav" ng-hide="main.state==0">
-        <img ng-click="main.update(-1)" class="back-button" src="img/back.svg" alt="back button" data-behavior='back'>
-        <img class="help-button" src="img/help.svg" alt="help button" data-behavior='help'>
+        <img class="back-button" ng-click="main.update(-1)" src="img/back.svg" alt="back button">
+        <img class="help-button" src="img/help.svg" alt="help button">
+        <img class="continue-button" src="img/continue.svg" alt="continue button" ng-click="main.update(1)">
     </div>
 <!--    <div landing-page></div>-->
     <div ng-include="'home.html'"></div>
