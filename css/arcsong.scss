@@ -238,8 +238,8 @@ body {
                 &.over {
                     .song {
                         .background {
-                            opacity: .5;
-                            transition: opacity .2s ease;
+                            opacity: .3;
+                            transition: opacity .5s ease;
                         }
                     }
                 }
@@ -270,7 +270,7 @@ body {
                         @include sides-all(0);
                         background: #26455c;
                         opacity: .05;
-                        transition: opacity .2s ease;
+                        transition: opacity .5s ease;
                     }
                     .sections {
                         position: absolute;
@@ -286,7 +286,8 @@ body {
                                 height: 100%;
                                 opacity: 1;
                                 &.drag {
-                                    opacity: .9;
+//                                    opacity: .9;
+                                    border: 1px white solid;
                                 }
                             }
                             .progress {

@@ -80,12 +80,18 @@ app.controller('TransitionFinderController', function ($song, $interval,$structu
         vm.state = $song.state;
     }, 500);
 });
-app.controller('GroupSectionsController', function ($structure,$interval) {
+app.controller('GroupSectionsController', function ($structure,$interval,$song) {
     var vm = this;
     vm.groups = [0,1,2,3,4,5,6];
     vm.sections = $structure.getSections();
+    vm.play = function (s) {
+        console.log('mouseenter on section');
+        $song.play(s.start,s.end);
+    };
+    vm.stop = function () {
+        $song.stop();
+    };
     $interval(function () {vm.sections = $structure.getSections();},50); // hack (just updating this value constantly, rather than when it changes)
-    
 });
 app.directive('draggable', function() {
     return function(scope, element) {
@@ -182,8 +188,12 @@ app.service('$song', function () {
     });
     vm.t = function () {return sound.pos(); };
     vm.progress = function () {return vm.t() / vm.duration; };
-    vm.play = function () {
-        sound.play();
+    vm.play = function (start,end) {
+        var start = start || 0,
+            end   = end   || 1;
+        sound.sprite({'song':[start*vm.duration*1000,(end-start)*vm.duration*1000]});
+        sound.loop((end - start) != 1); //loop for excerpts only
+        sound.play('song');
         vm.state = 'playing';
     };
     vm.pause = function () {
@@ -216,7 +226,7 @@ app.service('$structure', function () {
                 start: markers[i],
                 end: markers[i+1],
                 duration: markers[i+1] -  markers[i],
-                group: getRandomInt(1,3)
+                group: getRandomInt(0,3)
             });
         };
         return sections;

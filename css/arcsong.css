@@ -188,8 +188,8 @@ body {
         margin-bottom: 14px; }
         body #group-sections .editor .original.over .song .background,
         body #group-sections .editor .group.over .song .background {
-          opacity: .5;
-          transition: opacity .2s ease; }
+          opacity: .3;
+          transition: opacity .5s ease; }
         body #group-sections .editor .original .song,
         body #group-sections .editor .group .song {
           position: relative;
@@ -225,7 +225,7 @@ body {
             right: 0;
             background: #26455c;
             opacity: .05;
-            transition: opacity .2s ease; }
+            transition: opacity .5s ease; }
           body #group-sections .editor .original .song .sections,
           body #group-sections .editor .group .song .sections {
             position: absolute;
@@ -247,7 +247,7 @@ body {
                 opacity: 1; }
                 body #group-sections .editor .original .song .sections .section div.drag,
                 body #group-sections .editor .group .song .sections .section div.drag {
-                  opacity: .9; }
+                  border: 1px white solid; }
               body #group-sections .editor .original .song .sections .section .progress,
               body #group-sections .editor .group .song .sections .section .progress {
                 left: 0;
