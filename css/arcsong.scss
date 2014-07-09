@@ -11,16 +11,9 @@
     left: $x;
     right: $x;
 }
-.inactive {
-    display: none;
-}
 .button {
     opacity: .5;
     &:hover {opacity: .7;}
-}
-.draggedFrom {
-    opacity: 0;
-    background: white;
 }
 body {
     position: absolute;
