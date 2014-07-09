@@ -7,7 +7,9 @@
             <div class="song">
                 <div class="background"></div>
                 <div class="sections">
-                    <div class='section' ng-repeat='s in gs.sections' ng-show='s.group == group' ng-style="{'width': s.duration * 100 + '%', 'left': s.start * 100 + '%'}"><div data-section="{{s.id}}" ng-mouseenter='gs.play(s)' ng-mouseleave='gs.stop()' draggable></div></div>
+                    <div class='section' ng-repeat='s in gs.sections' ng-show='s.group == group' ng-style="{'width': s.duration * 100 + '%', 'left': s.start * 100 + '%'}">
+                        <div data-section="{{s.id}}" ng-mouseenter='gs.play(s)' ng-mouseleave='gs.stop()' draggable></div>
+                    </div>
                 </div>
             </div>
         </div>         

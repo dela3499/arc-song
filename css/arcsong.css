@@ -1,14 +1,7 @@
-.inactive {
-  display: none; }
-
 .button {
   opacity: .5; }
   .button:hover {
     opacity: .7; }
-
-.draggedFrom {
-  opacity: 0;
-  background: white; }
 
 body {
   position: absolute;
@@ -95,7 +88,8 @@ body {
       padding-top: 10px;
       padding-bottom: 3px;
       border-bottom: 2px black solid;
-      margin: 0 auto; }
+      margin: 0 auto;
+      margin-bottom: 10px; }
     body #transition-finder .controls {
       position: relative;
       width: 360px;
@@ -116,21 +110,16 @@ body {
         opacity: .7; }
         body #transition-finder .controls .transition:hover {
           opacity: .9; }
-      body #transition-finder .controls .done {
-        position: absolute;
-        left: 112.5px;
-        top: 165px; }
     body #transition-finder .player {
       position: relative;
       margin: 0 auto;
-      height: 60px;
+      height: 40px;
       width: 62.5%; }
       body #transition-finder .player .player-background {
         position: absolute;
-        top: 15px;
-        left: 60px;
-        right: 60px;
-        height: 30px;
+        left: 50px;
+        right: 50px;
+        height: 100%;
         background: #ddd; }
         body #transition-finder .player .player-background .progress-bar {
           width: 0%;
@@ -151,12 +140,11 @@ body {
       body #transition-finder .player .remaining-time {
         font-size: 16px;
         font-weight: 800;
-        color: #caced1;
-        color: white;
+        color: black;
         position: absolute;
-        height: 100%;
-        width: 60px;
-        background: #7e878e;
+        top: 10px;
+        vertical-align: middle;
+        width: 50px;
         opacity: .6; }
       body #transition-finder .player .elapsed-time {
         left: 0px; }

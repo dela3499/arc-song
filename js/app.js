@@ -1,6 +1,6 @@
 var app = angular.module('arcsong', []);
 app.controller('MainController', function ($structure) {
-    this.state = 2;
+    this.state = 1;
     this.update = function (x) {
         this.state += x;
         $structure.update();

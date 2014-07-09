@@ -6,7 +6,7 @@
 // TODO: identify common components among views, and separate into partials (just copy and paste, to start, and then, once things are working - try to refactor into partials.)
 // Consider garlic.js and parsley.js for persisting and checking data on the browser
 // Get File Upload working: http://www.html5rocks.com/en/tutorials/file/dndfiles/
-// TODO: get player to allow cursor to alter feedback
+// TODO: Allow playback scrubbing
 // TODO: change color of transition markers depending on whether they are against the white background or the blue background of the progress bar
 // TODO: on each state change - only the directions should come into view (centered). Everything else should be faded in slowly. 
 // Get music to fade in slowly on hover
