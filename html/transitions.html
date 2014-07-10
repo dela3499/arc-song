@@ -1,0 +1,20 @@
+<div id="transition-finder" ng-show="main.state==1" ng-controller="TransitionFinderController as tf">
+    <div class="main-container">
+        <div class="directions">First, separate the song into sections<br>by finding the big transitions.</div> 
+        <div class="player">
+            <div class="player-background">
+                <div class='transition-marker' ng-repeat='t in tf.transitions' ng-style="{'left': t*100+'%'}"></div>
+                <div class="progress-bar"></div>
+            </div> 
+            <div class='elapsed-time'>{{tf.tElapsed | formatTimer}}</div>
+            <div class='remaining-time'>-{{tf.tRemaining | formatTimer}}</div>
+        </div>
+        <div class="controls">
+            <img class="play button" src="img/play.svg" ng-click='tf.play()' ng-hide='tf.state=="playing"'>
+            <img class="pause button" src="img/pause.svg" ng-click='tf.pause()' ng-show='tf.state=="playing"'>
+            <img class="transition button" src="img/found-transition.svg" ng-click='tf.addTransition()'>
+            <img class="back-5 button" src="img/back5.svg" ng-click='tf.back(5)'>
+            <img class="back-x button" src="img/back-x.svg">
+        </div>
+    </div>
+</div>

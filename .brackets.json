@@ -9,6 +9,9 @@
                 "sourceComments": "map",
                 "outputStyle": "nested"
             }
+        },
+        "sass/bootstrap/*.scss": {
+            "sass.enabled": false
         }
     }
 }

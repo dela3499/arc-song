@@ -1,20 +1,9 @@
-// TODO: consider sharing state and data with $scope object, rather than using services.
-// TODO: convert app directory structure to feature-based design, and use grunt to manage assets like stylesheets and javascript.
-// TODO: find alternative to constant, ad-hoc mirroring of service-level properties in controllers.
-// TODO: design arc chart music player
-// TODO: consider placing JS view logic in separate controllers, or something organized. (perhaps create some naming convention)
-// TODO: identify common components among views, and separate into partials (just copy and paste, to start, and then, once things are working - try to refactor into partials.)
-// Consider garlic.js and parsley.js for persisting and checking data on the browser
-// Get File Upload working: http://www.html5rocks.com/en/tutorials/file/dndfiles/
-// TODO: get player to allow cursor to alter feedback
-// TODO: change color of transition markers depending on whether they are against the white background or the blue background of the progress bar
-// TODO: on each state change - only the directions should come into view (centered). Everything else should be faded in slowly. 
-
 var app = angular.module('arcsong', []);
-app.controller('MainController', function () {
-    this.state = 2;
+app.controller('MainController', function ($structure) {
+    this.state = 1;
     this.update = function (x) {
         this.state += x;
+        $structure.update();
     };    
 });
 app.controller('LandingPageController', function () {
@@ -64,48 +53,40 @@ app.controller('TransitionFinderController', function ($song, $interval,$structu
             }
         });        
     };
-    
-// TODO: use this function to make sure progress bar is on track with song     
-//    var pbc = function() {
-//        var dw = pbg.css('width').replace(/[^-\d\.]/g, ''),
-//            pbw = p.css('width').replace(/[^-\d\.]/g, ''),
-//            sp = $song.progress(),
-//            e = ((pbw / dw) - sp)*100;
-//        return e;
-//    };
-    
     $interval(function () {
         vm.tElapsed = $song.t();
         vm.tRemaining = $song.duration - $song.t();
         vm.state = $song.state;
     }, 500);
 });
-app.controller('GroupSectionsController', function ($structure,$interval) {
+app.controller('GroupSectionsController', function ($structure,$interval,$song) {
     var vm = this;
     vm.groups = [0,1,2,3,4,5,6];
     vm.sections = $structure.getSections();
+    vm.play = function (s) {
+        $song.play(s.start,s.end);
+    };
+    vm.stop = function () {
+        $song.stop();
+    };
     $interval(function () {vm.sections = $structure.getSections();},50); // hack (just updating this value constantly, rather than when it changes)
-    
 });
-app.directive('draggable', function() {
+app.directive('draggable', function($song) {
     return function(scope, element) {
         // this gives us the native JS object
         var el = element[0];
-
         el.draggable = true;
-
         el.addEventListener(
             'dragstart',
             function(e) {
                 e.dataTransfer.effectAllowed = 'move';
                 e.dataTransfer.setData('Text', this.dataset.section);
                 this.classList.add('drag');
-            console.log(["DragStart","Section: " + e.dataTransfer.getData("Text")]);
+                $song.stop();
                 return false;
             },
             false
         );
-
         el.addEventListener(
             'dragend',
             function(e) {
@@ -182,8 +163,12 @@ app.service('$song', function () {
     });
     vm.t = function () {return sound.pos(); };
     vm.progress = function () {return vm.t() / vm.duration; };
-    vm.play = function () {
-        sound.play();
+    vm.play = function (start,end) {
+        var start = start || 0,
+            end   = end   || 1;
+        sound.sprite({'song':[start*vm.duration*1000,(end-start)*vm.duration*1000]});
+        sound.loop((end - start) != 1); //loop for excerpts only
+        sound.play('song'); //howler doesn't fade effectively
         vm.state = 'playing';
     };
     vm.pause = function () {
@@ -201,7 +186,7 @@ app.service('$song', function () {
 });
 app.service('$structure', function () {
     var vm = this,
-        transitions = [.1,.2,.25,.7,.76,.78,.82,.9,.98];
+        transitions = [.1,.5,.7,.8,.9];//hacked mock values    
     initSections = function () {
         var sections = [],
             markers = [0.0].concat(transitions.concat([1]));
@@ -216,12 +201,15 @@ app.service('$structure', function () {
                 start: markers[i],
                 end: markers[i+1],
                 duration: markers[i+1] -  markers[i],
-                group: getRandomInt(1,3)
+                group: 0
             });
         };
         return sections;
     };
-    vm.sections = initSections();
+    vm.sections = initSections(); // view mocked values immediately
+    vm.update = function () {
+        vm.sections = initSections();
+    };
     vm.getTransitions = function () {
         return transitions;
     };
@@ -245,6 +233,10 @@ app.service('$structure', function () {
     };  
     
 });
+app.service('$animation', function () {
+    var vm = this;
+//    vm.animate = function (el)
+});
 app.filter('formatTimer', function () {
     return function (input) {
         function z(n) {return (n < 10 ? '0' : '') + n; }
@@ -255,98 +247,11 @@ app.filter('formatTimer', function () {
 });
 
 
-//var sound2 = new Howl({
-//        urls: ['audio/animate2.mp3'], // hack: hardcoded song
-//        loop: true
-//    });
-//
-//sound2.sprite({'clip': [7000,1000]});
-//
-//var newSections  = []
-//
-//transitions = [1,2,3,4,5,5.5,6,9];
-//var newTransitions = [0.0].concat(transitions.concat([duration]));
-//
-//$('.original .song .sections').children().remove();
-//for (var i = 0; i < newTransitions.length -1; i++) {
-//    newSections.push([i,newTransitions[i],newTransitions[i+1]]);
-//}
-//for (var i = 0; i < newSections.length; i++) {
-//    $('.original .song .sections').append('<section><div></div></section>');
-//    var start = newSections[i][1],
-//        end   = newSections[i][2];
-//    var dur   = end - start;
-//    $(".original .song .sections section:last").css("width", dur*100 / duration + "%");
-//    $(".original .song .sections section:last div").attr({
-//        'data-section': i,
-//        'data-group': 0
-//    });
-//    $(".original .song .sections section:last div").data({
-//        'data-section': i,
-//        'data-group': 0
-//    });            
-//    var currentSprites = sound2.sprite();
-//    currentSprites[i] = [start * 1000, 1000 * dur];
-//    sound2.sprite(currentSprites);
-//}
-//
-//$("#group-sections groups section div").addClass('inactive');
-//$("#group-sections .group").hover(
-//    function(){
-//        $(this).find(".controls").css('opacity',0);
-//        $(this).find(".controls").css("visibility","visible");
-//        $(this).find(".controls").animate({"opacity":1},500);
-//    }, function(){ $(this).find(".controls").css("visibility","hidden")});
-//
-//$("#group-sections section div").hover(
-//  function(){
-//    $(this).append('<div class="progress"></div>');
-//      var index = $(this).attr("data-section")
-//      sound2.play(index);
-//
-//}, function(){
-//    sound2.stop();
-//    $(this).find(".progress").remove();
-//});
-//function progressBar3() {
-//    $("#group-sections .progress").animate({
-//        width:"100%"
-//    },{
-//        duration: 1000*(duration - sound2.pos()),
-//        easing: "linear"})};      
-//$(".editor section div").attr({
-//    draggable: "true"
-////            ondragstart: "sectionDrag(this.data)"
-//});
-//
-////        var mySection = $(".editor section div");
-////        mySection.ondragstart = function(e) {
-//////            e.dataTransfer.setData('Text','bob');
-////            console.log(e.dataTransfer);
-////            console.log("bob");
-//////            return false;
-////        }
-//
-//$(".editor section div").on('dragstart', function(e) {
-////            $(this).animate({opacity:0},100);
-////            $(this).addClass('draggedFrom');
-//    var group = $(this).attr('data-group');
-//    var section = $(this).attr('data-section');
-//    console.log(e);
-//    event.dataTransfer().setData('Text','bob');
-//    console.log(event.dataTransfer.getData());
-//});
-//
-//// need to add events in js, rather than html.
-//function sectionDrag(ev) {
-//    console.log(ev);
-////            var evGroup = ev.target.attr('data-group');
-//    console.log(ev.target.data);
-////            var evSection = ev.target.attr('data-section');
-//    console.log($(document).find('[data-group=' + evGroup + '],[data-section=' + evSection + ']'));
-//};
-////        function sectionDrag() {
-////            $(this).addClass('inactive');
-////            //            console.log($(this));
-////        };
-//
+
+
+
+
+
+
+
+

@@ -1,14 +1,7 @@
-.inactive {
-  display: none; }
-
 .button {
   opacity: .5; }
   .button:hover {
     opacity: .7; }
-
-.draggedFrom {
-  opacity: 0;
-  background: white; }
 
 body {
   position: absolute;
@@ -35,6 +28,16 @@ body {
     left: 10px; }
   body .nav .help-button {
     left: 70px; }
+  body .nav .continue-button {
+    position: absolute;
+    height: 50px;
+    width: 150px;
+    bottom: 10%;
+    right: 15%;
+    z-index: 1;
+    opacity: .4; }
+    body .nav .continue-button:hover {
+      opacity: .5; }
   body #landing-page {
     height: 100%;
     width: 100%;
@@ -85,7 +88,8 @@ body {
       padding-top: 10px;
       padding-bottom: 3px;
       border-bottom: 2px black solid;
-      margin: 0 auto; }
+      margin: 0 auto;
+      margin-bottom: 10px; }
     body #transition-finder .controls {
       position: relative;
       width: 360px;
@@ -106,21 +110,16 @@ body {
         opacity: .7; }
         body #transition-finder .controls .transition:hover {
           opacity: .9; }
-      body #transition-finder .controls .done {
-        position: absolute;
-        left: 112.5px;
-        top: 165px; }
     body #transition-finder .player {
       position: relative;
       margin: 0 auto;
-      height: 60px;
+      height: 40px;
       width: 62.5%; }
       body #transition-finder .player .player-background {
         position: absolute;
-        top: 15px;
-        left: 60px;
-        right: 60px;
-        height: 30px;
+        left: 50px;
+        right: 50px;
+        height: 100%;
         background: #ddd; }
         body #transition-finder .player .player-background .progress-bar {
           width: 0%;
@@ -141,12 +140,11 @@ body {
       body #transition-finder .player .remaining-time {
         font-size: 16px;
         font-weight: 800;
-        color: #caced1;
-        color: white;
+        color: black;
         position: absolute;
-        height: 100%;
-        width: 60px;
-        background: #7e878e;
+        top: 10px;
+        vertical-align: middle;
+        width: 50px;
         opacity: .6; }
       body #transition-finder .player .elapsed-time {
         left: 0px; }
@@ -188,8 +186,8 @@ body {
         margin-bottom: 14px; }
         body #group-sections .editor .original.over .song .background,
         body #group-sections .editor .group.over .song .background {
-          opacity: .5;
-          transition: opacity .2s ease; }
+          opacity: .3;
+          transition: opacity .5s ease; }
         body #group-sections .editor .original .song,
         body #group-sections .editor .group .song {
           position: relative;
@@ -225,7 +223,7 @@ body {
             right: 0;
             background: #26455c;
             opacity: .05;
-            transition: opacity .2s ease; }
+            transition: opacity .5s ease; }
           body #group-sections .editor .original .song .sections,
           body #group-sections .editor .group .song .sections {
             position: absolute;
@@ -245,9 +243,12 @@ body {
                 right: 0;
                 height: 100%;
                 opacity: 1; }
+                body #group-sections .editor .original .song .sections .section div:hover,
+                body #group-sections .editor .group .song .sections .section div:hover {
+                  background: #a2b4c3; }
                 body #group-sections .editor .original .song .sections .section div.drag,
                 body #group-sections .editor .group .song .sections .section div.drag {
-                  opacity: .9; }
+                  border: 1px white solid; }
               body #group-sections .editor .original .song .sections .section .progress,
               body #group-sections .editor .group .song .sections .section .progress {
                 left: 0;

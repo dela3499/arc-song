@@ -1,0 +1,22 @@
+// TODO: consider sharing state and data with $scope object, rather than using services.
+// TODO: convert app directory structure to feature-based design, and use grunt to manage assets like stylesheets and javascript.
+// TODO: find alternative to constant, ad-hoc mirroring of service-level properties in controllers.
+// TODO: design arc chart music player
+// TODO: consider placing JS view logic in separate controllers, or something organized. (perhaps create some naming convention)
+// TODO: identify common components among views, and separate into partials (just copy and paste, to start, and then, once things are working - try to refactor into partials.)
+// Consider garlic.js and parsley.js for persisting and checking data on the browser
+// Get File Upload working: http://www.html5rocks.com/en/tutorials/file/dndfiles/
+// TODO: Allow playback scrubbing
+// TODO: change color of transition markers depending on whether they are against the white background or the blue background of the progress bar
+// TODO: on each state change - only the directions should come into view (centered). Everything else should be faded in slowly. 
+// Get music to fade in slowly on hover
+// TODO: use GSS or something to make page beautiful under all conditions
+// TODO: produce mobile version
+// TODO: create a version of http://www.subblue.com/projects/guilloche and use them, instead of simple, svg circles for the arc chart.
+// TODO: incorporate automated analysis
+// TODO: take another look at coffee script. It seems like it may actually be a really good idea to migrate to it. (a direct translation of existing code is less useful than it's additional abstractions like list comprehensions.
+// TODO: find out how to keep computed properties up-to-date when their dependencies change.
+.. consider passing around objects,rather than values. they will br passed by refernce
+// TODO: forget about CoffeeScript --> http://jeditoolkit.com/wisp/
+refactor code using lispy syntax, and use macros to create powerful abstractions.
+//consider React and whether its modularity and simplicty are better than angular or complement it

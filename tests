@@ -1,0 +1,8 @@
+// TODO: use this function to make sure progress bar is on track with song     
+//    var pbc = function() {
+//        var dw = pbg.css('width').replace(/[^-\d\.]/g, ''),
+//            pbw = p.css('width').replace(/[^-\d\.]/g, ''),
+//            sp = $song.progress(),
+//            e = ((pbw / dw) - sp)*100;
+//        return e;
+//    };

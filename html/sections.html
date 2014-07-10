@@ -5,15 +5,11 @@
     <div class="editor">
         <div ng-repeat='group in gs.groups' ng-class="(group==0) ? 'original' : 'group'"  data-group="{{group}}" droppable>
             <div class="song">
-<!--
-                <div class="controls">
-                    <img class="play button" src="img/play_60px.svg">
-                    <img class="delete button" src="img/delete.svg">
-                </div>
--->
                 <div class="background"></div>
                 <div class="sections">
-                    <div class='section' ng-repeat='s in gs.sections' ng-show='s.group == group' ng-style="{'width': s.duration * 100 + '%', 'left': s.start * 100 + '%'}"><div data-section="{{s.id}}" draggable></div></div>
+                    <div class='section' ng-repeat='s in gs.sections' ng-show='s.group == group' ng-style="{'width': s.duration * 100 + '%', 'left': s.start * 100 + '%'}">
+                        <div data-section="{{s.id}}" ng-mouseenter='gs.play(s)' ng-mouseleave='gs.stop()' draggable></div>
+                    </div>
                 </div>
             </div>
         </div>         
