@@ -14,3 +14,9 @@
 // TODO: produce mobile version
 // TODO: create a version of http://www.subblue.com/projects/guilloche and use them, instead of simple, svg circles for the arc chart.
 // TODO: incorporate automated analysis
+// TODO: take another look at coffee script. It seems like it may actually be a really good idea to migrate to it. (a direct translation of existing code is less useful than it's additional abstractions like list comprehensions.
+// TODO: find out how to keep computed properties up-to-date when their dependencies change.
+.. consider passing around objects,rather than values. they will br passed by refernce
+// TODO: forget about CoffeeScript --> http://jeditoolkit.com/wisp/
+refactor code using lispy syntax, and use macros to create powerful abstractions.
+//consider React and whether its modularity and simplicty are better than angular or complement it
