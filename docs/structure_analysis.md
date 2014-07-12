@@ -113,4 +113,17 @@ What are the properties of the global application state?
 
 // perhaps I shouldn't even store a variable called transitions, but instead create sections on the 'transition-finding' page.
 
+----
+Working back from the end, what data do I need? 
+1. Raster Image 
+2. Vector Image
+3. Arc Spec
+4. Essential Phrase Matches
+5. Phrase Matches
+6. Suffix Tree
+7. Phrase String
+8. Phrase Object Array
+9. Section Object Array
+10. Song
 
+----
