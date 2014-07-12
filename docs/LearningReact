@@ -1,1 +1,14 @@
 Though I excited to use react, and think it will improve my app, I'm having difficulty getting started. Right now, I'm trying to redesign the app for React, but I think I'd be better off if I started by simply copying and pasting my existing markup into components, then refactoring from their with a working app.
+
+This approach works well. Having yet to write any tests, this provides a better visual representation of progress. I'm immediately aware when I've broken some aspect of the view. 
+
+1. How should I handle the pages? What are the approaches? What features am I searching for? 
+There are several approaches. : 
+ 1. Each page gets a component, main app shows each based on state
+ 2. App has constant elements, like navigation, which lie outside the page component.
+ 
+ There are two major concerns: 
+  1. Code repetition
+  2. Explicit statement about what appear on a page
+
+I'm concerned that making the pages' contents explicit (by including navigation in each page component) would result in unnecessary repetition. On the other hand, it would mean that each page was self contained. For now, I'll be explicit and include a navigation component in each page. My most basic question is, "Do I have any consistently-visible app-level view components?" The navigation buttons are the closest thing to such a component. I might consider having a toolbar or something, which could lie at the app, rather than page, level is it's always visible.
