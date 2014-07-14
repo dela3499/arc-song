@@ -1,7 +1,10 @@
 .button {
-  opacity: .5; }
+  opacity: 0.5; }
   .button:hover {
-    opacity: .7; }
+    opacity: 0.7; }
+
+.hidden {
+  display: none; }
 
 body {
   position: absolute;
@@ -9,21 +12,19 @@ body {
   bottom: 0px;
   left: 0px;
   right: 0px;
-  background-image: url("../img/png/18.png");
+  background-image: url('../img/png/18.png');
   font-family: 'Raleway', sans-serif;
   font-size: 24px;
   text-align: center; }
-  body .nav .back-button,
-  body .nav .help-button {
+  body .nav .back-button, body .nav .help-button {
     position: absolute;
     height: 50px;
     width: 50px;
     top: 10px;
-    opacity: .1;
+    opacity: 0.1;
     z-index: 1; }
-    body .nav .back-button:hover,
-    body .nav .help-button:hover {
-      opacity: .2; }
+    body .nav .back-button:hover, body .nav .help-button:hover {
+      opacity: 0.2; }
   body .nav .back-button {
     left: 10px; }
   body .nav .help-button {
@@ -35,9 +36,9 @@ body {
     bottom: 10%;
     right: 15%;
     z-index: 1;
-    opacity: .4; }
+    opacity: 0.4; }
     body .nav .continue-button:hover {
-      opacity: .5; }
+      opacity: 0.5; }
   body #landing-page {
     height: 100%;
     width: 100%;
@@ -61,14 +62,12 @@ body {
         margin: 0 auto; }
         body #landing-page #nav .action:hover {
           background: rgba(81, 117, 132, 0.3); }
-      body #landing-page #nav #gallery-button,
-      body #landing-page #nav #about-button {
+      body #landing-page #nav #gallery-button, body #landing-page #nav #about-button {
         height: 40px;
         width: 100%;
         font-size: 20px;
         cursor: pointer; }
-        body #landing-page #nav #gallery-button:hover,
-        body #landing-page #nav #about-button:hover {
+        body #landing-page #nav #gallery-button:hover, body #landing-page #nav #about-button:hover {
           background: rgba(81, 117, 132, 0.1); }
   body #transition-finder {
     position: absolute;
@@ -95,21 +94,17 @@ body {
       width: 360px;
       height: 75px;
       margin: 13px auto; }
-      body #transition-finder .controls .play,
-      body #transition-finder .controls .pause {
+      body #transition-finder .controls .play, body #transition-finder .controls .pause {
         position: absolute;
         left: 0px; }
-      body #transition-finder .controls .back-5,
-      body #transition-finder .controls .back-x {
+      body #transition-finder .controls .back-5, body #transition-finder .controls .back-x {
         position: absolute;
         right: 0px; }
-      body #transition-finder .controls .back-x {
-        visibility: hidden; }
       body #transition-finder .controls .transition {
         margin: 0 auto;
-        opacity: .7; }
+        opacity: 0.7; }
         body #transition-finder .controls .transition:hover {
-          opacity: .9; }
+          opacity: 0.9; }
     body #transition-finder .player {
       position: relative;
       margin: 0 auto;
@@ -136,8 +131,7 @@ body {
           z-index: 1;
           top: 0;
           left: 0; }
-      body #transition-finder .player .elapsed-time,
-      body #transition-finder .player .remaining-time {
+      body #transition-finder .player .elapsed-time, body #transition-finder .player .remaining-time {
         font-size: 16px;
         font-weight: 800;
         color: black;
@@ -145,7 +139,7 @@ body {
         top: 10px;
         vertical-align: middle;
         width: 50px;
-        opacity: .6; }
+        opacity: 0.6; }
       body #transition-finder .player .elapsed-time {
         left: 0px; }
       body #transition-finder .player .remaining-time {
@@ -160,8 +154,7 @@ body {
     bottom: 0;
     left: 0;
     right: 0; }
-    body #group-sections .back-button,
-    body #group-sections .help-button {
+    body #group-sections .back-button, body #group-sections .help-button {
       position: absolute;
       height: 50px;
       width: 50px;
@@ -180,77 +173,63 @@ body {
       margin-top: 80px; }
     body #group-sections .editor {
       margin-top: 7px; }
-      body #group-sections .editor .original,
-      body #group-sections .editor .group {
+      body #group-sections .editor .original, body #group-sections .editor .group {
         height: 50px;
         margin-bottom: 14px; }
-        body #group-sections .editor .original.over .song .background,
-        body #group-sections .editor .group.over .song .background {
-          opacity: .3;
-          transition: opacity .5s ease; }
-        body #group-sections .editor .original .song,
-        body #group-sections .editor .group .song {
+        body #group-sections .editor .original.over .song .background, body #group-sections .editor .group.over .song .background {
+          opacity: 0.3;
+          transition: opacity 0.5s ease; }
+        body #group-sections .editor .original .song, body #group-sections .editor .group .song {
           position: relative;
           width: 70%;
           height: 100%;
           margin: 0 auto; }
-          body #group-sections .editor .original .song .controls,
-          body #group-sections .editor .group .song .controls {
+          body #group-sections .editor .original .song .controls, body #group-sections .editor .group .song .controls {
             visibility: hidden;
             position: absolute;
             top: 0;
             bottom: 0;
             left: 0;
             right: 0; }
-            body #group-sections .editor .original .song .controls .play,
-            body #group-sections .editor .group .song .controls .play {
+            body #group-sections .editor .original .song .controls .play, body #group-sections .editor .group .song .controls .play {
               position: absolute;
               left: -69.1px; }
-            body #group-sections .editor .original .song .controls .delete,
-            body #group-sections .editor .group .song .controls .delete {
+            body #group-sections .editor .original .song .controls .delete, body #group-sections .editor .group .song .controls .delete {
               position: absolute;
               right: -69.1px; }
-          body #group-sections .editor .original .song .next,
-          body #group-sections .editor .group .song .next {
+          body #group-sections .editor .original .song .next, body #group-sections .editor .group .song .next {
             position: absolute;
             right: 0; }
-          body #group-sections .editor .original .song .background,
-          body #group-sections .editor .group .song .background {
+          body #group-sections .editor .original .song .background, body #group-sections .editor .group .song .background {
             position: absolute;
             top: 0;
             bottom: 0;
             left: 0;
             right: 0;
             background: #26455c;
-            opacity: .05;
-            transition: opacity .5s ease; }
-          body #group-sections .editor .original .song .sections,
-          body #group-sections .editor .group .song .sections {
+            opacity: 0.05;
+            transition: opacity 0.5s ease; }
+          body #group-sections .editor .original .song .sections, body #group-sections .editor .group .song .sections {
             position: absolute;
             top: 7px;
             bottom: 7px;
             left: 7px;
             right: 7px; }
-            body #group-sections .editor .original .song .sections .section,
-            body #group-sections .editor .group .song .sections .section {
+            body #group-sections .editor .original .song .sections .section, body #group-sections .editor .group .song .sections .section {
               position: absolute;
               height: 100%; }
-              body #group-sections .editor .original .song .sections .section div,
-              body #group-sections .editor .group .song .sections .section div {
+              body #group-sections .editor .original .song .sections .section div, body #group-sections .editor .group .song .sections .section div {
                 position: absolute;
                 background: #455c6f;
                 left: 2px;
                 right: 0;
                 height: 100%;
                 opacity: 1; }
-                body #group-sections .editor .original .song .sections .section div:hover,
-                body #group-sections .editor .group .song .sections .section div:hover {
+                body #group-sections .editor .original .song .sections .section div:hover, body #group-sections .editor .group .song .sections .section div:hover {
                   background: #a2b4c3; }
-                body #group-sections .editor .original .song .sections .section div.drag,
-                body #group-sections .editor .group .song .sections .section div.drag {
+                body #group-sections .editor .original .song .sections .section div.drag, body #group-sections .editor .group .song .sections .section div.drag {
                   border: 1px white solid; }
-              body #group-sections .editor .original .song .sections .section .progress,
-              body #group-sections .editor .group .song .sections .section .progress {
+              body #group-sections .editor .original .song .sections .section .progress, body #group-sections .editor .group .song .sections .section .progress {
                 left: 0;
                 width: 0%;
                 background: white; }
@@ -260,3 +239,5 @@ body {
           background: #002545; }
         body #group-sections .editor .original .song .background {
           background: none; }
+
+/*# sourceMappingURL=arcsong.css.map */
