@@ -1,4 +1,7 @@
 /** @jsx React.DOM */
+var FluxMixin = Fluxxor.FluxMixin(React),
+    FluxChildMixin = Fluxxor.FluxChildMixin(React)
+    StoreWatchMixin = Fluxxor.StoreWatchMixin;
 
 var AudioStore = Fluxxor.createStore({
     initialize: function () {
@@ -9,55 +12,31 @@ var AudioStore = Fluxxor.createStore({
     },
     handleTogglePlayback: function () {
         this.playing = !this.playing;
+        this.emit("change");
     }
 });
-
 var stores = {
     AudioStore: new AudioStore()
 };
 var actions = {
     audio: {
         togglePlayback: function () {
-            console.log("TOGGLE_PLAYBACK");
             this.dispatch("TOGGLE_PLAYBACK", {});
         }
     }
 };
-var flux = new Fluxxor.Flux(stores,actions);
-
-
 var ArcSongApp = React.createClass ({
-    getInitialState: function () {
-        return {playback: "off"};
-    },
-    audioCtrl: {
-        print: function () {
-            console.log("audioCtrl.print");
-            var p = this;
-            console.log(p);
+    mixins: [FluxMixin, StoreWatchMixin("AudioStore")],
+    getStateFromFlux: function () {
+        var flux = this.getFlux();
+        return {
+            playing: flux.store("AudioStore").playing
         }
-    },
-    setPlayback: function (x) {
-        switch (x) {
-            case "play":
-                this.setState({playback: "playing"});
-                break;
-            case "pause":
-                this.setState({playback: "paused"});
-                break;
-            case "stop":
-                this.setState({playback: "off"});
-                break;
-            default:
-                console.log("invalid argument to ArcSongApp.setPlayback");
-        };
-                
     },
     render: function () {
         var x = this.state;
-        console.log(["rendering app",x]);
         return (
-            <SectionTransitionPage playback={this.state.playback} audioCtrl={this.audioCtrl} setPlayback={this.setPlayback}/>
+            <SectionTransitionPage playing={this.state.playing}/>
         );
     }
 });
@@ -69,7 +48,7 @@ var SectionTransitionPage = React.createClass({
                     <div className="main-container">
                         <div className="directions">First, separate the song into sections<br/>by finding the big transitions.</div> 
                         <Progress/>
-                        <Controls playback={this.props.playback} audioCtrl={this.props.audioCtrl} setPlayback={this.props.setPlayback}/>
+                        <Controls playing={this.props.playing}/>
                     </div>
                 </div>
             );
@@ -115,23 +94,22 @@ var Timer = React.createClass ({
     }
 });
 var Controls = React.createClass ({
+    mixins: [FluxChildMixin],
     render: function () {
-        var playing = this.props.playback == "playing",
-            playMusic = this.props.setPlayback.bind(null, "play"),
-            pauseMusic = this.props.setPlayback.bind(null, "pause");
-        
         return (
             <div className="controls">
-                <Button type={playing? "pause":"play"} onAction={playing? this.props.audioCtrl.print:this.props.audioCtrl.print}/>
+                <Button type={this.props.playing? "pause":"play"} onAction={this.togglePlayback}/>
                 <Button type="transition"/>
                 <Button type="back-5"/>
             </div>
         );
+    },
+    togglePlayback: function () {
+        this.getFlux().actions.audio.togglePlayback();
     }
 });
 var Button = React.createClass ({
     render: function () {
-        console.log("just rendered " + this.props.type + " button.");
         return (
             <img className={"button " + this.props.type} src={"img/" + this.props.type + ".svg"} onClick={this.props.onAction}/>
         );
@@ -146,8 +124,8 @@ var X = React.createClass ({
 });
         
         
-
+var flux = new Fluxxor.Flux(stores,actions);
 React.renderComponent(
-    <ArcSongApp/>,
+    <ArcSongApp flux={flux}/>,
     document.getElementById('content')
 );
