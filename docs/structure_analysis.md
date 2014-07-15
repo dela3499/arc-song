@@ -268,8 +268,9 @@ So, the todo list looks to be as follows:
 4. Setup mixins and action triggers
 5. Setup store watching and property passing
 
+I've complete all these steps, and am now able to toggle playback state. For now, though, I haven't setup any actual audio playback. I'm only toggling state. The next step is to see how to handle the actual audio playback. 
 
-
+It seems that I should simply put all that functionality into the store.
 
 
 

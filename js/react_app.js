@@ -5,14 +5,54 @@ var FluxMixin = Fluxxor.FluxMixin(React),
 
 var AudioStore = Fluxxor.createStore({
     initialize: function () {
-        this.playing = false;
+        var store = this;
+        this.playing = false;    
+        this.sound = new Howl({
+            urls: ['audio/animate2.mp3'],
+            onend: function () {
+                store.playing = false;
+                store.emit("change");
+            }
+        });
+        this.pos = 0;
+        this.duration = 15;
         this.bindActions(
-            "TOGGLE_PLAYBACK", this.handleTogglePlayback
+            "TOGGLE_PLAYBACK", this.togglePlayback
         );
     },
-    handleTogglePlayback: function () {
-        this.playing = !this.playing;
+    togglePlayback: function () {
+        !this.playing ? this.play() : this.pause();
+    },
+    play: function (start,end) {
+        var start = start || 0,
+            end   = end   || 1;
+        this.sound.sprite({'song':[start*this.duration*1000,(end-start)*this.duration*1000]});
+        this.sound.loop((end - start) != 1); //loop for excerpts only
+        this.sound.play('song');
+        this.playing = true;
+        this.startUpdateCycle();
         this.emit("change");
+    },
+    pause: function () {
+        this.sound.pause();
+        this.playing = false;
+        this.stopUpdateCycle();
+        this.emit("change");
+    },
+    startUpdateCycle: function () {
+        var store = this;
+        this.intervalID = setInterval(function () {
+            store.update();
+            store.emit("change");
+        }, 100);
+    },
+    stopUpdateCycle: function () {
+        var store = this;
+        clearInterval(store.intervalID);
+    },
+    update: function () {
+        this.pos = this.sound.pos() / this.duration;
+        
     }
 });
 var stores = {
@@ -30,13 +70,17 @@ var ArcSongApp = React.createClass ({
     getStateFromFlux: function () {
         var flux = this.getFlux();
         return {
-            playing: flux.store("AudioStore").playing
+            audio: {
+                playing: flux.store("AudioStore").playing,
+                pos: flux.store("AudioStore").pos,
+                duration: flux.store("AudioStore").duration
+            }   
         }
     },
     render: function () {
         var x = this.state;
         return (
-            <SectionTransitionPage playing={this.state.playing}/>
+            <SectionTransitionPage audio={this.state.audio}/>
         );
     }
 });
@@ -47,8 +91,8 @@ var SectionTransitionPage = React.createClass({
                     <Nav/>          
                     <div className="main-container">
                         <div className="directions">First, separate the song into sections<br/>by finding the big transitions.</div> 
-                        <Progress/>
-                        <Controls playing={this.props.playing}/>
+                        <Progress pos={this.props.audio.pos} duration={this.props.audio.duration}/>
+                        <Controls playing={this.props.audio.playing}/>
                     </div>
                 </div>
             );
@@ -67,14 +111,15 @@ var Nav = React.createClass ({
 });
 var Progress = React.createClass ({
     render: function () {
+        var t = this.props.pos * this.props.duration;
         return (
             <div className="player">
                 <div className="player-background">
                     <div className='transition-marker'></div>
                     <ProgressBar/>
                 </div> 
-                <Timer className='elapsed-time' t="0:00"/>
-                <Timer className='remaining-time' t="-0:15"/>
+                <Timer className='elapsed-time' t={t}/>
+                <Timer className='remaining-time' t={t - this.props.duration}/>
             </div>
         );
     }
@@ -87,9 +132,17 @@ var ProgressBar = React.createClass ({
     }
 });
 var Timer = React.createClass ({
+    filter: function (t) {
+        var sign = t < 0 ? "-" : "",
+            tAbs = Math.abs(t);
+        function z(n) {return (n < 10 ? '0' : '') + n; }
+        var seconds = Math.floor(tAbs % 60),
+            minutes = Math.floor(tAbs / 60);
+        return (sign + minutes + ':' + z(seconds));
+    },
     render: function () {
         return (
-            <div className={this.props.className}>{this.props.t}</div>
+            <div className={this.props.className}>{this.filter(this.props.t)}</div>
         );
     }
 });
