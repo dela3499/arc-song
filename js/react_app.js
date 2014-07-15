@@ -11,6 +11,9 @@ var AudioStore = Fluxxor.createStore({
             urls: ['audio/animate2.mp3'],
             onend: function () {
                 store.playing = false;
+                setTimeout(function () {
+                    store.stopUpdateCycle();
+                }, 10); //small delay hack. This allows timers and progress bar to sync to song time (zero) when the music ends.
                 store.emit("change");
             }
         });
@@ -44,7 +47,7 @@ var AudioStore = Fluxxor.createStore({
         this.intervalID = setInterval(function () {
             store.update();
             store.emit("change");
-        }, 100);
+        }, 10);
     },
     stopUpdateCycle: function () {
         var store = this;
@@ -52,7 +55,7 @@ var AudioStore = Fluxxor.createStore({
     },
     update: function () {
         this.pos = this.sound.pos() / this.duration;
-        
+        console.log("updating");
     }
 });
 var stores = {
@@ -116,7 +119,7 @@ var Progress = React.createClass ({
             <div className="player">
                 <div className="player-background">
                     <div className='transition-marker'></div>
-                    <ProgressBar/>
+                    <ProgressBar percentage={this.props.pos * 100 + '%'}/>
                 </div> 
                 <Timer className='elapsed-time' t={t}/>
                 <Timer className='remaining-time' t={t - this.props.duration}/>
@@ -127,7 +130,7 @@ var Progress = React.createClass ({
 var ProgressBar = React.createClass ({
     render: function () {
         return (
-            <div className="progress-bar"></div>
+            <div className="progress-bar" style={{width: this.props.percentage}}></div>
         );
     }
 });
