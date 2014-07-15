@@ -1,27 +1,28 @@
 /** @jsx React.DOM */
+
+// Prepare mixins which allow React components to trigger actions and read/sync-with data stores
 var FluxMixin = Fluxxor.FluxMixin(React),
     FluxChildMixin = Fluxxor.FluxChildMixin(React)
     StoreWatchMixin = Fluxxor.StoreWatchMixin;
 
 var AudioStore = Fluxxor.createStore({
+    // This store manages all audio playback
     initialize: function () {
-        var store = this;
+        this.bindActions(
+            "TOGGLE_PLAYBACK", this.togglePlayback
+        );        
+        var store = this; // used to access this scope inside of other functions
         this.playing = false;    
         this.sound = new Howl({
             urls: ['audio/animate2.mp3'],
             onend: function () {
                 store.playing = false;
-                setTimeout(function () {
-                    store.stopUpdateCycle();
-                }, 10); //small delay hack. This allows timers and progress bar to sync to song time (zero) when the music ends.
+                store.stopUpdateCycle();
                 store.emit("change");
             }
         });
         this.pos = 0;
-        this.duration = 15;
-        this.bindActions(
-            "TOGGLE_PLAYBACK", this.togglePlayback
-        );
+        this.duration = 15; 
     },
     togglePlayback: function () {
         !this.playing ? this.play() : this.pause();
@@ -42,6 +43,12 @@ var AudioStore = Fluxxor.createStore({
         this.stopUpdateCycle();
         this.emit("change");
     },
+    stop: function () {
+        this.sound.stop();
+        this.playing = false;
+        this.stopUpdateCycle();
+        this.emit("change");
+    },
     startUpdateCycle: function () {
         var store = this;
         this.intervalID = setInterval(function () {
@@ -51,11 +58,23 @@ var AudioStore = Fluxxor.createStore({
     },
     stopUpdateCycle: function () {
         var store = this;
-        clearInterval(store.intervalID);
+        setTimeout(function () {
+            clearInterval(store.intervalID);
+        }, 10); //Delay allows timers and progress bar to sync to song time (zero) when the music ends.
     },
     update: function () {
         this.pos = this.sound.pos() / this.duration;
-        console.log("updating");
+    }
+});
+var CalcStore = Fluxxor.createStore({
+    initialize: function () {
+        this.bindActions(
+            "ADD_TRANSITION", this.addTransition
+        );
+        this.transitions = [];
+    },
+    addTransition: function () {
+        this.transitions.append(1);
     }
 });
 var stores = {
@@ -67,6 +86,7 @@ var actions = {
             this.dispatch("TOGGLE_PLAYBACK", {});
         }
     }
+    
 };
 var ArcSongApp = React.createClass ({
     mixins: [FluxMixin, StoreWatchMixin("AudioStore")],
