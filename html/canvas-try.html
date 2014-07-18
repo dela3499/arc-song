@@ -106,7 +106,7 @@ var drawingCanvas = document.getElementById('myDrawing');
             return y;
         };
         var a = options.fixedRadius || 100,
-            b = options.rollingRadius || 0.1,
+            b = options.rollingRadius || 0.9085021000210002,
             hr = options.tracingRadius || 100,
             hc = options.tracingRadiusCycles || 5500.0,
             ha = options.tracingRadiusAmplitude || .3,
@@ -122,6 +122,35 @@ var drawingCanvas = document.getElementById('myDrawing');
         var x = gx(t),
             y = gy(t);
         
+//        var logScaleX = [];
+//        var logScaleY = [];
+//        
+//        for (var i=0; i<x.length; i++) {
+//            var r = Math.sqrt(Math.pow(x[i],2) + Math.pow(y[i],2));
+//            var theta = Math.sin(y[i]/r)/Math.cos(x[i]/r);
+//            var rNew = 0;
+//            var rScaled = Math.log(r)/Math.log(10);
+//            if (rScaled > 0) {
+//                rNew = rScaled;
+//            }
+//            
+//            logScaleXi = rNew*Math.sin(theta);
+//            logScaleYi = rNew*Math.cos(theta);
+//            
+//            if (!logScaleXi) {
+//                console.log(logScaleXi);
+//                console.log([x[i],y[i],r,theta,rNew]);
+//            }
+//            logScaleX.push(logScaleXi);
+//            logScaleY.push(logScaleYi);
+//            
+//        };
+//        console.log(x);
+//        console.log(logScaleX);
+//        
+//        x = logScaleX;
+//        y = logScaleY;
+        
         var scaledValues = centerAndScale(x,y,s,p);
         return {x:scaledValues.x,y:scaledValues.y};
             
@@ -133,20 +162,22 @@ var drawingCanvas = document.getElementById('myDrawing');
         c.lineWidth = 1;
         c.strokeStyle = "rgba(255,255,255,0.08)";
         
-        var tr1 = linspace(0,250,600);
-        var tr2 = tr1.slice(0);
-        var tr = tr1.concat(tr2.reverse());
+        var tr = linspace(5500,5502,100);
+//        var tr2 = tr1.slice(0);
+//        var tr = tr1.concat(tr2.reverse());
         
-        var rr = linspace(.9085,.91,100000);
+//        var rr = linspace(0.908502,0.908503,10);
         
         i = 0;
         var render = function (timestamp) {
-            var options = {rollingRadius: rr[i]};
-            console.log(rr[i]);
+            var options = {tracingRadiusCycles: tr[i]};
+            console.log(tr[i]);
             var guilloche = generateGuilloche(options);
             plot(guilloche.x,guilloche.y,c);
             i++;
-            requestAnimationFrame(render);
+//            if (i < 2) {
+                requestAnimationFrame(render);
+//            };
         };
         requestAnimationFrame(render);
             
