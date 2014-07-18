@@ -1,0 +1,9 @@
+To construct a suffix tree, perform the following steps:
+
+1. Select a string, a
+2. Create a list of suffixes of a, called s
+3. Create a list of all the unique letters in a, called u
+4. For each ui in u, perform the following steps:
+ 1. Find all the si in s that start with ui, called siui, put in list, sui
+ 2. Find longest common prefix among sui
+ 3. Create a 

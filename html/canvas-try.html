@@ -1,0 +1,162 @@
+<body>
+<div id="container"><canvas id="myDrawing" width="800" height="800">
+<p>Your browser doesn't support canvas.</p>
+</canvas>
+    </div>
+</body>
+<style>
+    #container {
+        margin: 0 auto;
+        width: 800px;
+    }
+    body {
+        background: black;
+</style>
+<script>
+var drawingCanvas = document.getElementById('myDrawing');
+// Check the element is in the DOM and the browser supports canvas
+    var plot = function (x,y,context) {
+        var c = context;
+        c.clearRect(0,0,800,800);
+        for (var i = 0; i < x.length - 1; i++) {
+            c.beginPath();
+            c.moveTo(x[i],y[i]);
+            c.lineTo(x[i+1],y[i+1]);
+            c.closePath();
+            c.stroke();
+        }
+    }
+
+    var myMax = function (x) {
+            return Math.max.apply(Math,x);
+        },
+        myMin = function (x) {
+            return Math.min.apply(Math,x);
+        };
+    
+    var linspace = function (start,end,n) {
+        // return array with n regularly-space elements, starting with start and ending with end.
+        var interval = (end - start) / (n - 1);
+        var x = [];
+        for (var i = 0; i < n; i++) {
+            x.push(start + interval * i);
+        };
+        return x;
+    };
+    
+    var scaleArray = function (x,s) {
+        var newX = [];
+        for (var i=0;i<x.length;i++) {
+            newX.push(x[i]*s);
+        };
+        return newX;
+    };
+    
+    var addToArray = function (x,a) {
+        var newX = [];
+        for (var i = 0; i < x.length; i++) {
+            newX.push(x[i] + a);
+        };
+        return newX;
+    };
+    
+    var centerAndScale = function (x,y,sideLength,percentage) {
+        var innerSideLength = sideLength * percentage,
+            offset = sideLength * (1-percentage) / 2,
+            xRange = myMax(x) - myMin(x),
+            yRange = myMax(y) - myMin(y),
+            range = Math.max(xRange,yRange),
+            scaleFactor = innerSideLength / range,
+            scaledX = scaleArray(x,scaleFactor),
+            scaledY = scaleArray(y,scaleFactor),
+            newX = addToArray(scaledX,(offset - myMin(scaledX))),
+            newY = addToArray(scaledY,(offset - myMin(scaledY)));
+        return {x:newX,y:newY};
+    };
+    
+
+        
+    
+    var generateGuilloche = function (options) {
+        var getH = function (mean,amplitude,nCycles,nPoints) {
+            var t = linspace(0,2*Math.PI,nPoints);
+            var h = [];
+            for (var i = 0; i < nPoints; i++) {
+                var hi = amplitude * mean * Math.sin(nCycles * t[i]) + mean;
+                h.push(hi);
+            };
+            return h;
+        };
+        var gx = function (t) {
+            var x = [];
+            for (var i = 0; i < t.length; i++) {
+                var ti = t[i];
+                var xi = (a-b)*Math.cos(m*ti)+h[i]*Math.cos(m*((a-b)/b)*ti);
+                x.push(xi);
+            }
+            return x;
+        };
+        var gy = function (t) {
+            var y = [];
+            for (var i = 0; i < t.length; i++) {
+                var ti = t[i];
+                var yi = (a-b)*Math.sin(m*ti)-h[i]*Math.sin(m*((a-b)/b)*ti);
+                y.push(yi);
+            }
+            return y;
+        };
+        var a = options.fixedRadius || 100,
+            b = options.rollingRadius || 0.1,
+            hr = options.tracingRadius || 100,
+            hc = options.tracingRadiusCycles || 5500.0,
+            ha = options.tracingRadiusAmplitude || .3,
+            m = options.multiplier || 1000,
+            r = options.range || 2*Math.PI,
+            n = options.nPoints || 9000,
+            s = options.sideLength || 800,
+            p = options.sidePercentage || 1;
+        
+        var t = linspace(0,r,n);    
+        var h = getH(hr,ha,hc,n);
+            
+        var x = gx(t),
+            y = gy(t);
+        
+        var scaledValues = centerAndScale(x,y,s,p);
+        return {x:scaledValues.x,y:scaledValues.y};
+            
+    };
+    
+    if(drawingCanvas.getContext) {
+        //initialize a 2-dimensional drawing context
+        var c = drawingCanvas.getContext('2d');
+        c.lineWidth = 1;
+        c.strokeStyle = "rgba(255,255,255,0.08)";
+        
+        var tr1 = linspace(0,250,600);
+        var tr2 = tr1.slice(0);
+        var tr = tr1.concat(tr2.reverse());
+        
+        var rr = linspace(.9085,.91,100000);
+        
+        i = 0;
+        var render = function (timestamp) {
+            var options = {rollingRadius: rr[i]};
+            console.log(rr[i]);
+            var guilloche = generateGuilloche(options);
+            plot(guilloche.x,guilloche.y,c);
+            i++;
+            requestAnimationFrame(render);
+        };
+        requestAnimationFrame(render);
+            
+//        for (var i = 0; i < hr.length; i++) {
+//            var options = {tracingRadius:hr[i]};
+//            console.log(hr[i])
+//            var guilloche = generateGuilloche(options);
+//            plot(guilloche.x,guilloche.y,c);
+//        };
+        
+    };
+
+</script>
