@@ -69,8 +69,8 @@ var drawingCanvas = document.getElementById('myDrawing');
             scaleFactor = innerSideLength / range,
             scaledX = scaleArray(x,scaleFactor),
             scaledY = scaleArray(y,scaleFactor),
-            newX = addToArray(scaledX,(offset - myMin(scaledX))),
-            newY = addToArray(scaledY,(offset - myMin(scaledY)));
+            newX = addToArray(scaledX,sideLength/2),
+            newY = addToArray(scaledY,sideLength/2);
         return {x:newX,y:newY};
     };
     
@@ -107,12 +107,12 @@ var drawingCanvas = document.getElementById('myDrawing');
         };
         var a = options.fixedRadius || 100,
             b = options.rollingRadius || 0.9085021000210002,
-            hr = options.tracingRadius || 100,
+            hr = options.tracingRadius || 150,
             hc = options.tracingRadiusCycles || 5500.0,
-            ha = options.tracingRadiusAmplitude || .3,
+            ha = options.tracingRadiusAmplitude || 0.5,
             m = options.multiplier || 1000,
             r = options.range || 2*Math.PI,
-            n = options.nPoints || 9000,
+            n = options.nPoints || 9039,
             s = options.sideLength || 800,
             p = options.sidePercentage || 1;
         
@@ -160,23 +160,27 @@ var drawingCanvas = document.getElementById('myDrawing');
         //initialize a 2-dimensional drawing context
         var c = drawingCanvas.getContext('2d');
         c.lineWidth = 1;
-        c.strokeStyle = "rgba(255,255,255,0.08)";
+        c.strokeStyle = "rgba(255,255,255,0.05)";
         
-        var tr = linspace(5500,5502,100);
+        var tr = linspace(20537.5,20538.5,21);
 //        var tr2 = tr1.slice(0);
 //        var tr = tr1.concat(tr2.reverse());
         
 //        var rr = linspace(0.908502,0.908503,10);
         
         i = 0;
+        var fps = 2;
         var render = function (timestamp) {
-            var options = {tracingRadiusCycles: tr[i]};
-            console.log(tr[i]);
-            var guilloche = generateGuilloche(options);
-            plot(guilloche.x,guilloche.y,c);
-            i++;
-//            if (i < 2) {
-                requestAnimationFrame(render);
+            setTimeout(function () {
+                var options = {tracingRadiusCycles: tr[i]};
+                console.log(tr[i]);
+                var guilloche = generateGuilloche(options);
+                plot(guilloche.x,guilloche.y,c);
+                i++;
+    //            if (i < 2) {
+//                console.log(timestamp);
+                    requestAnimationFrame(render);
+            }, 1000 / fps);
 //            };
         };
         requestAnimationFrame(render);
