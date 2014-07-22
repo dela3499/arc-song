@@ -26,14 +26,12 @@ var drawingCanvas = document.getElementById('myDrawing');
             c.stroke();
         }
     }
-
     var myMax = function (x) {
             return Math.max.apply(Math,x);
         },
         myMin = function (x) {
             return Math.min.apply(Math,x);
         };
-    
     var linspace = function (start,end,n) {
         // return array with n regularly-space elements, starting with start and ending with end.
         var interval = (end - start) / (n - 1);
@@ -43,7 +41,6 @@ var drawingCanvas = document.getElementById('myDrawing');
         };
         return x;
     };
-    
     var scaleArray = function (x,s) {
         var newX = [];
         for (var i=0;i<x.length;i++) {
@@ -51,7 +48,6 @@ var drawingCanvas = document.getElementById('myDrawing');
         };
         return newX;
     };
-    
     var addToArray = function (x,a) {
         var newX = [];
         for (var i = 0; i < x.length; i++) {
@@ -59,7 +55,6 @@ var drawingCanvas = document.getElementById('myDrawing');
         };
         return newX;
     };
-    
     var centerAndScale = function (x,y,sideLength,percentage) {
         var innerSideLength = sideLength * percentage,
             offset = sideLength * (1-percentage) / 2,
@@ -73,10 +68,6 @@ var drawingCanvas = document.getElementById('myDrawing');
             newY = addToArray(scaledY,sideLength/2);
         return {x:newX,y:newY};
     };
-    
-
-        
-    
     var generateGuilloche = function (options) {
         var getH = function (mean,amplitude,nCycles,nPoints) {
             var t = linspace(0,2*Math.PI,nPoints);
@@ -105,20 +96,19 @@ var drawingCanvas = document.getElementById('myDrawing');
             }
             return y;
         };
-        var a = options.fixedRadius || 100,
-            b = options.rollingRadius || 0.9085021000210002,
-            hr = options.tracingRadius || 150,
-            hc = options.tracingRadiusCycles || 5500.0,
-            ha = options.tracingRadiusAmplitude || 0.5,
-            m = options.multiplier || 1000,
-            r = options.range || 2*Math.PI,
-            n = options.nPoints || 9039,
-            s = options.sideLength || 800,
-            p = options.sidePercentage || 1;
         
+        var a = options.fixedRadius || 100,
+            b = options.rollingRadius || 0.267,
+            hr = options.tracingRadius || 120,
+            hc = options.tracingRadiusCycles || 4003,
+            ha = options.tracingRadiusAmplitude || 0.01,
+            m = options.multiplier || 3,
+            r = options.range || 2*Math.PI,
+            n = options.nPoints || 9555.0,
+            s = options.sideLength || 855,
+            p = options.sidePercentage || 0.8;
         var t = linspace(0,r,n);    
         var h = getH(hr,ha,hc,n);
-            
         var x = gx(t),
             y = gy(t);
         
@@ -153,45 +143,41 @@ var drawingCanvas = document.getElementById('myDrawing');
         
         var scaledValues = centerAndScale(x,y,s,p);
         return {x:scaledValues.x,y:scaledValues.y};
-            
     };
-    
     if(drawingCanvas.getContext) {
         //initialize a 2-dimensional drawing context
         var c = drawingCanvas.getContext('2d');
         c.lineWidth = 1;
         c.strokeStyle = "rgba(255,255,255,0.05)";
         
-        var tr = linspace(20537.5,20538.5,21);
-//        var tr2 = tr1.slice(0);
-//        var tr = tr1.concat(tr2.reverse());
+        var param1 = "fixedRadius";
+        var param1Vals = linspace(155.01,155.05,101);
+        var param2 = "nPoints";
+        var param2Vals = linspace(5206,5206,101);
+        var param3 = "multiplier";
+        var param3Vals = linspace(3.002,3.02,500);
+//        [155.05053999999998, 5206.973947895792, 3.002
+//        console.log(param1Vals[11]); 
         
-//        var rr = linspace(0.908502,0.908503,10);
-        
+//        155.04998, 5200.801603206412, 3.002] 
+//        [155.05026, 5203.887775551102, 3.002] canvas-try.html:170
+
         i = 0;
-        var fps = 2;
+        var fps = 20;
         var render = function (timestamp) {
             setTimeout(function () {
-                var options = {tracingRadiusCycles: tr[i]};
-                console.log(tr[i]);
+                var options = {};
+                options[param1] = param1Vals[i];
+                options[param2] = param2Vals[i];
+                options[param3] = param3Vals[i];
+                console.log([param1Vals[i],param2Vals[i],param3Vals[i]]);
                 var guilloche = generateGuilloche(options);
                 plot(guilloche.x,guilloche.y,c);
                 i++;
-    //            if (i < 2) {
-//                console.log(timestamp);
                     requestAnimationFrame(render);
             }, 1000 / fps);
-//            };
         };
         requestAnimationFrame(render);
-            
-//        for (var i = 0; i < hr.length; i++) {
-//            var options = {tracingRadius:hr[i]};
-//            console.log(hr[i])
-//            var guilloche = generateGuilloche(options);
-//            plot(guilloche.x,guilloche.y,c);
-//        };
-        
     };
 
 </script>
